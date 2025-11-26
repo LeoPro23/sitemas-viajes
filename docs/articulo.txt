@@ -96,6 +96,24 @@ Objetivo Específico 3: Analizar la eficacia del sistema.
 - Instrumento: Logs de ejecución en n8n y registros en base de datos PostgreSQL.
 - Valor esperado: > 90% de tasa de éxito.
 
+Instrumentos de medición
+Los instrumentos de medición empleados fueron:
+- Cronómetro digital (Timer): Integrado en el código para medir con precisión de milisegundos el tiempo de procesamiento del sistema (desde el envío del formulario hasta la renderización de resultados). Para el proceso manual, se utilizó un cronómetro estándar.
+- Cuestionarios Ad-Hoc (Escala Likert): Dos instrumentos diseñados específicamente para esta investigación:
+  1. Cuestionario Pre-Uso: Evalúa las expectativas y la dificultad percibida del proceso manual actual.
+  2. Cuestionario Post-Uso: Evalúa la satisfacción, usabilidad y confianza tras utilizar TravelSmart.
+  Ambos constan de 9 reactivos distribuidos en 3 dimensiones, validados por juicio de expertos (V de Aiken > 0.80) y consistencia interna (Alfa de Cronbach > 0.80).
+- Logs de ejecución en n8n y PostgreSQL: Registro automático de cada transacción para calcular la tasa de éxito y detectar fallos en las APIs externas.
+- Apache JMeter: Utilizado para pruebas de carga y estrés, simulando usuarios concurrentes para verificar la estabilidad del sistema bajo demanda.
+
+Proceso experimental
+El proceso experimental definido comprende 5 fases, las cuales fueron:
+- Fase 1 – Línea Base (Pre-Test): Medición de tiempos y aplicación del cuestionario de expectativas a una muestra de usuarios realizando la planificación de un viaje de forma manual (búsqueda en web).
+- Fase 2 – Implementación y Despliegue: Configuración del entorno productivo de TravelSmart, asegurando la conexión estable entre Next.js, n8n y las APIs de terceros.
+- Fase 3 – Ejecución de Pruebas (Post-Test): Los mismos usuarios interactuaron con el sistema TravelSmart para generar itinerarios bajo las mismas condiciones de la Fase 1. Se registraron tiempos automáticos y logs de éxito.
+- Fase 4 – Recolección de Datos: Captura de respuestas del cuestionario de satisfacción post-uso y consolidación de métricas de tiempo y eficacia desde la base de datos.
+- Fase 5 – Análisis y Validación: Procesamiento estadístico de los datos (Prueba T-Student para muestras relacionadas) para comparar los resultados del Pre-Test y Post-Test y validar las hipótesis de mejora.
+
 3. Resultados
 Los resultados obtenidos tras la fase experimental se presentan organizados según los objetivos específicos planteados.
 
@@ -115,13 +133,8 @@ Durante las pruebas controladas, se registraron 50 intentos de generación de it
 Esto arroja una Tasa de Finalización de Tareas del 96%, cumpliendo con el objetivo de eficacia (>90%) y demostrando la robustez de la arquitectura basada en n8n para manejar excepciones y garantizar la entrega de valor.
 
 4. Discusión
-La implementación de TravelSmart demuestra que la integración de agentes de IA (Gemini 2.5 Flash) con plataformas de orquestación low-code (n8n) permite superar las barreras de entrada para el desarrollo de sistemas turísticos complejos. A diferencia de los enfoques puramente conversacionales (chatbots), nuestra arquitectura híbrida (UI estructurada + IA generativa) ofrece una experiencia más guiada y resultados más consistentes, como evidencia la alta tasa de finalización de tareas (96%).
-La reducción de tiempo observada (95.5%) confirma lo sugerido por Xiang et al. (2015) sobre el potencial de las tecnologías inteligentes para mitigar la sobrecarga informativa. Sin embargo, es crucial notar que la confianza del usuario (4.5/5.0), aunque alta, sigue siendo ligeramente menor que la percepción de eficiencia (4.8/5.0), lo que sugiere que la "explicabilidad" de las recomendaciones sigue siendo un área clave de mejora para futuros desarrollos, alineándose con los desafíos de "Trustworthy AI" planteados por Zhang et al. (2022).
 
 5. Conclusiones
-1. Se logró desarrollar un sistema de planificación de viajes altamente eficiente, reduciendo el tiempo de proceso en un 95.5% en comparación con métodos manuales, validando la hipótesis de que la automatización inteligente elimina fricciones significativas en la experiencia del turista.
-2. La evaluación de usabilidad arrojó un índice de satisfacción global de 4.63/5.0, demostrando que la interfaz diseñada en Next.js y la lógica de recomendación son intuitivas y valiosas para el usuario final.
-3. El sistema demostró una alta eficacia técnica con una Tasa de Finalización de Tareas del 96%, validando la robustez de la arquitectura n8n + NestJS para orquestar servicios heterogéneos y entregar itinerarios factibles de manera consistente.
 
 Referencias
 Borràs, J., Moreno, A., & Valls, A. (2014). Intelligent tourism recommender systems: A survey. Expert Systems with Applications, 41(16), 7370–7389. https://doi.org/10.1016/j.eswa.2014.06.007 
