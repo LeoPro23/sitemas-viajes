@@ -273,8 +273,8 @@ publicar en revistas de alto impacto, ¿no? Eh,
 esa es la eso es a nivel general, ¿no? Por eso en estos días de la huelga es que tienen que aprovechar para que todo
 esté listo y simplemente sea un saludo a la bendera ya la terminación del curso.
 Lo que quería mencionar es que la siguiente semana, que voy a dejarlo el viernes posiblemente, la práctica 13,
-que va a tratar sobre prueba de software con GMER. Bueno, ahí voy a dejar unos videos
-porque lo único que tienen que instalar es el Gmer, ¿no?, que es en base de Java, es libre y lo que mide son cargas
+que va a tratar sobre prueba de software con JMeter. Bueno, ahí voy a dejar unos videos
+porque lo único que tienen que instalar es el JMeter, ¿no?, que es en base de Java, es libre y lo que mide son cargas
 de estrés, carga de potencia, eh etcétera, de un de cualquier sistema,
 ¿no? Y simplemente hay que instalar el software y el resto es uso de comandos, no es nada del otro mundo, ¿no? Lo más
 lo más importante es ahí la medida un sistema, cuántos usuarios simultáneamente pueden estar conectados,
@@ -294,7 +294,7 @@ entonces si hubiese dicho si hubiese hecho una prueba de de ese tipo y hubiese d
 simultáneamente soporte el sistema 300 a la vez, ¿no, ¿qué hace? pues programa, ¿no?, hace un cronograma de matrículas
 tal día, tales escuelas, etcétera, evitando de que colapse. Pero como se
 hizo caso omiso, cayó, cayó. Y esos casos son casos reales de la vida real,
-¿no? Entonces, el GMER es una de las tantas este software que existen para
+¿no? Entonces, el JMeter es una de las tantas este software que existen para
 medir justamente la eh medir la calidad de software,
 potencias son las cuántos usuarios simultáneamente. Entonces, cuando uno hace un software, tiene que indicar
 midiendo, obviamente, midiendo y comprobando cuánto es el número de usuarios máximo, ¿no? Para hacer las
@@ -318,7 +318,7 @@ cómo tienen que obtenerse los datos.
 A ver, a esto le voy a llamar
 acá dice libro. Esto es va a ser la clase 13, ¿no?
 Donde, bueno, la clase 13 es lo que comprende
-JMER. Le voy a mandar acá este,
+JMeter. Le voy a mandar acá este,
 voy a llamar estadística para estadísticas
 y lo voy a subir acá para maner ejemplo de que recuerden
 y hay muchas cosas que metodología de la investigación científica ya lo han llevado, ¿no? 13 dije acá.
