@@ -1,0 +1,86 @@
+UNIVERSIDAD NACIONAL DE TRUJILLO
+
+FACULTAD DE INGENIERÍA
+ESCUELA PROFESIONAL DE INGENIERÍA DE SISTEMAS
+
+“Sistema de Planificación de Viajes con Agente de IA con Google Gemini 2.5 flash en n8n - TravelSmart”
+
+AUTORES	:
+Guimaray Matute Leonardo Javier
+Villacorta Carranza Ronald David
+Fernandez Esquerre Iván
+
+ASESOR	:
+Ms. Santos Fernández, Juan Pedro 
+
+LÍNEA DE INVESTIGACIÓN	:
+Ingeniería de Software II
+
+TRUJILLO–PERÚ
+2025
+
+
+Sistema de Planificación de Viajes con Agente de IA con Google Gemini 2.5 flash en n8n - TravelSmart
+Resumen
+Palabras Clave: 
+Abstract
+Keywords: 
+1. Introducción
+La planificación de viajes se ha transformado radicalmente con la digitalización del turismo: la intermediación electrónica, la expansión de la web social y la ubicuidad móvil han alterado los flujos de información y la toma de decisiones del viajero, generando nuevas oportunidades pero también una marcada sobrecarga informativa (Buhalis & Law, 2008; Werthner & Ricci, 2004; Xiang & Gretzel, 2010). En este ecosistema, la búsqueda, filtrado y curaduría de información turística devienen procesos complejos, donde preferencias, restricciones de tiempo y presupuesto, y señales contextuales deben integrarse en tiempo casi real (Xiang & Fesenmaier, 2020; Xiang, Magnini, & Fesenmaier, 2015).
+Para enfrentar este reto, los sistemas de recomendación en los viajes y turismo han evolucionado desde enfoques basados en contenido y filtrado colaborativo hacia arquitecturas híbridas y context-aware que modelan afinidades, estacionalidad y movilidad, elevando la pertinencia de sugerencias de destinos, actividades y POIs (Borràs, Moreno, & Valls, 2014; Chaudhari & Thakkar, 2019; Ricci, 2022). La incorporación explícita del contexto (lugar, tiempo disponible, intención de viaje, modo de transporte) mejora sensiblemente la utilidad percibida por el usuario (Zanker & Ricci, 2014), y la explotación de datos generados por los propios viajeros (por ejemplo, fotos georreferenciadas y trayectorias) habilita recomendaciones más finas y situadas (Yin et al., 2015).
+Cuando la pregunta pasa de “¿qué ver?” a “¿cómo secuenciar lo que quiero ver en el tiempo y en la ruta?”, el núcleo técnico se desplaza hacia la optimización bajo restricciones: el Tourist Trip Design Problem (TTDP) y variantes del problema de orienteering con ventanas temporales y beneficios asignados a POIs capturan la estructura combinatoria del armado de itinerarios (especialmente en road trips) y requieren heurísticas/metaheurísticas para obtener soluciones factibles y valiosas en plazos razonables (Cerna, Hernández-Peñaloza, Gaudiano, & Vargas, 2022; Gavalas, Konstantopoulos, Mastakas, & Pantziou, 2014; Vansteenwegen, Souffriau, & Van Oudheusden, 2011). En paralelo, se han propuesto métodos data-driven que inducen rutas probables a partir de datos de comportamiento (fotos, check-ins) y luego personalizan la secuenciación (Kurashima, Iwata, Irie, & Fujimura, 2013; Yin et al., 2015), así como aplicaciones específicas para ciclismo y turismo regional que ponen de manifiesto la necesidad de verificar horarios, distancias y tiempos de traslado realistas (Souffriau, Vansteenwegen, Vanden Berghe, & Van Oudheusden, 2011).
+La capa de interacción conversacional ha cobrado protagonismo: chatbots y asistentes inteligentes permiten solicitar preferencias en lenguaje natural, explicar alternativas y replanificar sobre la marcha, cubriendo momentos de inspiración, planificación y apoyo in-trip (Calvaresi et al., 2021). Sin embargo, persisten desafíos de confiabilidad (explicabilidad, robustez, privacidad y seguridad) que la literatura reciente en recomendación “fiable” subraya como criterios indispensables cuando las decisiones algorítmicas afectan itinerarios, costos y experiencias de usuarios reales (Zhang, Yao, Sun, & Tay, 2022).
+En este contexto, presentamos TravelSmart, un sistema experto de recomendación de viajes implementado de extremo a extremo. El motor de reglas y la orquestación se realizan en n8n, donde se validan datos en tiempo real desde fuentes externas (OpenTripMap para lugares y geocodificación, Pexels/Pixabay para imágenes, OpenWeather para clima y Amadeus para hoteles). El frontend en Next.js ofrece un cuestionario multi‑paso y una página de resultados con explicaciones, alternativas y tarjetas de hoteles. Nuestra contribución se centra en la trazabilidad y factibilidad de las recomendaciones: cada destino incluye justificaciones basadas en preferencias, presupuesto, clima y disponibilidad, y el sistema aplica fallbacks y manejo de errores para garantizar respuestas operables. Este enfoque supera las limitaciones de soluciones puramente generativas al producir recomendaciones personalizadas y ejecutables que equilibran satisfacción del usuario, diversidad de actividades y restricciones reales de viaje (Cerna et al., 2022).
+1.1 Objetivos
+Objetivo general
+Desarrollar y evaluar un planificador de viajes asistido por un agente IA que genere itinerarios y road trips personalizados, factibles y explicables, integrando recomendación contextual con optimización bajo restricciones en una arquitectura productizable (Gemini 2.5 Pro + n8n + Next.js).
+Objetivos específicos
+- Modelar la planificación de itinerarios como TTDP/orienteering con ventanas temporales, beneficios y límites de duración; definir funciones objetivo multi-criterio (satisfacción, diversidad, tiempo efectivo en destino vs. en ruta).
+- Implementar un módulo conversacional (n8n + Gemini 2.5 Pro) para elicitación de preferencias y borradores de itinerario, guiado por prompts y plantillas robustas.
+- Integrar un motor de validación y ajuste que calcule tiempos de traslado, verifique horarios/estacionalidad y reoptimice ante cambios (usuarios o condiciones).
+- Diseñar heurísticas/metaheurísticas replicables para seleccionar y secuenciar POIs, conciliando preferencias y restricciones en tiempo cuasi-real.
+- Desplegar una arquitectura E2E (n8n para orquestación; Next.js para UI) con módulos de logging, trazabilidad de fuentes y explicaciones amigables.
+- Evaluar el sistema con métricas offline (factibilidad, cobertura/diversidad, compacidad, tiempo de cómputo) y con estudios de usuario (utilidad percibida, confianza, intención de uso).
+- Documentar buenas prácticas de explicabilidad y confiabilidad (racionales, evidencias, límites conocidos) en recomendaciones de viaje.
+
+2. Materiales y métodos
+Plataforma de Interacción y Resultados (Frontend)
+Se utilizó Next.js (v.15, framework de react) como la plataforma principal de interacción con el usuario. Esta aplicación web cumple dos funciones:
+Presenta el cuestionario multi-paso para recolectar las preferencias del usuario (destino, presupuesto, gustos).
+Actúa como la "plataforma de resultados", renderizando el itinerario final con las recomendaciones, mapas y explicaciones generadas por el backend.
+Arquitectura de Backend
+La lógica principal se implementó en NestJS (v.11.1.827, framework de Node.js), que maneja el saneamiento de datos para el registro en PostgreSQL y expone los endpoints HTTP para la comunicación con el frontend, siendo un gateway de dominio que normaliza entradas, aplica validaciones (esquemas JSON), firma solicitudes hacia n8n, expone endpoints REST para lectura/escritura de itinerarios y preferencias, y pública eventos para actualizaciones en la bd.
+Se usaron DTOs (class-validator) para asegurar la integridad de los datos. En conjunto con NestJS, se usó n8n como plataforma de orquestación. n8n se encarga de recibir las solicitudes, ejecutar las llamadas a las APIs externas (OpenTripMap, OpenWeather, Amadeus, Pexels/Pixabay) y gestionar la consulta al modelo Google Gemini 2.5 Flash para la generación del itinerario.
+Base de datos
+Para la persistencia de los datos usamos PostgreSQL en su versión 18,  lanzada el 25 de septiembre de 2025, siendo nuestro esquema relacional para usuarios, preferencias, viajes, itinerarios, fuentes y logs. Índices por usuario_id, fecha, y destino_id asegurando las consultas sub‑segundo. Se almacena la traza completa (inputs del usuario, tool calls, respuestas del modelo, validaciones) para auditabilidad.
+Integración y flujo de datos
+Se diseñó un flujo de datos principal en n8n (en su versión 1.120.1) para la generación de itinerarios:
+Recepción de la solicitud (webhook) desde NestJS con el perfil del usuario.
+Consulta a las APIs externas (OpenTripMap, OpenWeather) para obtener datos de POIs, clima y hoteles.
+Consulta al modelo Gemini 2.5 Flash con el contexto completo para generar un borrador de itinerario en JSON.
+Validación y optimización del itinerario (se verifican horarios, traslados y presupuesto usando la heurística GRASP).
+Envío de la respuesta JSON final a NestJS para ser guardada en PostgreSQL.
+NestJS envía el itinerario al frontend (Next.js) para que el usuario lo visualice.
+Interfaz de usuario y entorno de pruebas
+La interfaz de usuario principal es la aplicación de Next.js. Para las pruebas de backend y la depuración de los flujos, se utilizaron herramientas de cliente HTTP como Postman y Thunderclient. Estas permitieron realizar solicitudes directas a los endpoints de NestJS y a los webhooks de n8n para validar los esquemas de respuesta del agente de IA y la correcta integración de las APIs.
+
+
+
+Referencias
+Borràs, J., Moreno, A., & Valls, A. (2014). Intelligent tourism recommender systems: A survey. Expert Systems with Applications, 41(16), 7370–7389. https://doi.org/10.1016/j.eswa.2014.06.007 
+Buhalis, D., & Law, R. (2008). Progress in information technology and tourism management: 20 years on and 10 years after the Internet—The state of eTourism research. Tourism Management, 29(4), 609–623. https://doi.org/10.1016/j.tourman.2008.01.005 
+Calvaresi, D., Ibrahim, A., Calbimonte, J.-P., Schegg, R., Fragnière, E., & Schumacher, M. (2021). The evolution of chatbots in tourism: A systematic literature review. In Information and Communication Technologies in Tourism 2021 (pp. 3–16). Springer. https://doi.org/10.1007/978-3-030-65785-7_1 
+Cerna, J. Y., Hernández-Peñaloza, G., Gaudiano, P., & Vargas, G. (2022). A systematic literature review for the Tourist Trip Design Problem. Journal of Industrial Information Integration, 26, 100253.
+Chaudhari, K., & Thakkar, A. (2019). A comprehensive survey on travel recommender systems. Archives of Computational Methods in Engineering. https://doi.org/10.1007/s11831-019-09363-7
+Gavalas, D., Konstantopoulos, C., Mastakas, K., & Pantziou, G. E. (2014). A survey on algorithmic approaches for solving tourist trip design problems. Journal of Heuristics, 20(3), 291–328. https://doi.org/10.1007/s10732-014-9242-5 
+Ricci, F. (2022). Recommender systems in tourism. In Z. Xiang, M. Fuchs, U. Gretzel, & W. Höpken (Eds.), Handbook of e-Tourism. Springer. https://doi.org/10.1007/978-3-030-48652-5_26 
+Souffriau, W., Vansteenwegen, P., Vanden Berghe, G., & Van Oudheusden, D. (2011). The planning of cycle trips in the province of East Flanders. Omega, 39(2), 209–213. https://doi.org/10.1016/j.omega.2010.05.001 
+Vansteenwegen, P., Souffriau, W., & Van Oudheusden, D. (2011). The orienteering problem: A survey. European Journal of Operational Research, 209(1), 1–10. https://doi.org/10.1016/j.ejor.2010.03.045 
+Werthner, H., & Ricci, F. (2004). Electronic commerce and tourism. Communications of the ACM, 47(12), 101–105. https://doi.org/10.1145/1035134.1035141 
+Xiang, Z., & Fesenmaier, D. R. (2020). Travel information search. In Z. Xiang, M. Fuchs, U. Gretzel, & W. Höpken (Eds.), Handbook of e-Tourism. Springer. https://doi.org/10.1007/978-3-030-05324-6_55-1 
+Xiang, Z., & Gretzel, U. (2010). Role of social media in online travel information search. Tourism Management, 31(2), 179–188. https://doi.org/10.1016/j.tourman.2009.02.016 
+Xiang, Z., Magnini, V. P., & Fesenmaier, D. R. (2015). Information technology and consumer behavior in travel and tourism: Insights from travel planning using the Internet. Journal of Retailing and Consumer Services, 22, 244–249. https://doi.org/10.1016/j.jretconser.2014.08.005 
+Yin, H., et al. (2015). Topic-based context-aware travel recommendation method exploiting geotagged photos and travel histories. Neurocomputing, 168, 539–555. https://doi.org/10.1016/j.neucom.2015.05.095 
+Zanker, M., & Ricci, F. (2014). Recommending, contextualizing, and personalizing POIs. Information Technology & Tourism, 14(2), 105–107.*
+Kurashima, T., Iwata, T., Irie, G., & Fujimura, K. (2013). Travel route recommendation using geotagged photos. Knowledge and Information Systems, 37(1), 37–60. https://doi.org/10.1007/s10115-012-0580-z 
+Zhang, S., Yao, L., Sun, A., & Tay, Y. (2022). A comprehensive survey on trustworthy recommender systems. arXiv preprint arXiv:2209.10117.

@@ -1,0 +1,111 @@
+UNIVERSIDAD NACIONAL DE TRUJILLO
+
+FACULTAD DE INGENIERÍA
+ESCUELA PROFESIONAL DE INGENIERÍA DE SISTEMAS
+
+“Sistema de Guía Turística Virtual con IA Generativa y Automatización: Arquitectura Escalable con n8n y OpenAI GPT-4”
+
+AUTORES	:
+Armas Abad, Cristian Daniel
+Quiliche Plasencia, Deysi Elvia Yuvixa
+
+ASESOR	:
+Ms. Santos Fernández, Juan Pedro
+
+LÍNEA DE INVESTIGACIÓN	:
+Ingeniería de Software I
+
+TRUJILLO–PERÚ
+2025
+
+Sistema de Guía Turística Virtual con IA Generativa y Automatización: Arquitectura Escalable con n8n y OpenAI GPT-4
+Resumen
+Palabras Clave: 
+Abstract
+Keywords: 
+Introducción
+A través de los últimos años, la industria turística global ha experimentado una transformación digital de una forma acelerada, representando aproximadamente USD 2.95 billones en 2024 en el mercado de IA aplicada al turismo, con proyecciones de alcanzar USD 13.38 billones para 2030, con una tasa de crecimiento anual compuesta (CAGR) del 28.7% (Abdella et al., 2024). Este crecimiento exponencial refleja la creciente demanda de soluciones tecnológicas que personalicen y optimicen la experiencia turística. Se observa que una de las variante más prometedoras de estas innovaciones vienen a ser los sistemas de guía turística virtual basados en inteligencia artificial generativa, las cuales poseen capacidades superiores para ofrecer recomendaciones contextualizadas en tiempo real, resaltando la gran importancia de la automatización inteligente en la gestión de servicios turísticos (Shrestha et al., 2024; Premananthan et al., 2024). Cabe resaltar que, los métodos tradicionales de asistencia turística aún se encuentran basados en guías con humanos o contenido estático, que representan unos métodos de menor eficiencia y escalabilidad en comparación con las arquitecturas automatizadas emergentes (Núñez-Pérez et al., 2024).
+Nuevas investigaciones demostraron que los sistemas de recomendación turística basados en aprendizaje automático y procesamiento de lenguaje natural son capaces de personalizar itinerarios con alta precisión, alcanzando exactitudes del 77.3% en contextos de recomendación en tiempo real (Yoon et al., 2023). Además, algunos estudios del 2022 mostraron el uso exitoso de técnicas de deep learning combinadas con internet de las cosas para mejorar las recomendaciones de atracciones turísticas en ciudades inteligentes, optimizando la experiencia del usuario mediante análisis de datos contextuales como clima, ubicación y preferencias personales (Cepeda-Pacheco & Domingo, 2022). Asimismo, investigaciones recientes han demostrado la efectividad de chatbots y asistentes virtuales basados en IA, demostrando una mejora del 25% en la satisfacción general del cliente en la industria de viajes (Camilleri & Troise, 2023). En este contexto, estudios sobre IA conversacional en turismo han identificado que la integración de modelos de lenguaje grandes como ChatGPT genera beneficios significativos en la personalización de servicios turísticos, aunque también presentan desafíos relacionados con la precisión de información y gestión de expectativas del usuario (Carvalho & Ivanov, 2024; Pongsakornrungsilp et al., 2025). En especial, ciertas aplicaciones que utilizan modelos avanzados de GPT han venido demostrando últimamente capacidades superiores en la clasificación de reseñas de clientes y un análisis de sentimientos destacable, esto ha superado a otros modelos como BERT que han sido tradicionales en las tareas de procesamiento de lenguaje natural que han sido aplicadas en el sector turístico (Roumeliotis et al., 2024).
+Sin embargo, en la actualidad varias investigaciones han venido identificando brechas significativas en áreas prácticas de implementación donde se posicionan sistemas turísticos inteligentes, una de las causas fue el desgaste de los servicios, la falta de integración con múltiples APIs de terceros como Google Maps, servicios de pago o también la generación de audio, así como la poca arquitectura de automatización escalables que organizan flujos de trabajo complejos (Kongpeng & Hanskunatai, 2024). Se evidencia que solamente el 35% de las empresas turísticas pudieron implementar exitosamente sistemas de recomendación basados en machine learning que realizan funciones autónomas y escalables, todo ello evidencia un vacío en la implementación que obstaculice la adopción a gran escala de estas tecnologías (García et al., 2023). No obstante, muchos turistas señalan una creciente aceptación y confianza con herramientas basadas especialmente con IA generativa en la planificación de viajes, la adopción empresarial y otros temas, todo ello siendo limitado debido a barreras técnicas y organizacionales (Xu, 2024). Este vacío en el conocimiento resalta la necesidad urgente de investigar arquitecturas de automatización de flujos de trabajo como el workflow automation que faciliten la integración de múltiples servicios inteligentes, como modelos de lenguaje grandes, APIs geoespaciales, servicios de text-to-speech y sistemas de pago, todo ello en una plataforma unificada y escalable, especialmente en el contexto de guías turísticas virtuales personalizadas.
+Aunque la inteligencia artificial ha demostrado capacidades excepcionales con algoritmos que generan recomendaciones turísticas personalizadas y procesan lenguaje natural para asistencia virtual, existe mucho por recorrer para que estos sistemas funcionen de manera integrada, automatizada y escalable en entornos de producción reales. Este abismo de automatización se debe a que las arquitecturas tradicionales requieren integración manual de múltiples servicios, los flujos de trabajo son complejos y difíciles de mantener, y es complicado coordinar la comunicación entre componentes heterogéneos como el frontend, backend, bases de datos y APIs externas (Chen, 2024). Es por ello que, como no existen arquitecturas estandarizadas para orquestar sistemas de guía turística virtual que integren IA generativa, recomendaciones contextuales, audio-guías inteligentes y monetización automatizada, es difícil que las empresas turísticas adopten estas soluciones a escala, lo cual impide la democratización del turismo inteligente y, por tanto, la mejora de la experiencia del viajero moderno (Sarkar et al., 2023).
+Este estudio describe un reto real en la implementación práctica de sistemas de guía turística virtual, el cual es el desarrollo de una arquitectura escalable y automatizada que integre múltiples servicios de inteligencia artificial como OpenAI GPT-4 para audio-guías generativas, Google Maps para datos de puntos de interés, ElevenLabs para síntesis de voz, todo ello, mediante una plataforma de orquestación de flujos de trabajo como n8n, conectada a una base de datos robusta la cual es Supabase y un sistema de pagos conocido como Stripe, se coordina a través de una interfaz web moderna la cual es Streamlit. De esta forma, se busca mostrar una integración eficaz de servicios heterogéneos, reduciendo los tiempos de desarrollo de meses a semanas, y facilitando escalar el sistema con el uso de automatizaciones, aspectos clave para vincular investigación teórica con aplicaciones comerciales actuales. Asimismo, el trabajo contribuye a crear evidencia empírica que impulse la adopción de tecnologías de automatización inteligente en el sector turístico a través de  evaluar la eficiencia operativa, la precisión de las recomendaciones contextuales y la viabilidad técnica de la arquitectura propuesta.
+La presente investigación tiene como objetivos 1) analizar el impacto de un sistema de guía turística virtual basado en inteligencia artificial generativa y automatización de flujos de trabajo mediante una arquitectura basada en n8n y 2) evaluar en este sentido, su eficiencia operativa, precisión en las recomendaciones y viabilidad técnica en distintos contextos. Para lograr este objetivo, se plantean los siguientes objetivos específicos:
+Diseñar e implementar un sistema escalable,  que integre servicios de IA generativa de texto y audio, API’s de geolocalización, procesamiento de pagos y orquestación centralizada con n8n.
+Analizar la eficacia del sistema de recomendaciones contextuales y audioguías inteligentes empleando indicadores como precisión, velocidad de respuesta y nivel de satisfacción de los usuarios, estableciendo una comparación con los sistemas convencionales de asistencia turística.
+Cuantificar las ventajas operativas de la automatización de workflows en términos de tiempos de desarrollo, escalabilidad del sistema, reducción de errores manuales, y costo efectividad de la integración de múltiples servicios de terceros.
+El resto del artículo se estructurará de la siguiente manera, con una metodología que describe el diseño e implementación de la arquitectura del sistema, incluyendo la configuración de n8n para orquestación de flujos de trabajo, la integración de servicios de IA y APIs externas, el desarrollo del frontend con Streamlit, y la configuración de la base de datos Supabase. En los resultados se presentan las métricas de desempeño del sistema, incluyendo tiempos de respuesta, precisión de recomendaciones, tasas de error, y análisis de satisfacción del usuario. La discusión analiza las implicaciones prácticas de la arquitectura propuesta, comparándola con enfoques tradicionales y evaluando su viabilidad para escalamiento comercial. Finalmente, las conclusiones exponen los hallazgos clave, destacan las contribuciones del estudio al campo del turismo inteligente, y proponen direcciones para futuras investigaciones en automatización de sistemas turísticos basados en IA.
+Métodos y Materiales
+La investigación se desarrolló bajo un enfoque cuantitativo y experimental, mediante la implementación y evaluación de un Sistema de Guía Turística Virtual con IA Generativa y Automatización, utilizando una arquitectura escalable basada en n8n, OpenAI GPT-4, Supabase, Streamlit, ElevenLabs y Stripe. El propósito fue analizar el impacto operativo, la usabilidad y la eficiencia técnica del sistema en comparación con métodos tradicionales de asistencia turística.
+El prototipo se construyó integrando los siguientes componentes:
+n8n: plataforma de orquestación de flujos automatizados.
+OpenAI GPT-4: generación de texto y recomendaciones contextuales.
+Supabase: gestión de base de datos PostgreSQL y autenticación.
+Streamlit: desarrollo del frontend web interactivo.
+ElevenLabs API: conversión texto-a-voz para audioguías.
+Stripe API: procesamiento de pagos automatizado.
+Las pruebas se realizaron en un entorno controlado con usuarios finales (n=25), simulando escenarios reales de búsqueda y planificación de viajes turísticos.
+Con el objetivo de asegurar la trazabilidad entre los objetivos de investigación y los resultados, se definió un catálogo de indicadores alineado con tres dimensiones clave: eficiencia operativa, usabilidad del sistema y rendimiento técnico.
+El mapeo de indicadores con objetivos específicos se detalla a continuación:
+Objetivo Específico
+Indicador
+Definición
+Fórmula
+Unidad de medida
+Instrumento
+Valor esperado
+Diseñar e implementar un sistema escalable que integre servicios de IA generativa de texto y audio, APIs de geolocalización, procesamiento de pagos y orquestación centralizada con n8n.
+Reducción del Tiempo en Procesos Manuales
+Evalúa la eficiencia lograda al automatizar flujos de trabajo antes ejecutados manualmente.
+(TiempoManual−TiempoAutomatizado)/TiempoManual×100
+Porcentaje (%)
+Cronómetro digital, logs de ejecución en n8n y Supabase
+>=70% de reducción del tiempo operacional. Una reducción mayor indica mayor eficiencia y escalabilidad del sistema
+Analizar la eficacia del sistema de recomendaciones contextuales y audioguías inteligentes empleando indicadores como precisión, velocidad de respuesta y nivel de satisfacción de los usuarios.
+Nivel de Satisfacción de los Usuarios (System Usability Scale – SUS adaptada)
+Evalúa la usabilidad y experiencia del usuario final en el uso del sistema de guía turística virtual. Incluye 9 reactivos distribuidos en: eficiencia percibida, facilidad de uso y satisfacción general.
+Puntaje promedio SUS = (∑ Puntajes × 2.5) → Escala 0–100
+Puntos (0–100)
+Encuesta tipo Likert (1–5) aplicada a usuarios finales (n=25)
+>68 puntos indica buena usabilidad y aceptación del sistema por los usuarios.
+Cuantificar las ventajas operativas de la automatización de workflows en términos de tiempos de desarrollo, escalabilidad, reducción de errores manuales y costo-efectividad.
+Reducción de Costos Operativos
+Mide el ahorro económico obtenido por la automatización de procesos turísticos, comparando el costo antes y después.
+Ahorro = (Horas_ahorradas × Costo_hora_empleado) + Reducción_herramientas_manuales
+Soles / mes
+Registros contables, reportes de ejecución, y estimaciones de horas-hombre
+Ahorro mensual ≥ 1 500 USD o ROI > 200 %. Un valor superior refleja una implementación costo-efectiva.
+
+Los instrumentos de medición empleados fueron:
+Cronómetro digital: utilizado para medir el tiempo antes y después de la automatización de workflows.
+Encuesta de usabilidad (SUS modificada): conformada por 9 reactivos distribuidos en tres dimensiones: Eficiencia percibida (fluidez y rapidez del sistema), facilidad de uso (claridad de interfaz y navegación) y satisfacción general (agrado y disposición de uso futuro).
+Logs de ejecución en n8n y Supabase: para registrar métricas de throughput, latencia, y éxito de automatizaciones.
+Simulador de carga (Apache JMeter): empleado para calcular indicadores de rendimiento (APDEX y latencia promedio).
+Formulario digital postuso (CSAT): para capturar la satisfacción general del usuario con las audioguías generativas.
+El proceso experimental definido comprende 5 fases, las cuales fueron:
+Fase 1 – Línea Base:
+ Medición de tiempos de procesos manuales y nivel de satisfacción con herramientas tradicionales.
+Fase 2 – Implementación del Sistema:
+ Desarrollo e integración de la arquitectura automatizada basada en n8n, GPT-4, Supabase y Streamlit.
+Fase 3 – Ejecución de Pruebas:
+ Los usuarios ejecutaron tareas turísticas (búsqueda, generación de itinerarios, audioguías y pagos) bajo condiciones controladas.
+Fase 4 – Recolección de Datos:
+ Captura de métricas de rendimiento, tiempos y encuestas de usabilidad.
+Fase 5 – Análisis y Validación:
+ Se aplicó estadística descriptiva para evaluar la eficiencia y satisfacción, comparando resultados antes y después de la automatización.
+Todo ello comprende los indicadores cuantitativos los cuales fueron tiempo, throughput y APDEX, en cuanto a los indicadores cualitativos fueron SUS y CSAT permitió medir de manera integral la eficiencia operativa, usabilidad percibida y viabilidad técnica del sistema de guía turística virtual, aportando evidencia empírica sobre el impacto positivo de la automatización inteligente en la optimización de servicios turísticos basados en IA generativa.
+Referencias Bibliográficas
+Abdella, M., Hawash, A., Zahran, O., Mohammed, A., Elmaria, A., Ellkany, Y., Fathallah, M., Kamal, A., Alnaggar, M., Yousef, A., & Siam, A. (2024). Smart tour guide: A novel artificial intelligence system for replacing human guides in cultural heritage sites. Egyptian Journal of Artificial Intelligence, 3(1), 0–0. https://doi.org/10.21608/ejai.2024.226751.1017 
+Shrestha, D., Wenan, T., Shrestha, D., Rajkarnikar, N., & Jeong, S.-R. (2024). Personalized Tourist Recommender System: A Data-Driven and Machine-Learning Approach. Computation, 12(3), 59. https://doi.org/10.3390/computation12030059 
+Núñez-Pérez, N., Lara-Alvarez, C., & Barrera-Animas, A. Y. (2024). Machine learning applied to tourism: A systematic review. WIREs Data Mining and Knowledge Discovery, 14(4), e1549. https://doi.org/10.1002/widm.1549 
+Yoon, J., & Choi, C. (2023). Real-time context-aware recommendation system for tourism. Sensors (Basel, Switzerland), 23(7), 3679. https://doi.org/10.3390/s23073679
+Cepeda-Pacheco, J.C., Domingo, M.C. Deep learning and Internet of Things for tourist attraction recommendations in smart cities. Neural Comput & Applic 34, 7691–7709 (2022). https://doi.org/10.1007/s00521-021-06872-0 
+Camilleri, M.A. and Troise, C. (2023). Chatbot recommender systems in tourism: A systematic review and a benefit-cost analysis. In Stockholm, Sweden: 8th International Conference on Machine Learning Technologies (ICMLT 2023), March 10–12, 2023, ACM, New York, NY, USA. https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4320918 
+Kongpeng, S., & Hanskunatai, A. (2024). Tourist Destination Recommendation System based on Machine Learning. In Proceedings of the 2024 9th International Conference on Big Data and Computing (ICBDC 2024), Bangkok, Thailand, May 24-26, 2024. ACM. https://doi.org/10.1145/3695220.3695229
+García-Madurga, M.-Á., & Grilló-Méndez, A.-J. (2023). Artificial intelligence in the tourism industry: An overview of reviews. Administrative Sciences, 13(8), 172. https://doi.org/10.3390/admsci13080172 
+Chen, W. The data mining and high-performance network model of tourism electronic word of mouth for analysis of factors influencing tourists’ purchasing behavior. Sci Rep 14, 30237 (2024). https://doi.org/10.1038/s41598-024-75794-3 
+Sarkar, J.L., Majumder, A., Panigrahi, C.R. et al. Tourism recommendation system: a survey and future research directions. Multimed Tools Appl 82, 8983–9027 (2023). https://doi.org/10.1007/s11042-022-12167-w 
+Premananthan, P., Le, H., Nguyen, M.-H. T., Fahim, M., & Duong, T. Q. (2024). Machine learning applications in smart tourism: Overview, research challenges, and the road ahead. EAI Endorsed Transactions on Tourism, Technology and Intelligence, 1(1). https://doi.org/10.4108/eettti.6339 
+Carvalho I, Ivanov S (2024), "ChatGPT for tourism: applications, benefits and risks". Tourism Review, Vol. 79 No. 2 pp. 290–303, doi: https://doi.org/10.1108/TR-02-2023-0088 
+Roumeliotis, K. I., Tselikas, N. D., & Nasiopoulos, D. K. (2024). Leveraging large language models in tourism: A comparative study of the latest GPT Omni models and BERT NLP for customer review classification and sentiment analysis. Information (Basel), 15(12), 792. https://doi.org/10.3390/info15120792 
+Xu, H., Law, R., Lovett, J., Luo, J. M., & Liu, L. (2024). Tourist acceptance of ChatGPT in travel services: the mediating role of parasocial interaction. Journal of Travel & Tourism Marketing, 41(7), 955–972. https://doi.org/10.1080/10548408.2024.2364336 
+Prasanna, A., Pushparaj, P., & Kushwaha, B. P. (2025). Conversational AI in Tourism: A systematic literature review using TCM and ADO framework. Journal of Hospitality and Tourism Management, 64(101310), 101310. https://doi.org/10.1016/j.jhtm.2025.101310 

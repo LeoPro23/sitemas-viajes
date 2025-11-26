@@ -1,0 +1,569 @@
+ Catálogo Completo de Indicadores
+ Resumen Ejecutivo
+ Este sistema implementa 50+ indicadores medibles organizados en 8 categorías principales para medir de
+ forma integral el rendimiento, valor de negocio, calidad y eficiencia de sistemas de información.
+ Estadísticas del Sistema
+ • Total de Indicadores: 52
+ • Colectores de Métricas: 8 módulos especializados
+ • Tablas de Base de Datos: 20+
+ • Vistas Materializadas: 6
+ • Funciones SQL Personalizadas: 10+
+ CATEGORÍA 1: MÉTRICAS DE NEGOCIO Y VALOR (9 indicadores)
+ 1.1 Time to Value (TTV)
+ • Definición: Tiempo que tarda un usuario en obtener valor del sistema
+ • Métrica: Horas desde onboarding hasta primer valor
+ • Objetivo: < 24 horas
+ • Fórmula:
+ (Fecha Primer Valor - Fecha Onboarding) en horas
+ • Colector:
+ BusinessMetricsCollector.calculate_time_to_value()
+ 1.2 Tasa de Adopción de Funcionalidades
+ • Definición: Porcentaje de usuarios que usan una funcionalidad
+ • Métrica: Porcentaje (%)
+ • Objetivo: > 60%
+ • Fórmula:
+ (Usuarios usando feature / Total usuarios activos) × 100
+ • Colector:
+ BusinessMetricsCollector.calculate_feature_adoption_rate()
+ 1.3 Customer Lifetime Value (CLV)
+• Definición: Valor total estimado de un usuario
+ • Métrica: USD
+ • Objetivo: Maximizar
+ • Fórmula:
+ Sesiones × Valor/Sesión × Tiempo vida esperado
+ • Colector:
+ BusinessMetricsCollector.calculate_customer_lifetime_value()
+ 1.4 Churn Risk Score
+ • Definición: Probabilidad de que un usuario abandone el sistema
+ • Métrica: Score 0-100 (mayor = más riesgo)
+ • Objetivo: < 20 (riesgo bajo)
+ • Factores: Frecuencia de sesiones, duración, recencia
+ • Colector:
+ BusinessMetricsCollector.calculate_churn_risk_score()
+ 1.5 Monthly Active Users (MAU)
+ • Definición: Usuarios únicos activos en últimos 30 días
+ • Métrica: Número absoluto
+ • Objetivo: Crecimiento constante
+ • Colector:
+ BusinessMetricsCollector.calculate_monthly_active_users()
+ 1.6 Daily Active Users (DAU)
+ • Definición: Usuarios únicos activos en últimas 24 horas
+ • Métrica: Número absoluto
+ • Objetivo: Crecimiento constante
+ • Colector:
+ BusinessMetricsCollector.calculate_daily_active_users()
+ 1.7 Stickiness Ratio (DAU/MAU)
+ • Definición: Qué tan "pegajoso" es el producto
+ • Métrica: Porcentaje (%)
+ • Objetivo: > 30%
+ • Fórmula:
+ (DAU / MAU) × 100
+ • Colector:
+ BusinessMetricsCollector.calculate_stickiness_ratio()
+1.8 Feature Usage Frequency
+ • Definición: Frecuencia de uso de funcionalidades
+ • Métrica: Usos por usuario por semana
+ • Objetivo: Variable por feature
+ • Tabla:
+ feature_usage
+ 1.9 User Engagement Score
+ • Definición: Score compuesto de engagement
+ • Métrica: Score 0-100
+ • Factores: Sesiones, duración, features usadas, frecuencia
+ • Objetivo: > 60
+ CATEGORÍA 2: MÉTRICAS DE RENDIMIENTO AVANZADAS (12
+ indicadores)
+ 2.1 APDEX Score
+ • Definición: Application Performance Index
+ • Métrica: Score 0-1
+ • Objetivo: > 0.85 (Good)
+ • Fórmula:
+ (Satisfied + Tolerable×0.5) / Total
+ • Umbrales: Satisfied ≤500ms, Tolerable ≤2000ms
+ • Colector:
+ AdvancedPerformanceCollector.calculate_apdex_score()
+ 2.2 Percentiles de Latencia (P50, P75, P90, P95, P99)
+ • Definición: Distribución de tiempos de respuesta
+ • Métrica: Milisegundos
+ • Objetivos:
+ • P50: < 200ms
+ • P95: < 500ms
+ • P99: < 1000ms
+ • Colector:
+ AdvancedPerformanceCollector.calculate_percentiles()
+2.3 Error Budget
+ • Definición: Tiempo de downtime permitido según SLO
+ • Métrica: Minutos restantes
+ • Objetivo: > 20% del budget
+ • Fórmula:
+ Budget Permitido - Downtime Real
+ • Colector:
+ AdvancedPerformanceCollector.calculate_error_budget()
+ 2.4 Request Rate (RPS/RPM)
+ • Definición: Peticiones por segundo/minuto
+ • Métrica: Requests per second/minute
+ • Objetivo: Monitorear capacidad
+ • Colector:
+ AdvancedPerformanceCollector.calculate_request_rate()
+ 2.5 Concurrent Users
+ • Definición: Usuarios simultáneos activos
+ • Métrica: Número absoluto
+ • Objetivo: Sistema debe soportar picos
+ • Colector:
+ AdvancedPerformanceCollector.calculate_concurrent_users()
+ 2.6 Cache Hit Ratio
+ • Definición: Efectividad del caché
+ • Métrica: Porcentaje (%)
+ • Objetivo: > 80%
+ • Fórmula:
+ (Cache Hits / Total Requests) × 100
+ • Colector:
+ AdvancedPerformanceCollector.calculate_cache_hit_ratio()
+ 2.7 Throughput
+ • Definición: Registros procesados por unidad de tiempo
+ • Métrica: Registros/hora
+ • Objetivo: Depende del caso de uso
+ • Tabla:
+ system_metrics
+2.8 Average Response Time
+ • Definición: Tiempo promedio de respuesta
+ • Métrica: Milisegundos
+ • Objetivo: < 300ms
+ • Tabla:
+ performance_samples
+ 2.9 Error Rate
+ • Definición: Porcentaje de requests con error
+ • Métrica: Porcentaje (%)
+ • Objetivo: < 1%
+ • Fórmula:
+ (Requests Failed / Total Requests) × 100
+ 2.10 Database Query Performance
+ • Definición: Rendimiento de queries a BD
+ • Métrica: % de queries lentas
+ • Objetivo: < 5%
+ • Umbral: > 1000ms = lenta
+ • Colector:
+ InfrastructureMetricsCollector.calculate_database_query_performance()
+ 2.11 API Latency by Endpoint
+ • Definición: Latencia por endpoint específico
+ • Métrica: Milisegundos
+ • Objetivo: Variable por endpoint
+ • Tabla:
+ performance_samples
+ 2.12 Peak Load Capacity
+ • Definición: Capacidad máxima bajo carga
+ • Métrica: Requests/second máximos
+ • Objetivo: Debe exceder pico histórico en 50%
+ CATEGORÍA 3: MÉTRICAS DE EXPERIENCIA DE USUARIO (8
+ indicadores)
+3.1 System Usability Scale (SUS)
+ • Definición: Escala estándar de usabilidad
+ • Métrica: Score 0-100
+ • Objetivo: > 68 (promedio industria)
+ • Método: Cuestionario 10 preguntas
+ • Colector:
+ UXMetricsCollector.calculate_sus_score()
+ 3.2 Net Promoter Score (NPS)
+ • Definición: Probabilidad de recomendación
+ • Métrica: Score -100 a +100
+ • Objetivo: > 50 (excelente)
+ • Fórmula:
+ % Promotores - % Detractores
+ • Categorías: Promotores (9-10), Pasivos (7-8), Detractores (0-6)
+ • Colector:
+ UXMetricsCollector.calculate_nps()
+ 3.3 Customer Satisfaction Score (CSAT)
+ • Definición: Satisfacción general del cliente
+ • Métrica: Score 1-5 o porcentaje
+ • Objetivo: > 80% satisfecho (4-5)
+ • Fórmula:
+ (Ratings 4-5 / Total Ratings) × 100
+ • Colector:
+ SupportMetricsCollector.calculate_customer_satisfaction_score()
+ 3.4 Customer Effort Score (CES)
+ • Definición: Esfuerzo requerido para usar el sistema
+ • Métrica: Score 1-7 (menor = mejor)
+ • Objetivo: < 3
+ • Método: "¿Qué tan fácil fue resolver su problema?"
+ 3.5 User Adoption Rate
+• Definición: Porcentaje de usuarios que adoptan el sistema
+ • Métrica: Porcentaje (%)
+ • Objetivo: > 80% en 3 meses
+ • Fórmula:
+ (Usuarios Activos / Usuarios Totales) × 100
+ • Tabla:
+ user_sessions
+ 3.6 Session Duration
+ • Definición: Duración promedio de sesión
+ • Métrica: Minutos
+ • Objetivo: Depende del tipo de aplicación
+ • Tabla:
+ user_sessions
+ 3.7 Page Views per Session
+ • Definición: Páginas vistas por sesión
+ • Métrica: Número promedio
+ • Objetivo: Indica engagement
+ • Tabla:
+ user_sessions
+ 3.8 Task Completion Rate
+ • Definición: Porcentaje de tareas completadas exitosamente
+ • Métrica: Porcentaje (%)
+ • Objetivo: > 90%
+ • Fórmula:
+ (Tareas Completadas / Tareas Iniciadas) × 100
+ CATEGORÍA 4: MÉTRICAS DE CALIDAD DE DATOS (5 indicadores)
+ 4.1 Data Completeness
+• Definición: Porcentaje de datos completos
+ • Métrica: Porcentaje (%)
+ • Objetivo: > 95%
+ • Fórmula:
+ (Registros Completos / Total Registros) × 100
+ • Colector:
+ DataQualityCollector.calculate_data_completeness()
+ 4.2 Data Accuracy
+ • Definición: Porcentaje de datos válidos
+ • Métrica: Porcentaje (%)
+ • Objetivo: > 98%
+ • Fórmula:
+ (Registros Válidos / Total Registros) × 100
+ • Colector:
+ DataQualityCollector.calculate_data_accuracy()
+ 4.3 Data Freshness
+ • Definición: Porcentaje de datos actualizados recientemente
+ • Métrica: Porcentaje (%)
+ • Objetivo: > 85%
+ • Umbral: < 24 horas = fresco
+ • Colector:
+ DataQualityCollector.calculate_data_freshness()
+ 4.4 Data Duplication Rate
+ • Definición: Tasa de registros duplicados
+ • Métrica: Porcentaje (%)
+ • Objetivo: < 2%
+ • Fórmula:
+ (Registros Duplicados / Total Registros) × 100
+ • Colector:
+ DataQualityCollector.calculate_data_duplication_rate()
+ 4.5 Data Consistency
+• Definición: Consistencia entre datasets relacionados
+ • Métrica: Porcentaje (%)
+ • Objetivo: > 98%
+ • Método: Validación de relaciones e integridad referencial
+ CATEGORÍA 5: MÉTRICAS DE SEGURIDAD (6 indicadores)
+ 5.1 Failed Login Rate
+ • Definición: Tasa de intentos fallidos de autenticación
+ • Métrica: Porcentaje (%)
+ • Objetivo: < 5%
+ • Alerta: > 10% puede indicar ataque
+ • Colector:
+ SecurityMetricsCollector.calculate_failed_login_rate()
+ • Tabla:
+ auth_attempts
+ 5.2 Vulnerability Density
+ • Definición: Vulnerabilidades por cada 1000 líneas de código
+ • Métrica: Número por KLOC
+ • Objetivo: < 1 por KLOC
+ • Fórmula:
+ (Total Vulnerabilidades / Líneas de Código) × 1000
+ • Colector:
+ SecurityMetricsCollector.calculate_vulnerability_density()
+ 5.3 Mean Time to Patch (MTTP)
+ • Definición: Tiempo promedio para parchear vulnerabilidades
+ • Métrica: Horas
+ • Objetivos:
+ • Críticas: < 24 horas
+ • Altas: < 72 horas
+ • Medias: < 1 semana
+ • Colector:
+ SecurityMetricsCollector.calculate_mean_time_to_patch()
+ 5.4 Security Coverage
+• Definición: Porcentaje de endpoints con autenticación/autorización
+ • Métrica: Porcentaje (%)
+ • Objetivo: 100%
+ • Fórmula:
+ (Endpoints Seguros / Total Endpoints) × 100
+ • Colector:
+ SecurityMetricsCollector.calculate_security_coverage()
+ 5.5 Rate Limit Violations
+ • Definición: Violaciones de límites de peticiones
+ • Métrica: Número de violaciones
+ • Objetivo: Minimizar
+ • Tabla:
+ rate_limit_violations
+ • Colector:
+ SecurityMetricsCollector.calculate_api_rate_limit_violations()
+ 5.6 SSL Certificate Expiration
+ • Definición: Días hasta expiración de certificados
+ • Métrica: Días
+ • Objetivo: > 30 días
+ • Alerta: < 14 días
+ CATEGORÍA 6: MÉTRICAS DE EQUIPO - DORA (5 indicadores)
+ 6.1 Deployment Frequency
+ • Definición: Frecuencia de despliegues a producción
+ • Métrica: Despliegues por día
+ • Categorías DORA:
+ • Elite: > 1 por día
+ • High: Semanal-mensual
+ • Medium: Mensual-semestral
+ • Low: < semestral
+ • Colector:
+ TeamMetricsCollector.calculate_deployment_frequency()
+ • Tabla:
+ deployments
+6.2 Lead Time for Changes
+ • Definición: Tiempo de commit a producción
+ • Métrica: Horas
+ • Categorías DORA:
+ • Elite: < 24 horas
+ • High: < 1 semana
+ • Medium: < 1 mes
+ • Low: > 1 mes
+ • Colector:
+ TeamMetricsCollector.calculate_lead_time_for_changes()
+ 6.3 Change Failure Rate
+ • Definición: Porcentaje de despliegues que causan fallos
+ • Métrica: Porcentaje (%)
+ • Categorías DORA:
+ • Elite/High: < 15%
+ • Medium: < 30%
+ • Low: > 30%
+ • Colector:
+ TeamMetricsCollector.calculate_change_failure_rate()
+ 6.4 Code Review Time
+ • Definición: Tiempo promedio de revisión de código
+ • Métrica: Horas
+ • Objetivo: < 8 horas
+ • Colector:
+ TeamMetricsCollector.calculate_code_review_time()
+ • Tabla:
+ pull_requests
+ 6.5 Team Velocity
+• Definición: Story points completados por sprint
+ • Métrica: Story points
+ • Objetivo: Consistencia y crecimiento gradual
+ • Colector:
+ TeamMetricsCollector.calculate_team_velocity()
+ • Tabla:
+ sprints
+ CATEGORÍA 7: MÉTRICAS DE SOPORTE (7 indicadores)
+ 7.1 First Response Time (FRT)
+ • Definición: Tiempo hasta primera respuesta
+ • Métrica: Horas
+ • Objetivos:
+ • Crítico: < 1 hora
+ • Alto: < 4 horas
+ • Medio: < 24 horas
+ • Colector:
+ SupportMetricsCollector.calculate_first_response_time()
+ • Tabla:
+ support_tickets
+ 7.2 Ticket Resolution Time
+ • Definición: Tiempo total de resolución
+ • Métrica: Horas
+ • Objetivo: Variable por prioridad
+ • Colector:
+ SupportMetricsCollector.calculate_ticket_resolution_time()
+ 7.3 Customer Satisfaction Score (CSAT)
+ • Definición: Satisfacción post-soporte
+ • Métrica: Rating 1-5
+ • Objetivo: > 4.0
+ • Tabla:
+ support_ratings
+ 7.4 Backlog Health Score
+• Definición: Salud del backlog de tickets
+ • Métrica: Score 0-100
+ • Objetivo: > 70
+ • Factores: Tickets viejos, tasa de cierre, escalaciones
+ • Colector:
+ SupportMetricsCollector.calculate_ticket_backlog_health()
+ 7.5 Escalation Rate
+ • Definición: Porcentaje de tickets escalados
+ • Métrica: Porcentaje (%)
+ • Objetivo: < 10%
+ • Fórmula:
+ (Tickets Escalados / Total Tickets) × 100
+ • Colector:
+ SupportMetricsCollector.calculate_escalation_rate()
+ 7.6 First Contact Resolution
+ • Definición: Tickets resueltos en primer contacto
+ • Métrica: Porcentaje (%)
+ • Objetivo: > 70%
+ 7.7 Reopen Rate
+ • Definición: Tickets reabiertos después de resolución
+ • Métrica: Porcentaje (%)
+ • Objetivo: < 5%
+ CATEGORÍA 8: MÉTRICAS FINANCIERAS (5 indicadores)
+ 8.1 Cost per User
+ • Definición: Costo de infraestructura por usuario activo
+ • Métrica: USD por usuario
+ • Objetivo: Minimizar
+ • Fórmula:
+ Costo Total Infraestructura / Usuarios Activos
+ • Colector:
+ FinancialMetricsCollector.calculate_cost_per_user()
+8.2 Cost per Transaction
+ • Definición: Costo por operación/transacción
+ • Métrica: USD por transacción
+ • Objetivo: Minimizar
+ • Fórmula:
+ Costo Total / Número de Transacciones
+ • Colector:
+ FinancialMetricsCollector.calculate_cost_per_transaction()
+ 8.3 Infrastructure Efficiency
+ • Definición: Porcentaje de recursos aprovisionados que se usan
+ • Métrica: Porcentaje (%)
+ • Objetivo: > 70%
+ • Fórmula:
+ (Uso Real / Capacidad Aprovisionada) × 100
+ • Colector:
+ FinancialMetricsCollector.calculate_infrastructure_efficiency()
+ 8.4 Monthly Savings from Automation
+ • Definición: Ahorro mensual por automatización
+ • Métrica: USD
+ • Objetivo: Maximizar
+ • Fórmula:
+ Costo Manual - Costo Automatizado
+ • Colector:
+ FinancialMetricsCollector.calculate_savings_from_automation()
+ 8.5 Return on Investment (ROI)
+ • Definición: Retorno de inversión
+ • Métrica: Porcentaje (%)
+ • Objetivo: > 200% en primer año
+ • Fórmula:
+ ((Beneficios - Costos) / Costos) × 100
+ • Tabla:
+ cost_tracking
+ MÉTRICAS ADICIONALES DE INFRAESTRUCTURA
+ Storage Growth Rate
+• Métrica: % de crecimiento mensual
+ • Colector:
+ InfrastructureMetricsCollector.calculate_storage_growth_rate()
+ • Tabla:
+ storage_metrics
+ Bandwidth Usage
+ • Métrica: GB transferidos
+ • Colector:
+ InfrastructureMetricsCollector.calculate_bandwidth_usage()
+ • Tabla:
+ bandwidth_metrics
+ Database Connection Pool Usage
+ • Métrica: % de conexiones usadas
+ • Colector:
+ InfrastructureMetricsCollector.calculate_database_connection_pool_usage()
+ Container Resource Usage
+ • Métricas: CPU, Memoria, Disco
+ • Colector:
+ InfrastructureMetricsCollector.calculate_container_resource_usage()
+ ÍNDICES COMPUESTOS
+ Índice de Madurez del Sistema (IMS)
+ Fórmula:
+ IMS = (0.25 × Uptime) + 
+      (0.20 × Tasa_Éxito) + 
+      (0.20 × SUS_Score) + 
+      (0.15 × Cobertura_Tests) + 
+      (0.10 × ROI_Normalizado) + 
+      (0.10 × NPS_Normalizado)
+ Clasificación:
+ • 80-100: Alto
+ • 60-79: Medio
+ • 0-59: Bajo
+ RESUMEN POR OBJETIVO
+ Para Dirección/Management:
+ • ROI
+ • Ahorro mensual
+ • MAU/DAU
+ • NPS
+ • Churn Rate
+ Para Equipo Técnico:
+ • APDEX
+ • Error Rate
+ • Deployment Frequency
+ • Lead Time
+ • MTTR
+ Para Producto:
+ • Feature Adoption
+ • SUS Score
+ • Task Completion Rate
+ • Time to Value
+ Para Operaciones:
+ • Uptime
+ • Error Budget
+ • Incident Rate
+ • MTBF/MTTR
+ Para Soporte:
+• FRT
+ • Resolution Time
+ • CSAT
+ • Backlog Health
+ IMPLEMENTACIÓN TÉCNICA
+ Colectores Disponibles:
+ 1. 
+BusinessMetricsCollector - 9 indicadores
+ 2. 
+AdvancedPerformanceCollector - 12 indicadores
+ 3. 
+UXMetricsCollector - 8 indicadores
+ 4. 
+DataQualityCollector - 5 indicadores
+ 5. 
+SecurityMetricsCollector - 6 indicadores
+ 6. 
+TeamMetricsCollector - 5 indicadores
+ 7. 
+SupportMetricsCollector - 7 indicadores
+ 8. 
+FinancialMetricsCollector - 5 indicadores
+ Tablas de Base de Datos:
+ • 
+system_metrics - Métricas generales
+ • 
+workflow_executions - n8n workflows
+ • 
+user_sessions - Sesiones de usuario
+ • 
+user_feedback - NPS, SUS, ratings
+ • 
+system_incidents - Incidentes
+ • 
+feature_usage - Uso de funcionalidades
+ • 
+auth_attempts - Autenticación
+ • 
+deployments - Despliegues
+ • 
+support_tickets - Tickets de soporte
+ • 
+performance_samples - Muestras de rendimiento
+ • Y más...
+ Funciones SQL:
+• 
+calculate_apdex()
+ • 
+calculate_error_budget()
+ • 
+calculate_churn_risk()
+ • 
+calculate_stickiness()
+ • 
+calculate_csat()
+ • 
+calculate_uptime()
+ • 
+calculate_mtbf()
+ • 
+calculate_mttr()
+ REFERENCIAS Y ESTÁNDARES
+ • DORA Metrics: DevOps Research and Assessment
+ • APDEX: Application Performance Index
+ • SUS: System Usability Scale (John Brooke, 1986)
+ • NPS: Net Promoter Score (Fred Reichheld, 2003)
+ • ITIL: Information Technology Infrastructure Library
+ • SLA/SLO/SLI: Service Level Agreements/Objectives/Indicators
+ PRÓXIMOS PASOS
+ 1. Configurar Supabase y ejecutar schema SQL
+ 2. Instalar dependencias Python
+ 3. Configurar variables de entorno
+ 4. Implementar colectores en tu aplicación
+ 5. Ejecutar dashboard Streamlit
+ 6. Configurar workflows n8n para automatización
+ 7. Establecer alertas y umbrales
+ 8. Generar reportes periódicos
