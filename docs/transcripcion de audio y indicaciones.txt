@@ -1,0 +1,434 @@
+te voy a pasar la transcripcion de la clase:
+
+porque no son preguntas de otro tipo, más o menos van a tener calificaciones como la que estoy poniendo de cada juez.
+Bien, con estos datos, con estos datos es que se halla la
+primera prueba que es la concordancia de de jueces. El coeficiente de Iken da un valor entre 0 y uno para que sea válida,
+o sea, haya concordancia de jueces. O sea, lo que mide es que los jueces más o menos tienen el mismo criterio,
+¿no? Un criterio muy parecido, es decir, que están de acuerdo con la estructura
+de la de la encuesta que está muy bien estructurada, bien hecha, etcétera.
+Entonces, si ese valor de V de Ikeniken con el programa quedado, vamos a
+suponer, sale un valor de,
+vamos a suponer aquí, de 086, significa que es la encuesta. Hay
+concordancia entre jueces. Un valor de 08 más
+es válido, no significa que hay concordancia entre jueces. Es lo único que se analiza.
+Si hubiese un valor menor e incluso pueden ser hasta 07, que es un valor menor significa que hay
+discrepancia entre los jueces, ¿no? Entonces la encuesta no tiene mucha validez. Habría que preguntar a quienes
+han calificado de repente muy bajo, muy diferente un juez a los otros dos en
+algunas reactivos o preguntas y luego pues él dirá, ¿por qué no? y
+luego mejorar y al volver a a recalificar seguramente va a subir
+porque están cumpliendo con lo que dicen. Pero si desde un inicio está bien estructurada, lo más probable ya porque
+tienen experiencia los docentes o los jueces que califican porque no es la primera vez, es muy probable que pase
+este valor. Acá, perdón, era de 08, ¿no? Estamos hablando de una escala de uno a
+de uno a uno. Si hay un valor, lo más común es que sea
+mayor igual a 08 el valor de VDEN, significa que hay concordancia entre
+jueces. Entonces, paso una primera prueba. Normalmente el programa quedado está con
+esto transpuesto, ¿no? Si lo han revisado. Bueno, voy a
+copiar acá lado porque al final tiene que tener una eh
+tienen que tener en un formato de archivo Excel ya los datos no tabulados de los resultados que han dado la en la
+calificación. A ver, aquí vamos a colocar la transpuesta C.
+Entonces, eh aquí vamos a para el esto que estoy explicando debe estar de esta
+forma el archivo. Bueno, que debería estar acá, ¿no? Y
+aquí deberían estar los jueces.
+De esta forma debe estar para lo que estoy explicando, esto iría acá, digamos,
+porque así está estructurado el programa. Entonces, debe tener un archivo donde la
+estos son los jueces y estas son las preguntas. Lo que debe dar como resultado es aquí
+un B de Iiken por pregunta que tiene su fórmula de evaluar que no voy a entrar
+en detalles, ¿no? Que aquí podría ser la primera pregunta 085, 0980
+083, etcétera. O sea, aquí va a haber valores, pero lo que se mide es el V de en
+general, ya el promedio de esto, ¿no? que eso bueno ya lo hace el programa que no hay que entrar en detalles y
+solamente evaluar estos resultados. Eso es lo que hace el programa.
+Normalmente usamos R, pero como se está usando Python es que lo he dado para que directamente lo haga llame a una tiene
+cree la función a crear una función de A que ya hace el cálculo. Bien, pasado eso en una elaboración de
+una encuesta, el siguiente paso es medir la consistencia interna. Y aquí hay dos,
+uno, un indicador es alfa de Chrombash,
+que lo que mide es la consistencia interna y la otra es eh
+Omega de McDonald's, que son coeficientes estadísticos, ¿no?
+Bueno, eso debe tener esta forma. No, eh, las acá las preguntas
+y acá irían los encuestados, que en este caso no van a ser tres. Voy a poner acá
+esto más abajo. Deben tener un mínimo de 15 encuestados, o sea, significa, voy a repetir
+solamente como es cuestión de explicación, estos mismos bloques, ¿no?, que un caso
+real van a diferir. Acá irían, a ver, debería ser hasta la fila 16, ¿no?
+Fila 16 acá.
+Ya. Entonces, significa que a partir de la fila dos habrían 15 encuestados.
+A ellos se les toma la encuesta de usabilidad, ya conforme la han estructurado, ellos van a dar valores
+acá. Bueno, aquí van a haber seguramente discrepancias, ¿no? Todo van a poner
+cinco, cuatro, tres, alguno regular. Lo que debe de de medir, lo que mide
+Alfa de Chrombas es la dispersión de
+de desviaciones estándar, ¿no? ¿Qué tan disperso está?
+Si esos valores no están muy dispersos, significa que la y sale un valor,
+supongamos, de 0. 82, es más que suficiente para decir que la
+encuesta está lista para ser aplicada, ¿no? Más que suficiente.
+Y McDonald's igual por lo general salen valores muy cercanos. Podría ser que aquí salga 0.85.
+Un valor mayor que 08 o mayor que 07 significa que la encuesta está lista. lo
+que se llama este la aplicación, una prueba piloto antes de aplicar propiamente a los
+a los encuestados reales, ¿no? Entonces esta es una prueba de piloto que pueden hacerlo entre ustedes, ¿no? Entonces
+ponen de acuerdo a su criterio, intercambian encuestas y llenan que como lo como
+digo, deben haber por lo menos 15 encuestados y y a través de eso aplican la el
+programa quedado para que haya los valores de Alfa de Chrombas y Omega de McDonald's. Si estos valores son mayores
+que 08 o mínimamente menor que 07, porque ahí da justamente la calificación, la explicación, significa
+que la encuesta está lista. Si por ejemplo la encuesta está hecha para tres usuarios,
+¿no? Si es a nivel digamos de colaboradores, solamente encuestarían
+tres. Encuestarían tres y esos serían los resultados de la encuesta, ¿no? Los
+resultados de la encuesta. Entonces, la prueba piloto debe ser entre 15 que pueden ser entre ustedes y
+el número de encuestado 10 ya quiénes se va a encuestar realmente, ¿no? Entonces
+ahí ya se aplica y se ven los resultados de la de la encuesta. Entonces, como son
+valores valores de uno a cinco, ¿no? Entonces va a haber un valor promedio.
+Un valor promedio que podría ser, por ejemplo, no sé, 4.1.
+No, de todas las preguntas de los encuestados. Entonces, eso en el rango que cae es la calificación que tiene.
+Ahora, esa encuesta es tomada en dos en dos en dos veces. Uno lo que se llama el
+pretest y el otro el postest. Pretest significa los procesos sin sistema,
+por ejemplo, pretest, ¿no? Y otro es el postest.
+El postest es aplicando ya el sistema a los mismos usuarios. Vamos a suponer que
+lo que están evaluando es lo que dejé como ejemplo, ¿no? La
+eh el uso de un programa automático para
+calificar. Acá está mal escrito. Tes, ¿no? Eh, calificar eh artículo de
+investigación. Normalmente cuando presenté yo lo hubiese hecho como lo hago, de uno en
+uno usando una herramienta que eso me lleva un tiempo, ¿no? Es como yo lo hago o manualmente como lo haga, ¿no?
+Entonces, en base a la en base a las preguntas de la encuesta, yo voy a contestar y seguramente mis
+niveles van a estar entre tres, dos, cuatro a lo sumo en alguna pregunta y
+luego una vez que presentan el el sistema, obviamente para mí va a ser muy
+fácil calificar. Simplemente cargo los archivos, doy la orden que procese y el sistema procede y me da los resultados
+con las recomendaciones. ¿Cuánto voy a demorar eso menos, ¿no? Y
+seguramente lo ha hecho con mayor profundidad, con mayor análisis, mejor que un ser humano,
+¿no? Entonces, acá hay una diferencia del pretest y postest. Aquí el promedio
+en una escala del líquer pudo haber sido, vamos a poner, 3.4
+de aquí pudo haber sido 4.7. Esa es la diferencia que va a ir en la
+conclusión de la investigación, ¿no? Que en porcentaje se se haya calculando, que eso lo veremos ya en su
+momento cuando tenga resultados, pero lo adelanto. Se entiende que si la escala es de 1 a 5,
+5 es el 100%. Bueno, ahí se ha cambiado eso 100%.
+Voy a ponerlo así o con
+como de esta forma
+de un a 5. Entonces este es el 100%. Lo que tengo que
+preguntar 34, ¿qué porcentaje representa? ¿no? Y 4.7, ¿qué porcentaje
+representa? Restando tengo la mejora. la mejora en en el en este caso eh
+hablamos del nivel de satisfacción del usuario, ¿no? En base a la usabilidad del sistema,
+tan fácil es uso, etcétera, ¿no? Entonces, con un sistema de fácil uso y
+la manera como uno trabaja actualmente, entonces tiene que haber un cambio, obviamente, no es lo que se aplica es el
+mismo instrumento y esto es lo que da una conclusión directa en una investigación.
+Y bueno, y ahí aprovecho de poner los tiempos, ¿no? Entonces, por ejemplo, para medir, este es el nivel de
+satisfacción que está amarrado con los tiempos que dije, uno de ellos debería ser tiempos.
+Los tiempos pueden tomar por cuestión de para una investigación hay que hallar la
+población la muestra, pero aquí tomamos por conveniencia, ¿no? Vamos a suponer
+30 tiempos. Podrían ser hasta 30 tiempos de los tiempos que han hallado.
+Vamos a poner acá de esta forma. Voy a ponerlo más abajo.
+Está que me falla el no sé qué problema tengo acá en la máquina que está que me falla el teclado.
+No puedo trabajar bien.
+Ya. No, ya lo hizo. Aquí sería dos, acá sería tres, ¿no? 3 cu hasta 30
+tomas. Acá tiene que haber eh estamos hablando aquí de tiempos,
+¿no? Del proceso que se está mecanizando. Por el ejemplo que pongo,
+tiempo seguramente en segundos, mayormente se toma en segundos y es minutos se convierte a segundos. Y aquí
+obviamente hay una toma de pretest. de postest.
+Postest, ¿no? Es decir, uno sin el sistema y otro con el sistema,
+¿no? De esta forma.
+Entonces, aquí lo que van a tener son tiempos en segundos. Pretes en la forma en que yo calificaba para el ejemplo que
+pongo o podría demorarme, supongamos,
+hablamos en segundos, 2 minutos, 3 minutos, no sé. Vamos a
+poner 3 minutos por poner como ejemplo, ¿no? 180, otro 200,
+otro de repente 240 dependiendo de cómo han contestado, ¿no?
+Eh, 230, bueno, etcétera. Acá habrían, como digo, 30 tiempos,
+196 segundos. Y acá en el post test, ¿cómo es que hayan el postest con el
+mismo sistema? Este es automático, como saben, eh todo lenguaje tiene la
+función timer. Timer. Y esa función timer significa que si yo
+tengo acá supuestamente la pantalla, estoy tomando el timer del tiempo
+inicial,
+tiempo inicial, estoy capturando ese valor acá que lo va a hacer el sistema.
+que debe dar la hora ahí, la hora inicial, digamos, que toma el sistema operativo
+y luego un tiempo final cuando acabe el proceso. Es decir, una vez que yo abro
+el sistema y voy a cargar los archivos, desde ahí empieza a contabilizar, ¿no?,
+el internamente el sistema. lee los archivos en lote, comienza a calificar,
+saco los reportes y ahí finaliza. Ahí tendría un tiempo final,
+un tiempo final, ¿no? Que sería
+tiempo final, digamos. Tiempo final.
+Aquí sería el tiempo inicial. restando tengo el tiempo que demora el
+sistema, ¿no? O sea, tengo los datos y esto puedo hacerlo automático, puedo repetir con
+diferentes bloques, ¿no? De de PDFs, puede ser cada bloque de 10, digamos.
+Repito las 30 veces y eso no demora porque si ya tienen el tiempo inicial aquí le va a dar los tiempos. No sé,
+aquí podría ser por decir 8 segundos. Poner como ejemplo
+aquí 12. por aquí 10.
+Bueno, eso lo exacto el sistema, pues no lo exacto el sistema.
+Yo o les puedo dar un ejemplo, pues en Java que lo tendría que preparar, pues, ¿no?
+Porque cualquier lenguaje tiene esta función timer y con eso uno toma el tiempo del
+sistema y restando pues tiene el tiempo, ¿no? Haciendo conversiones en este caso en segundos.
+Aquí podría ser de repente 14. Entonces, al final aquí hay promedios. Promedios.
+Esos promedios son los que se comparan, ¿no? Vamos a suponer que este promedio
+sea, puedo poner como ejemplo 200 segundos
+y este promedio vamos a suponer que sea, no sé, 10 segundos.
+Entonces, lo que ha reducido, se entiende, pues que justamente la mecanización de los agentes
+inteligentes, el mayor impacto está en la reducción de procesos, ¿no? Entonces
+aquí lo que se toma como base esto, si este es el 100% 10, ¿qué porcentaje es?
+No, entonces ahí se habrá reducido más del 90%. Y en tiempo estamos hablando de 180
+segundos, ¿no? Eh, quizás esto para calificar en un tiempo mayor y haciéndolo manual va a
+llevar más tiempo. Bueno, yo he puesto aquí tiempos como ejemplo, ¿no? Pero deben ser la misma unidad. Los de acá sí
+son más reales, pues son son tiempos muy cortos. aquí posiblemente sean mayor,
+¿no? Entonces, dependiendo de de eso, esto es lo que da una conclusión directa
+en una investigación. Y había una segunda que dije que puse
+como ejemplos, costos. Al reducir tiempos, automáticamente se está reduciendo costos, porque si a mí la
+universidad me paga por calificar, el hecho que ya haya reducido todo este
+tiempo, puedo dedicar a otra labor, ¿no? En realidad es un es una disminución de costos, un ahorro y eso se mide
+justamente en costos promedios. ¿Cuánto cuesta hoy en promedio calificar una prueba de acuerdo a un sueldo, etcétera,
+que uno recibe versus al tiempo que reduce? Aquí vamos a suponer que sale un
+costo de, no sé, un sol 50, ¿no? En promedio y aquí puede reducir a
+0.20 céntimos, ¿no? Entonces, lo que ha reducido son costos operacionales, pero
+yo he dado 150 indicadores, ¿no?, para sistemas de información o tecnología de
+información, porque como saben, pues ya en metodología de la investigación científica, cada objetivo tiene una
+conclusión directa. Si mi objetivo es reducir tiempo de proceso, en este caso
+de calificar eh trabajo de investigación, tendré que
+decir cuánto ha reducido, que obviamente será el promedio, ¿no? Diré que de 200 en promedio ha reducido a 100, siendo un
+porcentaje del 90 y tanto. Eso es una conclusión directa
+o en el nivel de satisfacción igual, ¿no? Diciendo que un inicio en una escala de liker fue de 3.4 cuatro, que
+equivale un porcentaje de tanto y se incrementó a 47, ¿no? Un porcentaje de
+tanto restándose tiene pues el incremento a nivel de valor numérico y a
+nivel de valor de porcentaje. Ya es una conclusión directa. El otro indicador
+tendrá que ser en la misma en la misma forma, ¿no? En la misma forma. Bueno,
+esto lo adelanto porque esa es la parte más importante en la parte de investigación que están haciendo y
+reemplaza el tercer parcial, ¿no? O sea, más que simplemente den un parcial acá, el objetivo es que ustedes aprendan,
+aprendan cómo es que se hacen las investigaciones, ¿no? Que lo estamos viendo a un nivel
+genérico, por eso es que doy los programas para que solamente pongan por ahora resultados, porque mayormente
+manejamos R, ¿no? Pero como se está usando Python, ya directamente estos
+valores lo tienen en Python, ¿no? Y con eso se está cumpliendo con las exigencias de investigación científica
+para que un artículo tenga validez científica, ¿no? Se ha validado la encuesta,
+eh se ha validado los tiempos y con estos tiempos hay pruebas
+estadísticas que eso también lo daré en Python, que solamente tienen que poner los resultados y la prueba
+automáticamente dará, ¿no? Si acá si se trata de
+30 datos, hay que ver la normalidad de los datos con una prueba de Shapiro Will o una prueba de Colgomorov, Esmirno, eh,
+Liliford, ¿no? y son mayores que 30 y menores que 30 o mayores que 50, perdón,
+y son menores que 30 una prueba de colos. Si pasa normalidad, entonces se aplica una prueba T. Si son
+30 o menos, ¿no? Y por ejemplo, si los a nivel de usabilidad son tres o cuatro,
+los encuestados sería una prueba T siempre y cuando pase normalidad. Y si no pasa normalidad por el hecho de ser
+pariado, lo que se aplica es una prueba de Wickolson. Bueno, esto que estoy hablando no lo van
+a hacer ustedes, sino directamente yo voy a dar los programas para que ejecuten los resultados y luego lo que
+explicaré es la el análisis, ¿no? Acá es muy difícil que se rechace la hipótesis
+nula porque acá es evidente la reducción y la mejora, ¿no? Entonces, hay dudas
+reales. Por ejemplo, cuando hace años, cuando recién apareció internet en el
+año 95, una porque las investigaciones reales son dudas reales y uno se plantea una
+hipótesis para verificarla. Entonces, en ese tiempo lo que uno planteaba era si realmente los cursos
+enseñados con multimedia incrementan al nivel de enseñanza aprendizaje.
+No era una duda real, como recién aparecía internet multimedia, entonces habría que verificar eso. Entonces uno
+planteaba como hipótesis diciendo que el uso de la multimedia eh incrementa el
+nivel de enseñanza aprendizaje. Vamos a suponer que se toma como base un curso de matemáticas
+de los alumnos, no sé, de cuarto y secundaria.
+Entonces, para hacer la investigación real y tener la respuesta real usando el
+método científico, ¿qué hacemos? Si tenemos un salón de 50 alumnos, no es que partimos 25,
+que a uno se le va a enseñar los mismos temas de matemáticas supuestamente con
+con las técnicas actuales, supuestamente pizarra, plumón, eh proyector, no sé, y
+los otros grupos de 25 con el uso de multimedia, ¿no? Con programa multimedia hechos, obviamente se supone, ¿no? Para
+enseñar matemáticas los mismos temas. Lo que mide obviamente es el la nota,
+¿no? La nota es lo que mide el rendimiento del alumno. Entonces, lo que se mide es el promedio
+general de ambos grupos. ¿Qué habrá pues un puede ser un semestre, por decir, no? para para este ejemplo de investigación
+real, eh donde se toman las pruebas, los exámenes, los alumnos que han hecho con
+multimedia los mismos temas y los otros con la eh la forma tradicional de
+enseñar y al final se compara. Ahora, pero no solamente dije partir,
+los grupos para que tengan validez tienen que ser homogéneos. Cuando hablamos de que sean homogéneos, significa
+que tenemos que guiarnos de su rendimiento, de su historial eh académico. Entonces, si hay cuatro
+alumnos de promedio 16, cada grupo debe tener dos dos para que estén emparejados. Si hay ocho con promedio
+15, 4 cu. Esa es la forma en que ambos grupos están balanceados,
+¿no? Entonces decimos que tienen las mismas porcentajes de alumnos buenos, regulares, malos, porque si simplemente
+partimos mitad a mitad, por más que se haga bien la investigación, los resultados van a ser eh erróneos, ¿no?
+Porque en una en grupo podría haber mayor concentración de alumnos regulares buenos y en el otro en menor proporción.
+Y aún así, supongamos que este usa el método tradicional. El método tradicional significa
+de que posiblemente puedan rendir mejor que lo de los que usaron eh multimedia,
+¿no? Entonces, sería un algo un resultado erróneo. Es por eso que las investigaciones hay que seguir ciertos
+pasos que tienen que cumplirse para que sean válidas. O otro ejemplo real, cuando se han hecho
+las investigaciones de la vacuna del COVID, los chimpancés, supongamos que han usado o conejillo de indias, han
+tenido que ser con las mismas características, más o menos la misma edad, el mismo peso, ¿no? Y luego hacer
+el experimento en uno donde le inaculaban una línea, en otro dos líneas, en otro tres líneas,
+en otro podría varar los tiempos, ¿no? cada semana, cada tres semanas y lo que
+se veían eran los resultados, pero los grupos eran homogéneos, ¿no? Entonces, desde ahí se parte la investigación.
+Bien, entonces, yéndome al ejemplo de de del multimedia, lo que va a dar es el
+promedio, pero supongamos que al final ya se han hecho las evaluaciones de un bimestre y se tienen los promedios
+generales. Uno podría ser, vamos a suponer en matemáticas 12.3 3 y en y de
+multimedia 12.4. El hecho que sean dos décimos no significa que sea mejor. Tiene que pasar
+una prueba estadística por por los diferencias de
+estadísticas podríamos decir que podría ser un empate técnico, ¿no? Y no necesariamente
+13.4 es mayor que 13.2. Y eso lo eso lo
+define una prueba estadística, a diferencia de medias que en el caso de normalidad y fuesen grupos en este caso
+de 25 sería una prueba T, si no sería una prueba Z, ¿no? Entonces esos esas
+pruebas por ahora solamente lo digo hablado porque eso se ve obviamente ya en no sé si lo habrán visto en
+metodología de la investigación científica, pero sí lo vemos en detalle, ¿no?, en los cursos de tesis uno y de
+trabajo de investigación, ¿no? Entonces ahí se ve, pero acá lo que voy a dar solamente las
+eh los programas en Python para que pasen y los resultados tengan, ¿no? Eso
+es lo que se llama pues las contrastación de hipótesis. Entonces decía que esa era una investigación real
+porque supongamos que hubiese salido 13, ¿cuánto dije? Vamos a suponer 13.2 y
+13.4 y si no no se demuestra que 13.4 es
+mayor que 13.2 punto dos, eh, simplemente hubiésemos tenido que rechazar la hipótesis porque no es mayor
+y la conclusión hubiese sido, sígase usando los métodos tradicionales porque es indiferente usar multimedia o el eh o
+los métodos tradicionales, ¿no? Pero si realmente se demuestra que el promedio del uso de la multimedia es
+mayor que el uso de los promedios tradicionales, la conclusión de la investigación sería úsese multimedia
+porque si realmente contribuye al incremento de nivel de enseñanza aprendizaje,
+¿no? Entonces eso es lo que se está haciendo. Pero acá como se trata de investigaciones tecnológicas, los
+cambios son evidentes, no hay duda en en las en que esta reducción sea pues para
+el ejemplo que pongo de 34 a 47 en una escala de liker de 1 a 5, obviamente eh
+hay un nivel de satisfacción de cambio alto o en la reducción de tiempo que
+ponía como ejemplo, ¿dónde está? más abajo, creo.
+Estos tiempos reducir de 200 segundos a 10 segundos es altamente impactante,
+¿no? Entonces, aquí no hay no hay dudas, pero en el ejemplo que he puesto es una
+duda real y muchas investigaciones son dudas reales, ¿no? Que finalmente lo que demuestra es la contratación de
+hipótesis. Entonces, bueno, digo esto para que ya lo tienen claro con lo que conocen de
+metodología y la investigación científica, ¿no? articulado, ¿no? Y mapeado al a lo
+que están haciendo en la investigación, que ha de publicarse, como dije, en una revista de alto impacto. Cuando hablamos
+de alto impacto significa cielo, Wcience o Scopus, no apuntamos a
+a cualquier revista, ¿no? Entonces, un investigador tiene validez o es reconocido por por publicar en ese tipo
+de revistas. publicar en otra revista también es válido, pero es un nivel mucho menor. Entonces, la idea es
+publicar en revistas de alto impacto, ¿no? Eh,
+esa es la eso es a nivel general, ¿no? Por eso en estos días de la huelga es que tienen que aprovechar para que todo
+esté listo y simplemente sea un saludo a la bendera ya la terminación del curso.
+Lo que quería mencionar es que la siguiente semana, que voy a dejarlo el viernes posiblemente, la práctica 13,
+que va a tratar sobre prueba de software con GMER. Bueno, ahí voy a dejar unos videos
+porque lo único que tienen que instalar es el Gmer, ¿no?, que es en base de Java, es libre y lo que mide son cargas
+de estrés, carga de potencia, eh etcétera, de un de cualquier sistema,
+¿no? Y simplemente hay que instalar el software y el resto es uso de comandos, no es nada del otro mundo, ¿no? Lo más
+lo más importante es ahí la medida un sistema, cuántos usuarios simultáneamente pueden estar conectados,
+que eso se encuentra por ensayo y error, ¿no? Uno pone, por ejemplo, para un sistema
+100 usuarios puede salir una probabilidad de de error del, por decir del 30%,
+¿no? Si vos reduciendo, eso va a ir disminuyendo, va a haber un momento en que sale cero errores. Significa que es
+es el número el número máximo que simultáneamente puede
+soportar el sistema que se conecten a la vez. Ya hemos visto varios casos de en
+casos reales, ¿no? Por ejemplo, en el Minedu varias veces se ha colgado los sistemas de los docentes o de los
+maestros en matrículas. ha pasado en la UPN, ha pasado en la en la UPAO y la
+última vez que pasó en la UNT fue el año 201829, ¿no? Donde eh a pesar de las
+recomendaciones que se hicieron, ¿no?, el jefe de cómputo de ese de ese entonces de la universidad, bueno, no
+hizo caso y al final se los sistemas cayeron y las matrículas tuvieron que
+hacerse largas colas, ¿no? formando en las direcciones, formando ahí en en el centro de cómputo de la universidad para
+poder este eh matricular en ese entonces. Pues
+entonces si hubiese dicho si hubiese hecho una prueba de de ese tipo y hubiese dicho, por ejemplo, máximo
+simultáneamente soporte el sistema 300 a la vez, ¿no, ¿qué hace? pues programa, ¿no?, hace un cronograma de matrículas
+tal día, tales escuelas, etcétera, evitando de que colapse. Pero como se
+hizo caso omiso, cayó, cayó. Y esos casos son casos reales de la vida real,
+¿no? Entonces, el GMER es una de las tantas este software que existen para
+medir justamente la eh medir la calidad de software,
+potencias son las cuántos usuarios simultáneamente. Entonces, cuando uno hace un software, tiene que indicar
+midiendo, obviamente, midiendo y comprobando cuánto es el número de usuarios máximo, ¿no? Para hacer las
+recomendaciones necesarias. Prácticamente con eso estamos cumpliendo con lo que dice el sílabus de la unidad
+tres, ¿no? De la unidad tres, eh, que es un software y como tal
+software solamente se instala y son comandos que hay que usar. Entces para eso voy a mandar este la información
+necesaria, videos que en menos de 5 minutos lo van a instalar y lo van a saber usar.
+El único requisito es tener el software, ¿no? El software funcionando, no hay otro.
+Bueno, esto es esto es eh el uso de los programas y su
+interpretación de alfa de Chrombas y de Omega de V de Ikiken, ¿no? Que he mandado. Lo único que tienen que hacer
+es tener los datos en estas formas porque lo lee de un archivo en Excel. Se entiende que independientes.
+Independientes. Con eso se cumple científicamente de que la encuesta está bien formulada,
+¿no? Eh, el resto es solamente tomar que tendrán pues en la encuesta, como dije, tendrán algo similar como esto,
+depende de los usuarios. Eh, podrían ser tres y son los usuarios que miden el nivel de satisfacción
+o podrían ser cinco o dos, no lo sé. Depende a lo que esté orientado, ¿no?
+Depende a lo que esté orientado. Bien, entonces esto, bueno, esto, este
+archivito lo voy a mandar como ejemplo nada más para que recuerden lo que he explicado así muy breve. En su momento
+lo detallaré porque acá lo que se requiere
+son datos, ¿no? Datos. Con datos se trabajan, pero ya he explicado ahí que
+cómo tienen que obtenerse los datos.
+A ver, a esto le voy a llamar
+acá dice libro. Esto es va a ser la clase 13, ¿no?
+Donde, bueno, la clase 13 es lo que comprende
+JMER. Le voy a mandar acá este,
+voy a llamar estadística para estadísticas
+y lo voy a subir acá para maner ejemplo de que recuerden
+y hay muchas cosas que metodología de la investigación científica ya lo han llevado, ¿no? 13 dije acá.
+a manera de ejemplo.
+Bien, y ya la práctica 14 y 15 va a tratar sobre sistemas similares a lo que
+ha en la práctica dos y que con eso finalizamos el curso, que no va a haber examen, ¿no? Eh, uno de ellos va a ser
+este también en tres herramientas que voy a dar, ¿no? un celular, eh una
+aplicación para invidentes que le permita de forma automática reconocerle,
+digan, ¿no? Conforme va viendo con la cámara activa si hay un que le diga
+identifique de forma automática qué objeto hay delante y le vaya diciendo, ¿no?, en forma hablada.
+Y la otra es una aplicación de detección en cultivos agrícolas,
+¿no? De que el sistema a través de cámaras puede identificar eh qué animal son los que hay animales
+nocturnos, ¿no? O aves que llegan en sembríos. Entonces debe en la cámara
+identificar el tipo de animal, ir grabando y luego sacar modelo de comportamiento,
+¿no? Por decir, no sé, comadrejas llegan en la madrugada, entonces tienen que
+sacar un modelo de o aves llegan al en más en la mañana y al atardecer. ¿Qué
+tipo de ave? Bueno, eso se tiene ya esos modelos con los datos, ¿no? Con los
+datos no son dos ejemplos de ya como dije las aplicaciones actuales ya no son los
+sistemas tradicionales de crear, leer, actualizar, eliminar, sacar reportes, etcétera. No son otro tipo de
+aplicaciones usando inteligencia artificial y en eso nos hemos centrado. Y con eso también tienen idea de qué
+cosa sería como tema de investigación en lo que corresponde ya a los cursos del noveno y décimo ciclo, ¿no? la manera
+como ya por lo menos este
+igual en esas dos que van a ser para las prácticas eh 14 y 15 con la que terminamos. La voy
+a dar con tiempo. Igual si ya tienen la huelga y ya lo tienen hecho, solamente
+lo que hacemos será un saludo a la bandera teniendo ya las notas, ¿no? O las o poner las notas porque ya lo
+tienen ustedes hecho. Lo que van a hacer es correr en grupos porque eso van a ser grupales, ¿no? Porque voy a usar tres
+herramientas y comparar y decir pues cuál es la mejor.
+No hay no hay más trabajo que eso, ¿no? Pero ya le da la idea de qué tipo de sistemas
+eh se hacen hoy dentro de las empresas y cuáles son los requerimientos.
+Ahora, hace poco justo está asesorando a un exalumno que es de la Sí, comenté, me
+parece en alguna clase anterior de la tercera promoción,
+¿no? Eh, Maldonado Tábara, Edwin. Bueno, está en Brasil. muchos años ya tiene su
+edad, pues debe estar por los estoy hablando de la primera promoción o de la tercera promoción
+habrá tenido en ese tiempo, pues habrá acabado de 22 años, ¿no? A la fecha, ¿cuánto más? 20, 42, 45 años debe tener
+aproximadamente, ¿no? Bueno, él trabaja ya en Brasil, tiene maestría, doctorado, pero acá no ha sacado no ha sacado el
+título, ¿no? Bueno, ya tiene su edad, pero en ese tiempo, como he enseñado
+desde la primera promoción que me pidió que sea su asesor, ¿no? En prácticas, que va a hacer prácticas y luego hacer
+los trámites para su tesis, ¿no? Y él fue pues el yo desconocía realmente, él fue el que me puso al día en esto de
+wsur de cursor trae y otro software, ¿no? Y yo realmente desconocía ya bueno,
+investigando y ha tenido que nivelarme. Y él, por ejemplo, cuando le he hablado,
+yo le yo les transmito su experiencia de él porque he hecho un sistema, ¿no?,
+para o o bueno, su plan de práctica es hacer un sistema usando agentes inteligentes,
+pero todo en Python. Y yo le pregunté, ¿por qué todo en Python y no N8N?
+me dijo de que en Python es mucho más rápido, ¿no? No hay dependencia de N8N y
+es posible hacerlo, ¿no? Bueno, eso es lo que él me dijo y estoy justamente
+investigando en eso para poder comparar comparar el uso de N8N con eso, ¿no?
+Entonces, posiblemente las dos últimas prácticas de los códigos en N8N y en usando agentes inteligentes propiamente
+en Python puro con Streaml y ustedes sacarán sus conclusiones, ¿no? Yo
+simplemente le digo lo que él me transmitió, pero para saber pues hay que hacerlo, ¿no? Y eso ustedes me darán la
+respuesta, ¿no? Que son justamente las dos últimas prácticas
+que van a consistir en eso. Bueno, es en resumen. Si hay alguna pregunta o algo que
+quisiera que aonde pueden hacerlo. Más o menos he tratado de resumir ya lo que
+queda en el curso y ya que es lo que quedan por aprendizaje, ¿no? Resumiendo, la semana
+13, simplemente la instalación de GMITER y la aplicación a sus sistemas.
+El único requisito es tener el sistema instalado y el otro es base a comandos, no hay más. y analizar resultados, no
+hay otra cosa, no hay un grado de dificultad mayor.
+
+
+===============
+
+necesito saber como sera ese tema de las encuestas que debo hacer
+
+
+Basado en la transcripción de la clase que has proporcionado, el profesor detalla un proceso riguroso de investigación científica para validar tu sistema o software. Aquí te explico paso a paso cómo debes manejar el tema de las encuestas y los datos:
+
+### 1. Validación de la Encuesta (Juicio de Expertos)
+Antes de encuestar a los usuarios finales, debes validar que tu encuesta esté bien hecha.
+
+* **¿Quiénes participan?:** Jueces o expertos (profesores o profesionales con experiencia).
+* **¿Qué se mide?:** La **V de Aiken**. Este coeficiente mide si los jueces están de acuerdo (concordancia) en que tus preguntas son válidas.
+* **El criterio:**
+    * El valor va de 0 a 1.
+    * **Resultado ideal:** Mayor o igual a **0.80**.
+    * Si es menor (ej. 0.7 o menos), hay discrepancia y debes corregir las preguntas.
+* **Formato de datos:** Debes tener un Excel donde las filas sean los jueces y las columnas las preguntas (o viceversa, según pida el programa en Python que les dará el profesor).
+
+### 2. Consistencia Interna (Prueba Piloto)
+Una vez validada por jueces, haces una prueba piloto para ver si la encuesta es consistente (fiable).
+
+* **¿A quiénes encuestas?:** A un grupo pequeño, **mínimo 15 personas** (pueden ser tus compañeros de clase).
+* **¿Qué se mide?:**
+    * **Alfa de Cronbach.**
+    * **Omega de McDonald's.**
+* **El criterio:**
+    * Buscas un valor mayor a **0.80** (o mínimamente mayor a 0.70).
+    * Esto indica que los datos no están dispersos y la encuesta "se entiende" y mide lo que debe medir.
+* **Formato:** Un Excel donde, a partir de la fila 2, estén las respuestas de tus 15 encuestados.
+
+### 3. Aplicación Real (Pre-test y Post-test)
+Esta es la parte central de tu investigación para demostrar que tu sistema funciona. No se trata solo de encuestar, sino de **comparar**.
+
+* **Población:** Aquí usas a los usuarios reales (pueden ser 10, o si es un sistema para pocos expertos, incluso 3).
+* **Metodología:**
+    * **Pre-test (Sin el sistema):** Mides cómo trabajan actualmente (manual).
+    * **Post-test (Con el sistema):** Mides cómo trabajan usando tu software.
+* **Indicadores a medir:**
+    1.  **Satisfacción/Usabilidad:** Usando una **Escala de Likert** (del 1 al 5).
+        * *Ejemplo:* En el Pre-test el promedio de satisfacción es 3.4. En el Post-test sube a 4.7. Esa diferencia es tu "mejora".
+        
+    2.  **Tiempos (Eficiencia):** Mides cuánto demoran en hacer la tarea en segundos.
+        * *Ejemplo:* Manualmente demoran 200 segundos. Con tu sistema (usando la función `timer` del código) demoran 10 segundos.
+    3.  **Costos (Opcional pero recomendado):** Traducir el tiempo ahorrado a dinero.
+
+### Resumen de Herramientas
+El profesor indica que **no necesitas hacer los cálculos matemáticos manualmente**. Él les proporcionará:
+* Scripts o funciones en **Python**.
+* Tú solo debes alimentar estos programas con los archivos de **Excel** bien estructurados (Jueces, Piloto, Datos finales).
+* El programa te arrojará los valores (V de Aiken, Cronbach, Omega, Shapiro-Wilk para normalidad, T-Student para la comparación, etc.).
+
+**Tu tarea inmediata:**
+1.  Tener listas tus preguntas de encuesta.
+2.  Armar tus Excels para jueces y para la prueba piloto (15 personas).
+3.  Preparar el escenario para medir los tiempos (Pre y Post test).

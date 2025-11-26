@@ -1,0 +1,53 @@
+Cuestionario: Satisfacción y Usabilidad del Sistema TravelSmart
+Sistema Experto de Recomendación de Viajes
+
+El siguiente cuestionario tiene como objetivo evaluar su experiencia con el sistema TravelSmart. Sus respuestas nos ayudarán a mejorar la precisión de las recomendaciones y la facilidad de uso de la plataforma.
+
+INSTRUCCIONES
+Por favor, lea cuidadosamente cada afirmación y marque la opción que mejor refleje su opinión según la siguiente escala:
+1. Totalmente en desacuerdo
+2. En desacuerdo
+3. Neutral
+4. De acuerdo
+5. Totalmente de acuerdo
+
+---
+
+I. CLARIDAD E INTUITIVIDAD DE LA INTERFAZ
+
+1. El flujo del cuestionario inicial (Tipo de viaje, Presupuesto, Clima, etc.) es lógico y fácil de seguir.
+   [1] [2] [3] [4] [5]
+
+2. Las opciones presentadas en cada paso del cuestionario son claras y cubren mis preferencias de viaje.
+   [1] [2] [3] [4] [5]
+
+3. La página de resultados presenta la información del destino (imágenes, clima, costos) de manera ordenada y comprensible.
+   [1] [2] [3] [4] [5]
+
+---
+
+II. EFICIENCIA Y RENDIMIENTO
+
+1. El sistema genera las recomendaciones de viaje con rapidez después de completar el cuestionario.
+   [1] [2] [3] [4] [5]
+
+2. Las imágenes de los destinos y hoteles cargan rápidamente y se visualizan correctamente.
+    [1] [2] [3] [4] [5]
+
+3. Puedo navegar entre el cuestionario, los resultados y el historial sin experimentar bloqueos o lentitud.
+    [1] [2] [3] [4] [5]
+
+---
+
+III. FIABILIDAD Y CONFIANZA
+
+1. Siento confianza en que el sistema utiliza mis respuestas para generar una recomendación personalizada y no genérica.
+    [1] [2] [3] [4] [5]
+
+2. El proceso de reserva de hotel (redirección o registro) funciona de manera esperada y sin errores.
+    [1] [2] [3] [4] [5]
+
+3. Percibo que mis datos de preferencias y presupuesto son tratados de manera segura.
+    [1] [2] [3] [4] [5]
+
+---
