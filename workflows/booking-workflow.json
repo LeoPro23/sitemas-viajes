@@ -1,0 +1,62 @@
+{
+  "name": "Booking - Create (skeleton)",
+  "nodes": [
+    {
+      "id": "Webhook_Booking",
+      "name": "Webhook Booking",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "parameters": {
+        "path": "booking",
+        "httpMethod": "POST",
+        "responseMode": "lastNode"
+      },
+      "position": [200, 200]
+    },
+    {
+      "id": "Function_Validate_Booking",
+      "name": "Validar Booking",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "parameters": {
+        "functionCode": "const input = items[0]?.json || {}; const b = input.booking || input; const nights = (b.checkin && b.checkout) ? Math.max(0, Math.round((new Date(b.checkout)-new Date(b.checkin))/(1000*60*60*24))) : (b.nights || null); const normalized = { destination: b.destination || b.city || null, hotel: b.hotel || null, checkin: b.checkin || b.startDate || null, checkout: b.checkout || b.endDate || null, nights, amountUSD: Number(b.amountUSD || b.amount || 0), ref: b.ref || ('BK-' + Date.now()) }; return [{ json: { booking: normalized } }];"
+      },
+      "position": [500, 200]
+    },
+    {
+      "id": "Function_Final_Booking",
+      "name": "Respuesta Booking",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "parameters": {
+        "functionCode": "return [{ json: { status: 'ok', booking: $json.booking } }];"
+      },
+      "position": [800, 200]
+    }
+  ],
+  "connections": {
+    "Webhook_Booking": {
+      "main": [
+        [
+          {
+            "node": "Function_Validate_Booking",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function_Validate_Booking": {
+      "main": [
+        [
+          {
+            "node": "Function_Final_Booking",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function_Final_Booking": { "main": [[]] }
+  }
+}

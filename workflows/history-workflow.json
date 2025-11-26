@@ -1,0 +1,62 @@
+{
+  "name": "History - Save questionnaire (skeleton)",
+  "nodes": [
+    {
+      "id": "Webhook_History",
+      "name": "Webhook History",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "parameters": {
+        "path": "history",
+        "httpMethod": "POST",
+        "responseMode": "lastNode"
+      },
+      "position": [200, 200]
+    },
+    {
+      "id": "Function_Build_Entry",
+      "name": "Construir Entrada",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "parameters": {
+        "functionCode": "const input = items[0]?.json || {}; const entry = { userEmail: input.userEmail || null, destinationName: (input.destinationName || (input.destination && input.destination.name) || null), answers: input.answers || {}, resultSnapshot: input.resultSnapshot || {}, createdAt: Date.now() }; return [{ json: { status: 'ok', saved: true, entry } }];"
+      },
+      "position": [500, 200]
+    },
+    {
+      "id": "Function_Final_History",
+      "name": "Respuesta Historial",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "parameters": {
+        "functionCode": "return [{ json: $json }];"
+      },
+      "position": [800, 200]
+    }
+  ],
+  "connections": {
+    "Webhook_History": {
+      "main": [
+        [
+          {
+            "node": "Function_Build_Entry",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function_Build_Entry": {
+      "main": [
+        [
+          {
+            "node": "Function_Final_History",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function_Final_History": { "main": [[]] }
+  }
+}

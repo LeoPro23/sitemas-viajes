@@ -1,0 +1,510 @@
+Prompt de Requerimientos - Sistema Experto de Recomendación de Viajes
+📋 Descripción General del Proyecto
+Desarrollar un Sistema Experto de Recomendación de Viajes que personalice experiencias turísticas mediante un cuestionario inteligente que identifica el destino ideal del usuario y sugiere opciones de hospedaje. La solución se implementará completamente en n8n (plataforma de automatización de workflows) integrando APIs externas para obtener información de destinos, imágenes y hoteles.
+
+🎯 Objetivos del Sistema
+
+Capturar preferencias del usuario mediante un cuestionario interactivo
+Procesar respuestas con lógica de sistema experto para determinar destino óptimo
+Recomendar destinos personalizados con información completa (descripción, imágenes, clima, actividades)
+Sugerir hoteles en el destino seleccionado con opciones de diferentes rangos de precio
+Integración completa con APIs para datos actualizados y reales
+Implementación 100% en n8n con workflow exportable
+
+
+📊 Requerimientos Funcionales
+1. Módulo de Cuestionario Inteligente
+El sistema debe realizar preguntas para determinar:
+
+Tipo de viaje: Aventura, Relajación, Cultural, Romántico, Familiar, Gastronómico, Ecoturismo
+Presupuesto: Económico, Moderado, Confort, Lujo
+Clima preferido: Playa/Calor, Montaña/Frío, Templado, No importa
+Duración del viaje: Fin de semana (2-3 días), Semanal (4-7 días), Extendido (8+ días)
+Tipo de actividades: Deportes extremos, Museos/Historia, Naturaleza, Vida nocturna, Gastronomía, Shopping
+Estilo de hospedaje: Hotel, Resort, Hostal, Airbnb, Boutique
+Compañía: Solo, Pareja, Familia con niños, Amigos, Grupo
+Época del año: Fechas específicas o flexibles
+
+2. Motor de Recomendación (Sistema Experto)
+Debe implementar lógica de reglas que:
+
+Asigne pesos a cada respuesta del cuestionario
+Calcule scores de compatibilidad para diferentes destinos
+Priorice destinos según múltiples criterios combinados
+Maneje empates con criterios de desempate
+Permita configuración de reglas mediante variables en n8n
+
+3. Módulo de Información de Destinos
+Debe proporcionar:
+
+Nombre y ubicación del destino
+Descripción detallada (atractivos turísticos, cultura, gastronomía)
+Galería de imágenes (mínimo 5 imágenes de alta calidad)
+Clima actual y pronóstico
+Principales actividades y atracciones
+Consejos de viaje (mejor época, requisitos, seguridad)
+Rango de costos estimados
+
+4. Módulo de Recomendación de Hoteles
+Debe mostrar:
+
+Lista de 5-10 hoteles en el destino
+Información de cada hotel:
+
+Nombre y categoría (estrellas)
+Dirección y ubicación en mapa
+Precio por noche (en múltiples monedas)
+Imágenes del hotel (exterior, habitaciones, amenidades)
+Servicios y amenidades
+Calificación de huéspedes
+Link de reservación
+
+
+Filtros: Por precio, categoría, servicios, ubicación
+Ordenamiento: Por precio, calificación, distancia al centro
+
+5. Interfaz de Usuario (Frontend)
+
+Landing page con bienvenida y botón "Comenzar"
+Formulario de preguntas con navegación paso a paso
+Barra de progreso del cuestionario
+Página de resultados con:
+
+Destino recomendado principal
+2-3 destinos alternativos
+Carrusel de imágenes
+Información detallada expandible
+Sección de hoteles con cards responsive
+
+
+Diseño responsive (móvil, tablet, desktop)
+Opción de reiniciar búsqueda o ajustar preferencias
+
+
+🔧 Requerimientos Técnicos
+Plataforma Base
+
+n8n (self-hosted o cloud): Versión 1.0 o superior
+Workflow completo documentado y exportable en formato JSON
+
+APIs Requeridas
+1. API de Destinos y Lugares
+
+Opciones recomendadas:
+
+Amadeus Travel API (https://developers.amadeus.com/)
+Geoapify (lugares y geocoding)
+REST Countries API (información de países)
+OpenTripMap API (atracciones turísticas)
+
+
+
+2. API de Imágenes
+
+Opciones recomendadas:
+
+Unsplash API (fotos de alta calidad)
+Pexels API (banco gratuito de imágenes)
+Pixabay API (imágenes libres de derechos)
+Google Places Photos API
+
+
+
+3. API de Hoteles
+
+Opciones recomendadas:
+
+Booking.com API (socios)
+Amadeus Hotel Search API
+Rakuten Rapid API - Hotels.com
+Skyscanner Hotels API
+Priceline Partner Network
+
+
+
+4. API de Clima
+
+OpenWeatherMap API o WeatherAPI.com
+
+5. API de Mapas (opcional)
+
+Mapbox o Google Maps API para visualización
+
+Nodos de n8n a Utilizar
+
+Webhook - Recibir datos del formulario web
+HTTP Request - Llamadas a APIs externas
+Function / Code - Lógica del sistema experto
+IF / Switch - Decisiones condicionales
+Set - Manipulación de variables
+Merge - Combinar datos de múltiples fuentes
+Item Lists - Procesar listas de hoteles/destinos
+HTML / Respond to Webhook - Devolver respuesta formateada
+Spreadsheet (opcional) - Base de datos de destinos
+JSON - Formateo de respuestas
+
+
+📁 Estructura del Proyecto
+sistema-viajes-n8n/
+│
+├── workflows/
+│   ├── main-workflow.json          # Workflow principal exportado
+│   ├── sub-workflow-questionnaire.json (opcional)
+│   └── sub-workflow-hotels.json (opcional)
+│
+├── frontend/
+│   ├── index.html                   # Landing page
+│   ├── questionnaire.html           # Formulario de preguntas
+│   ├── results.html                 # Página de resultados
+│   ├── css/
+│   │   └── styles.css               # Estilos personalizados
+│   └── js/
+│       ├── questionnaire.js         # Lógica del formulario
+│       └── results.js               # Renderizado de resultados
+│
+├── scripts/
+│   ├── expert-system-logic.js       # Algoritmo del sistema experto
+│   ├── api-handlers.js              # Funciones para llamadas API
+│   └── data-processing.js           # Procesamiento de respuestas API
+│
+├── config/
+│   ├── api-keys.env                 # Variables de entorno (NO subir a Git)
+│   ├── destinations-rules.json      # Reglas de recomendación
+│   └── destinations-database.json   # Base de datos de destinos
+│
+├── docs/
+│   ├── README.md                    # Documentación del proyecto
+│   ├── INSTALLATION.md              # Guía de instalación
+│   ├── API-DOCUMENTATION.md         # Documentación de APIs
+│   └── WORKFLOW-GUIDE.md            # Explicación del flujo n8n
+│
+└── assets/
+    └── images/                      # Imágenes del proyecto (logos, icons)
+```
+
+---
+
+## 🔄 Flujo de Trabajo en n8n
+
+### **Workflow Principal**
+```
+[Webhook - Inicio]
+    ↓
+[Validar Datos de Entrada]
+    ↓
+[Function - Sistema Experto]
+    ├─ Procesar respuestas del cuestionario
+    ├─ Aplicar reglas de recomendación
+    ├─ Calcular scores de destinos
+    └─ Seleccionar top 3 destinos
+    ↓
+[HTTP Request - API de Destinos] (paralelo)
+    ├─ Obtener información detallada
+    └─ Geocodificación
+    ↓
+[HTTP Request - API de Imágenes] (paralelo)
+    ├─ Buscar imágenes por destino
+    └─ Filtrar alta resolución
+    ↓
+[HTTP Request - API de Clima]
+    └─ Obtener pronóstico actual
+    ↓
+[HTTP Request - API de Hoteles]
+    ├─ Buscar hoteles en coordenadas
+    ├─ Filtrar por preferencias usuario
+    └─ Ordenar por calificación/precio
+    ↓
+[Function - Formatear Respuesta]
+    ├─ Estructurar JSON de destinos
+    ├─ Organizar hoteles por categoría
+    └─ Preparar URLs de imágenes
+    ↓
+[Respond to Webhook]
+    └─ Enviar JSON al frontend
+Puntos Críticos del Flujo
+
+Manejo de errores: Implementar try-catch en cada llamada API
+Fallbacks: Si una API falla, usar alternativa o datos en caché
+Rate limiting: Controlar frecuencia de llamadas a APIs
+Timeouts: Establecer límites de tiempo para cada request
+Caché: Guardar temporalmente resultados frecuentes
+
+
+🧠 Lógica del Sistema Experto
+Algoritmo de Recomendación
+javascript// Pseudocódigo del motor de recomendación
+
+function calculateDestinationScore(userPreferences, destination) {
+  let score = 0;
+  
+  // Peso por tipo de viaje (30%)
+  if (userPreferences.tripType === destination.primaryType) {
+    score += 30;
+  } else if (destination.secondaryTypes.includes(userPreferences.tripType)) {
+    score += 15;
+  }
+  
+  // Peso por presupuesto (25%)
+  if (userPreferences.budget === destination.priceRange) {
+    score += 25;
+  } else if (Math.abs(budgetDiff) === 1) {
+    score += 12;
+  }
+  
+  // Peso por clima (20%)
+  if (userPreferences.climate === destination.climate) {
+    score += 20;
+  }
+  
+  // Peso por actividades (15%)
+  const activityMatches = intersection(
+    userPreferences.activities,
+    destination.availableActivities
+  );
+  score += (activityMatches.length / userPreferences.activities.length) * 15;
+  
+  // Peso por compañía (10%)
+  if (destination.recommendedFor.includes(userPreferences.company)) {
+    score += 10;
+  }
+  
+  return score;
+}
+
+// Seleccionar top destinos
+destinations.sort((a, b) => b.score - a.score);
+return destinations.slice(0, 3);
+
+🎨 Diseño de Interfaz
+Paleta de Colores Sugerida
+
+Primario: #2563EB (Azul vibrante - viajes)
+Secundario: #F59E0B (Naranja cálido - aventura)
+Acento: #10B981 (Verde - naturaleza)
+Neutral: #F3F4F6 (Gris claro - fondos)
+Texto: #1F2937 (Gris oscuro)
+
+Tipografía
+
+Encabezados: Poppins (Google Fonts)
+Cuerpo: Inter (Google Fonts)
+
+Componentes UI
+
+Cards con hover effects para hoteles
+Carrusel de imágenes con thumbnails
+Stepper animado para cuestionario
+Loading spinner durante búsqueda
+Toasts para notificaciones
+
+
+📝 Scripts Específicos Requeridos
+1. Script de Sistema Experto (JavaScript para n8n)
+javascript// Para Function node en n8n
+const userAnswers = $input.item.json;
+
+// Base de datos de destinos (simplificada)
+const destinations = [
+  {
+    id: 1,
+    name: "Cusco, Perú",
+    primaryType: "cultural",
+    secondaryTypes: ["adventure", "nature"],
+    climate: "temperate",
+    priceRange: "moderate",
+    availableActivities: ["history", "trekking", "gastronomy"],
+    recommendedFor: ["couple", "friends", "solo"],
+    coordinates: { lat: -13.5319, lon: -71.9675 }
+  },
+  // ... más destinos
+];
+
+// Calcular scores
+const scoredDestinations = destinations.map(dest => {
+  let score = 0;
+  
+  // Lógica de scoring (ver pseudocódigo arriba)
+  // ...
+  
+  return { ...dest, score };
+});
+
+// Ordenar y retornar top 3
+scoredDestinations.sort((a, b) => b.score - a.score);
+return scoredDestinations.slice(0, 3).map(dest => ({ json: dest }));
+2. Script de Llamada a API de Hoteles
+javascript// HTTP Request node configuration
+const destination = $input.item.json;
+const apiKey = $env.AMADEUS_API_KEY;
+
+// Configuración del request
+return {
+  method: 'GET',
+  url: 'https://test.api.amadeus.com/v3/shopping/hotel-offers',
+  qs: {
+    latitude: destination.coordinates.lat,
+    longitude: destination.coordinates.lon,
+    radius: 10,
+    radiusUnit: 'KM',
+    ratings: '3,4,5',
+    hotelSource: 'ALL'
+  },
+  headers: {
+    'Authorization': `Bearer ${apiKey}`
+  }
+};
+3. Script de Procesamiento de Imágenes
+javascript// Para Function node que procesa respuesta de Unsplash
+const photos = $input.item.json.results;
+
+const processedImages = photos.slice(0, 5).map(photo => ({
+  id: photo.id,
+  url: photo.urls.regular,
+  thumbnail: photo.urls.thumb,
+  photographer: photo.user.name,
+  alt: photo.alt_description
+}));
+
+return [{ json: { images: processedImages } }];
+
+🔐 Seguridad y Configuración
+Variables de Entorno en n8n
+env# APIs Keys (configurar en n8n Credentials)
+AMADEUS_API_KEY=your_key_here
+AMADEUS_API_SECRET=your_secret_here
+UNSPLASH_ACCESS_KEY=your_key_here
+OPENWEATHER_API_KEY=your_key_here
+BOOKING_API_KEY=your_key_here
+
+# Configuración
+N8N_HOST=0.0.0.0
+N8N_PORT=5678
+N8N_PROTOCOL=https
+WEBHOOK_URL=https://your-n8n-instance.com
+Consideraciones de Seguridad
+
+Validación de inputs: Sanitizar datos del formulario
+Rate limiting: Limitar peticiones por IP
+API Key rotation: Cambiar claves periódicamente
+HTTPS obligatorio: Para webhooks y frontend
+CORS configurado: Permitir solo dominios autorizados
+
+
+📦 Entregables del Proyecto
+Documentación
+
+✅ README.md con:
+
+Descripción del proyecto
+Instrucciones de instalación
+Guía de uso
+Screenshots
+
+
+✅ WORKFLOW-GUIDE.md con:
+
+Explicación detallada de cada nodo
+Diagramas de flujo
+Capturas del workflow en n8n
+
+
+✅ API-DOCUMENTATION.md con:
+
+Documentación de APIs utilizadas
+Endpoints específicos
+Ejemplos de respuestas
+Manejo de errores
+
+
+
+Código
+
+✅ main-workflow.json: Workflow exportado de n8n
+✅ Frontend completo: HTML, CSS, JS
+✅ Scripts documentados: Todos los Function nodes
+✅ destinations-database.json: BD de destinos inicial (mínimo 20 destinos)
+✅ destinations-rules.json: Configuración de reglas
+
+Deployment
+
+✅ Guía de despliegue paso a paso
+✅ Docker Compose (opcional) para n8n
+✅ Variables de entorno template
+
+
+🧪 Testing y Validación
+Casos de Prueba
+
+Cuestionario completo: Usuario responde todas las preguntas
+Cuestionario parcial: Usuario omite preguntas opcionales
+Múltiples destinos: Sistema retorna alternativas válidas
+Hoteles variados: Diferentes rangos de precio
+APIs fallidas: Manejo de errores gracefully
+Carga concurrente: Múltiples usuarios simultáneos
+Responsive design: Pruebas en móvil, tablet, desktop
+
+Métricas de Éxito
+
+✅ Tiempo de respuesta < 5 segundos
+✅ 95% uptime de APIs
+✅ 100% de cuestionarios generan recomendación
+✅ Mínimo 5 imágenes por destino
+✅ Mínimo 5 hoteles por destino
+
+
+🚀 Fases de Implementación
+Fase 1: Setup y Configuración (Semana 1)
+
+Instalar n8n
+Registrarse en todas las APIs
+Crear estructura de proyecto
+Configurar variables de entorno
+
+Fase 2: Sistema Experto (Semana 2)
+
+Crear base de datos de destinos
+Implementar algoritmo de recomendación
+Diseñar lógica de reglas
+Testing de motor de recomendación
+
+Fase 3: Integración de APIs (Semana 3)
+
+Conectar API de destinos
+Integrar API de imágenes
+Configurar API de hoteles
+Implementar API de clima
+Manejo de errores y fallbacks
+
+Fase 4: Workflow n8n (Semana 4)
+
+Construir workflow principal
+Configurar webhooks
+Conectar todos los nodos
+Optimizar flujo de datos
+Testing end-to-end
+
+Fase 5: Frontend (Semana 5)
+
+Diseñar interfaces
+Implementar formulario reactivo
+Crear página de resultados
+Integración con n8n webhook
+Responsive design
+
+Fase 6: Testing y Deployment (Semana 6)
+
+Pruebas de integración
+Pruebas de carga
+Corrección de bugs
+Documentación final
+Despliegue a producción
+
+
+📚 Recursos y Referencias
+Documentación Oficial
+
+n8n Docs: https://docs.n8n.io/
+Amadeus API: https://developers.amadeus.com/
+Unsplash API: https://unsplash.com/developers
+OpenWeatherMap: https://openweathermap.org/api
+Booking.com Partner: https://www.booking.com/affiliate-program/

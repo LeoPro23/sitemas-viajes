@@ -1,0 +1,16 @@
+{
+  "weights": {
+    "tripType_primary": 30,
+    "tripType_secondary": 15,
+    "budget_exact": 25,
+    "budget_adjacent": 12,
+    "climate_exact": 20,
+    "activities_total": 15,
+    "company_match": 10
+  },
+  "budgetOrder": ["economic", "moderate", "comfort", "luxury"],
+  "defaults": {
+    "minImagesPerDestination": 5,
+    "minHotelsPerDestination": 5
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "name": "Payments - Authorize (skeleton)",
+  "nodes": [
+    {
+      "id": "Webhook_Payments",
+      "name": "Webhook Payments",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "parameters": {
+        "path": "payments",
+        "httpMethod": "POST",
+        "responseMode": "lastNode"
+      },
+      "position": [200, 200]
+    },
+    {
+      "id": "Function_Validate_Payment",
+      "name": "Validar Pago",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "parameters": {
+        "functionCode": "const input = items[0]?.json || {}; const p = input.payment || input; const normalized = { type: (p.type || '').toLowerCase() || 'hotel', amountUSD: Number(p.amountUSD || p.amount || 0), destination: p.destination || null, hotel: p.hotel || null, nights: p.nights || null, ref: p.ref || ('PM-' + Date.now()) }; const status = 'authorized'; return [{ json: { status, payment: normalized, gateway: 'mock' } }];"
+      },
+      "position": [500, 200]
+    },
+    {
+      "id": "Function_Final_Payment",
+      "name": "Respuesta Pago",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "parameters": {
+        "functionCode": "return [{ json: $json }];"
+      },
+      "position": [800, 200]
+    }
+  ],
+  "connections": {
+    "Webhook_Payments": {
+      "main": [
+        [
+          {
+            "node": "Function_Validate_Payment",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function_Validate_Payment": {
+      "main": [
+        [
+          {
+            "node": "Function_Final_Payment",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function_Final_Payment": { "main": [[]] }
+  }
+}

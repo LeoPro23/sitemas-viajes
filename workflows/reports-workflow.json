@@ -1,0 +1,62 @@
+{
+  "name": "Reports - Aggregates (skeleton)",
+  "nodes": [
+    {
+      "id": "Webhook_Reports",
+      "name": "Webhook Reports",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "parameters": {
+        "path": "reports",
+        "httpMethod": "POST",
+        "responseMode": "lastNode"
+      },
+      "position": [200, 200]
+    },
+    {
+      "id": "Function_Compute_Reports",
+      "name": "Calcular Reportes",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "parameters": {
+        "functionCode": "const input = items[0]?.json || {}; const payments = Array.isArray(input.payments) ? input.payments : []; const totals = payments.reduce((acc, p) => { const t = (p.type || 'hotel').toLowerCase(); acc[t] = (acc[t]||0) + Number(p.amountUSD||0); return acc; }, {}); const monthly = {}; for (const p of payments) { const d = p.created_at ? new Date(p.created_at) : new Date(); const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`; monthly[key] = (monthly[key]||0) + Number(p.amountUSD||0); } const destCounts = {}; for (const p of payments) { const dest = p.destination || null; if (!dest) continue; destCounts[dest] = (destCounts[dest]||0) + Number(p.amountUSD||0); } const topDestinations = Object.entries(destCounts).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([name,total])=>({name,total})); return [{ json: { status: 'ok', totals, monthly, topDestinations } }];"
+      },
+      "position": [500, 200]
+    },
+    {
+      "id": "Function_Final_Reports",
+      "name": "Respuesta Reportes",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "parameters": {
+        "functionCode": "return [{ json: $json }];"
+      },
+      "position": [800, 200]
+    }
+  ],
+  "connections": {
+    "Webhook_Reports": {
+      "main": [
+        [
+          {
+            "node": "Function_Compute_Reports",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function_Compute_Reports": {
+      "main": [
+        [
+          {
+            "node": "Function_Final_Reports",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function_Final_Reports": { "main": [[]] }
+  }
+}

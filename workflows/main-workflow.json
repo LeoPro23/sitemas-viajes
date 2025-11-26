@@ -1,0 +1,140 @@
+{
+  "name": "Sistema Experto Recomendación de Viajes",
+  "nodes": [
+    {
+      "id": "Webhook_1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "parameters": {
+        "path": "recommend",
+        "httpMethod": "POST",
+        "responseMode": "lastNode"
+      },
+      "position": [200, 200]
+    },
+    {
+      "id": "Function_Expert",
+      "name": "Sistema Experto",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "parameters": {
+        "functionCode": "// Lee preferencias desde el cuerpo del webhook\nconst prefs = (items?.[0]?.json?.userPreferences) || {};\n// Permite pasar una lista de destinos en el request (opcional)\nconst incoming = items?.[0]?.json?.destinations;\n// Dataset interno mínimo como fallback para el motor de reglas\nconst defaultDB = [\n  {id:1,name:'Cusco, Perú',primaryType:'cultural',secondaryTypes:['adventure','nature'],climate:'temperate',priceRange:'moderate',availableActivities:['history','trekking','gastronomy'],recommendedFor:['couple','friends','solo']},\n  {id:2,name:'Cancún, México',primaryType:'relax',secondaryTypes:['romantic','nightlife'],climate:'warm',priceRange:'comfort',availableActivities:['nature','nightlife','gastronomy','shopping'],recommendedFor:['couple','friends','group']},\n  {id:3,name:'Bariloche, Argentina',primaryType:'adventure',secondaryTypes:['nature','family'],climate:'cold',priceRange:'moderate',availableActivities:['nature','extreme','gastronomy'],recommendedFor:['family_kids','friends']},\n  {id:4,name:'Madrid, España',primaryType:'cultural',secondaryTypes:['gastronomic','nightlife'],climate:'temperate',priceRange:'comfort',availableActivities:['history','shopping','gastronomy','nightlife'],recommendedFor:['solo','friends','couple']},\n  {id:5,name:'Quito, Ecuador',primaryType:'cultural',secondaryTypes:['nature','adventure'],climate:'temperate',priceRange:'economic',availableActivities:['history','nature','gastronomy'],recommendedFor:['family_kids','friends']}\n];\nconst destinations = Array.isArray(incoming) && incoming.length ? incoming : defaultDB;\n\nfunction score(p,d){\n  let s=0;\n  const order=['economic','moderate','comfort','luxury'];\n  if(p.tripType===d.primaryType) s+=30; else if((d.secondaryTypes||[]).includes(p.tripType)) s+=15;\n  if(p.budget===d.priceRange) s+=25; else if(p.budget && Math.abs(order.indexOf(p.budget)-order.indexOf(d.priceRange))===1) s+=12;\n  if(p.climate===d.climate) s+=20;\n  const ua=new Set(p.activities||[]);\n  const matches=(d.availableActivities||[]).filter(a=>ua.has(a)).length;\n  if(ua.size>0) s += (matches/ua.size)*15;\n  if(p.company && (d.recommendedFor||[]).includes(p.company)) s+=10;\n  return s;\n}\n\nconst scored=(destinations||[]).map(d=>({ ...d, score: score(prefs,d) })).sort((a,b)=>b.score-a.score);\nconst top=scored.slice(0,3);\nreturn top.map(d=>({ json: { top: d } }));"
+      },
+      "position": [500, 200]
+    },
+    {
+      "id": "HTTP_Destinos",
+      "name": "API Destinos",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "parameters": {
+        "url": "https://api.opentripmap.com/0.1/en/places/radius",
+        "options": { "timeout": 3000 },
+        "queryParametersUi": {
+          "parameter": [
+            { "name": "apikey", "value": "={{$env.OPENTRIPMAP_API_KEY}}" },
+            { "name": "radius", "value": "10000" },
+            { "name": "limit", "value": "10" },
+            { "name": "lon", "value": "={{$json.top?.coordinates?.lon || 0}}" },
+            { "name": "lat", "value": "={{$json.top?.coordinates?.lat || 0}}" }
+          ]
+        }
+      },
+      "position": [800, 120]
+    },
+    {
+      "id": "HTTP_Imagenes",
+      "name": "API Imágenes",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "parameters": {
+        "url": "https://api.pexels.com/v1/search",
+        "options": { "timeout": 3000 },
+        "queryParametersUi": {
+          "parameter": [
+            { "name": "query", "value": "={{$json.top?.name || 'travel'}}" },
+            { "name": "per_page", "value": "6" }
+          ]
+        },
+        "headerParametersUi": {
+          "parameter": [
+            { "name": "Authorization", "value": "={{$env.PEXELS_API_KEY}}" }
+          ]
+        }
+      },
+      "position": [800, 200]
+    },
+    {
+      "id": "HTTP_Clima",
+      "name": "API Clima",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "parameters": {
+        "url": "https://api.openweathermap.org/data/2.5/weather",
+        "options": { "timeout": 3000 },
+        "queryParametersUi": {
+          "parameter": [
+            { "name": "appid", "value": "={{$env.OPENWEATHER_API_KEY}}" },
+            { "name": "lat", "value": "={{$json.top?.coordinates?.lat || 0}}" },
+            { "name": "lon", "value": "={{$json.top?.coordinates?.lon || 0}}" },
+            { "name": "units", "value": "metric" },
+            { "name": "lang", "value": "es" }
+          ]
+        }
+      },
+      "position": [800, 280]
+    },
+    {
+      "id": "HTTP_Hoteles",
+      "name": "API Hoteles",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "parameters": {
+        "url": "https://test.api.amadeus.com/v3/shopping/hotel-offers",
+        "options": { "timeout": 3000 },
+        "queryParametersUi": {
+          "parameter": [
+            { "name": "latitude", "value": "={{$json.top?.coordinates?.lat || 0}}" },
+            { "name": "longitude", "value": "={{$json.top?.coordinates?.lon || 0}}" },
+            { "name": "radius", "value": "10" },
+            { "name": "radiusUnit", "value": "KM" },
+            { "name": "ratings", "value": "3,4,5" },
+            { "name": "hotelSource", "value": "ALL" }
+          ]
+        },
+        "headerParametersUi": {
+          "parameter": [
+            { "name": "Authorization", "value": "={{'Bearer ' + $env.AMADEUS_API_TOKEN}}" }
+          ]
+        }
+      },
+      "position": [800, 360]
+    },
+    {
+      "id": "Function_Format",
+      "name": "Formatear Respuesta",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "parameters": {
+        "functionCode": "// Toma los items que contienen `json.top` desde el nodo experto y construye la respuesta mínima.\nconst tops = items.filter(i => i && i.json && i.json.top).map(i => i.json.top);\nconst destination = tops[0] || null;\nconst alternatives = tops.slice(1);\nreturn [{ json: { destination, alternatives } }];"
+      },
+      "position": [1100, 200]
+    }
+  ],
+  "connections": {
+    "Webhook_1": { "main": [[{ "node": "Function_Expert", "type": "main", "index": 0 }]] },
+    "Function_Expert": { "main": [[
+      { "node": "HTTP_Destinos", "type": "main", "index": 0 },
+      { "node": "HTTP_Imagenes", "type": "main", "index": 0 },
+      { "node": "HTTP_Clima", "type": "main", "index": 0 },
+      { "node": "HTTP_Hoteles", "type": "main", "index": 0 },
+      { "node": "Function_Format", "type": "main", "index": 0 }
+    ]]},
+    "HTTP_Destinos": { "main": [[{ "node": "Function_Format", "type": "main", "index": 0 }]] },
+    "HTTP_Imagenes": { "main": [[{ "node": "Function_Format", "type": "main", "index": 0 }]] },
+    "HTTP_Clima": { "main": [[{ "node": "Function_Format", "type": "main", "index": 0 }]] },
+    "HTTP_Hoteles": { "main": [[{ "node": "Function_Format", "type": "main", "index": 0 }]] },
+    "Function_Format": { "main": [[]] }
+  }
+}
