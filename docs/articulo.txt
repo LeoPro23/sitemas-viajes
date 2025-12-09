@@ -1,3 +1,22 @@
+UNIVERSIDAD NACIONAL DE TRUJILLO
+
+FACULTAD DE INGENIERÍA
+ESCUELA PROFESIONAL DE INGENIERÍA DE SISTEMAS
+
+Sistema de Planificación de Viajes con Agente de IA con Google Gemini 2.5 flash en n8n - TravelSmart
+
+AUTORES:
+[Nombres de los Autores]
+
+ASESOR:
+[Nombre del Asesor]
+
+LÍNEA DE INVESTIGACIÓN:
+Ingeniería de Software y Sistemas Inteligentes
+
+TRUJILLO–PERÚ
+2025
+
 Sistema de Planificación de Viajes con Agente de IA con Google Gemini 2.5 flash en n8n - TravelSmart
 Resumen
 El presente estudio experimental analiza el impacto de "TravelSmart", un sistema de planificación de viajes asistido por inteligencia artificial generativa y orquestación de flujos de trabajo con n8n y Google Gemini 2.5 Flash. Se evaluó la eficiencia operativa, la satisfacción del usuario y la reducción de costos mediante un diseño pre-experimental con 15 participantes y 30 ejecuciones controladas. Los instrumentos validados por juicio de expertos (V de Aiken = 0.85) y alta confiabilidad (Alfa de Cronbach = 0.92) permitieron medir las variables de interés. Los resultados evidencian una reducción del 95.96% en el tiempo de planificación (de 230.1s a 9.3s), una mejora significativa en la satisfacción del usuario alcanzando niveles de excelencia, y una reducción de costos operativos del 99.1% por itinerario generado. Se concluye que la arquitectura propuesta democratiza el acceso a asistentes de viaje personalizados, siendo una solución técnicamente viable y económicamente rentable para el sector turístico.
@@ -93,7 +112,20 @@ Fase 3 – Ejecución de Pruebas (Post-Test): Los mismos usuarios interactuaron 
 Fase 4 – Recolección de Datos: Captura de respuestas del cuestionario de satisfacción post-uso y consolidación de métricas de tiempo y eficacia desde la base de datos.
 Fase 5 – Análisis y Validación: Procesamiento estadístico de los datos (Prueba T-Student para muestras relacionadas) para comparar los resultados del Pre-Test y Post-Test y validar las hipótesis de mejora.
 Resultados
-3.1 Validación y Fiabilidad de los Instrumentos
+
+3.1 Funcionalidad y Módulos del Sistema
+El sistema TravelSmart se ha implementado como una solución web integral que orquesta servicios de IA y APIs externas. A continuación se describen sus componentes principales:
+
+Interfaz de Planificación Inteligente: El módulo principal (Figura 1) permite al usuario ingresar sus preferencias en lenguaje natural o mediante formularios guiados.
+Figura 1. Interfaz de captura de preferencias y configuración del viaje.
+
+Visualización de Itinerarios: El sistema genera una vista detallada del plan de viaje (Figura 2), incluyendo mapas interactivos y desglose por días.
+Figura 2. Vista de resultados con itinerario generado y mapa integrado.
+
+Detalle de Servicios: Cada recomendación incluye fichas informativas con precios, valoraciones y disponibilidad en tiempo real (Figura 3).
+Figura 3. Tarjetas de detalle de hoteles y actividades con información de APIs externas.
+
+3.2 Validación y Fiabilidad de los Instrumentos
 Para garantizar la calidad de los datos recolectados, se sometió el instrumento de recolección de datos (Cuestionario de Usabilidad y Satisfacción) a un proceso de validación por juicio de expertos y análisis de fiabilidad estadística.
 Validez de contenido (Juicio de Expertos)
 Se contó con la evaluación de 4 jueces expertos en ingeniería de software, quienes calificaron la claridad, coherencia y relevancia de los reactivos.
@@ -211,7 +243,7 @@ Omega de McDonald ($\omega$)
 Excelente
 
 Nota: Valores superiores a 0.90 indican que el instrumento es altamente confiable para su aplicación definitiva.
-3.2 Resultados descriptivos de los indicadores
+3.3 Resultados descriptivos de los indicadores
 En esta sección se detallan los niveles obtenidos para la satisfacción del usuario y los tiempos de ejecución, comparando el escenario manual (Pre-test) frente al escenario con el sistema TravelSmart (Post-test).
 Análisis descriptivo del Nivel de Satisfacción
 Se categorizó la satisfacción de los 15 encuestados en tres niveles (Bajo, Medio, Alto) según la sumatoria de sus respuestas en la escala Likert.
@@ -281,7 +313,7 @@ Máximo
 
 Nota: Datos obtenidos de la medición de tiempos mediante la función timer del sistema.
 Para profundizar en el análisis de la eficiencia, se desglosaron los tiempos promedio por tipo de actividad realizada durante la planificación.
-		Tabla 7 Desglose de Tiempos por Actividad (Segundos)
+Tabla 7 Desglose de Tiempos por Actividad (Segundos)
 Actividad
 Tiempo Manual (Pre-Test)
 Tiempo Sistema (Post-Test)
@@ -304,12 +336,13 @@ Total Promedio
 95.96%
 
 Elaboración propia a partir del análisis de tiempos del sistema.
-Interpretación: La Tabla 7 evidencia que la mayor ganancia de eficiencia se produce en la fase de búsqueda y selección (96.75%), donde el agente de IA procesa grandes volúmenes de información instantáneamente, tarea que manualmente requiere navegar múltiples sitios web para consolidar opciones. Asimismo, la verificación de disponibilidad y clima muestra una reducción crítica (96.16%), eliminando la necesidad de validaciones manuales cruzadas.
-3.3 Contrastación de Hipótesis
+Interpretación: La Tabla 7 evidencia que la mayor ganancia de eficiencia se produce en la fase de búsqueda y selección (96.75%), donde el agente de IA procesa grandes volúmenes de información instantáneamente.
+
+3.4 Contrastación de Hipótesis
 Para verificar si las mejoras son estadísticamente significativas, se procedió primero a evaluar la normalidad de los datos.
 Prueba de Normalidad
 Se utilizó la prueba de Shapiro-Wilk procesando los datos recolectados de las 30 mediciones de tiempo y los promedios de satisfacción de los 15 encuestados.
-Tabla 7. Prueba de Normalidad de Shapiro-Wilk.
+Tabla 8. Prueba de Normalidad de Shapiro-Wilk.
 
 Variable
 Grupo
@@ -341,7 +374,7 @@ Se observa que en la mayoría de los grupos el p-valor es mayor a 0.05, aceptand
 Prueba de Hipótesis General: Nivel de Satisfacción
 H0: El promedio de satisfacción con el sistema TravelSmart es igual o menor al método manual (Upost <= Upre).
 H1: El promedio de satisfacción con el sistema TravelSmart es mayor al método manual (Upost >= Upre).
-Tabla 8. Prueba T de Student para muestras emparejadas (Satisfacción).
+Tabla 9. Prueba T de Student para muestras emparejadas (Satisfacción).
 Comparación
 Diferencia de Medias
 t
@@ -359,7 +392,7 @@ Interpretación: Dado que el p-valor (0.000) es menor al nivel de significancia 
 Prueba de Hipótesis Específica: Tiempo de Proceso
 H0: El tiempo promedio con TravelSmart es igual o mayor al método manual.
 H1: El tiempo promedio con TravelSmart es menor al método manual.
-Tabla 9. Prueba T de Student para muestras emparejadas (Tiempos).
+Tabla 10. Prueba T de Student para muestras emparejadas (Tiempos).
 Comparación
 Diferencia de Medias
 t
@@ -374,9 +407,9 @@ Pre - Post
 Rechazar H0
 
 Interpretación: La diferencia de medias es abrumadora (220.8 segundos de ahorro). Al ser la significancia 0.000 < 0.05, se acepta la hipótesis alterna: el sistema reduce significativamente el tiempo de planificación.
-3.4 Análisis del Tercer Indicador: Costos
+3.5 Análisis del Tercer Indicador: Costos
 Se realizó un análisis de costos unitarios comparando el costo de oportunidad del tiempo humano frente al consumo de recursos computacionales (API Gemini + n8n).
-Tabla 10 Comparativa de Costos Operativos por Itinerario Generado
+Tabla 11 Comparativa de Costos Operativos por Itinerario Generado
 
 Indicador
 Método Manual (Pre-Test)
@@ -408,7 +441,7 @@ Figura 2 Reducción de Costos Operativos (S/.) [Gráfico de barras: Una barra al
 
 Se demuestra que el sistema permite un ahorro del 99.1% por cada transacción. Esto implica que la implementación del sistema recupera su inversión inicial rápidamente debido al alto volumen de consultas que puede procesar a un costo marginal cercano a cero.
 
-3.5. Resultados de las pruebas de rendimiento de software
+3.6. Resultados de las pruebas de rendimiento de software
 
 Para evaluar la robustez y la capacidad de respuesta del sistema TravelSmart, se realizaron pruebas de carga y estrés utilizando la herramienta Apache JMeter. El objetivo fue medir el comportamiento del backend (n8n + Gemini) bajo condiciones de concurrencia simulada.
 Se configuró un escenario de prueba ("Thread Group") simulando 20 usuarios virtuales simultáneos realizando peticiones al sistema en 5 ciclos de iteración, con un periodo de subida (ramp-up) de 10 segundos. Esto generó un total de 100 muestras (peticiones) para el análisis.
@@ -416,7 +449,7 @@ Figura 3 Resumen de reporte de pruebas de carga en JMeter
 
 Captura de pantalla del software Apache JMeter evidenciando 0.00% de errores en 100 peticiones.
 
-Tabla 11
+Tabla 12
 
 Métrica
 Resultado obtenido
@@ -443,7 +476,7 @@ Estabilidad total sin fallos de conexión.
 
 
 Fuente: Elaboración propia basada en el reporte de JMeter.
-Interpretación: Como se observa en la Tabla 9, el sistema demostró una alta estabilidad técnica. A pesar de la carga concurrente de 20 usuarios, el porcentaje de error se mantuvo en 0.00%, lo que garantiza que la arquitectura en n8n es capaz de gestionar colas de solicitudes sin colapsar.
+Interpretación: Como se observa en la Tabla 12, el sistema demostró una alta estabilidad técnica. A pesar de la carga concurrente de 20 usuarios, el porcentaje de error se mantuvo en 0.00%, lo que garantiza que la arquitectura en n8n es capaz de gestionar colas de solicitudes sin colapsar.
 El tiempo promedio de respuesta del servidor fue de 389 milisegundos, con picos máximos de 3.1 segundos. Estos valores validan que la latencia de la API es mínima, contribuyendo a la fluidez general del sistema reportada en la sección de tiempos de proceso (4.2.2).
 Figura 4 Gráfico de Tiempos de Respuesta (Response Time Graph)
 
