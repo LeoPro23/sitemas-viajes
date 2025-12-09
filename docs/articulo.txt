@@ -1,13 +1,15 @@
 Sistema de Planificación de Viajes con Agente de IA con Google Gemini 2.5 flash en n8n - TravelSmart
 Resumen
-El presente trabajo de investigación aborda la problemática de la sobrecarga informativa y la complejidad en la planificación de viajes turísticos. Se desarrolló "TravelSmart", un sistema experto de recomendación basado en agentes de Inteligencia Artificial utilizando el modelo Google Gemini 2.5 Flash orquestado en n8n. El objetivo principal fue optimizar la eficiencia y la experiencia del usuario en la creación de itinerarios personalizados, así como reducir los costos operativos asociados. La metodología empleada fue experimental, comparando el desempeño del sistema frente al proceso manual tradicional. Los resultados demostraron una reducción del 96% en los tiempos de planificación, una disminución del 99.1% en los costos operativos, una alta validez de contenido del instrumento (V de Aiken = 0.85) y un nivel de satisfacción del usuario positivo. Se concluye que la integración de modelos de lenguaje grandes (LLMs) con flujos de trabajo automatizados mejora sustancialmente la operatividad y rentabilidad en el sector e-tourism.
+El presente estudio experimental analiza el impacto de "TravelSmart", un sistema de planificación de viajes asistido por inteligencia artificial generativa y orquestación de flujos de trabajo con n8n y Google Gemini 2.5 Flash. Se evaluó la eficiencia operativa, la satisfacción del usuario y la reducción de costos mediante un diseño pre-experimental con 15 participantes y 30 ejecuciones controladas. Los instrumentos validados por juicio de expertos (V de Aiken = 0.85) y alta confiabilidad (Alfa de Cronbach = 0.92) permitieron medir las variables de interés. Los resultados evidencian una reducción del 95.96% en el tiempo de planificación (de 230.1s a 9.3s), una mejora significativa en la satisfacción del usuario alcanzando niveles de excelencia, y una reducción de costos operativos del 99.1% por itinerario generado. Se concluye que la arquitectura propuesta democratiza el acceso a asistentes de viaje personalizados, siendo una solución técnicamente viable y económicamente rentable para el sector turístico.
 
-Palabras Clave: Inteligencia Artificial, Planificación de Viajes, Sistemas de Recomendación, n8n, Google Gemini, Turismo Inteligente, Reducción de Costos.
+Palabras Clave: 
+Inteligencia Artificial Generativa, Planificación Turística, Automatización de Flujos, n8n, Google Gemini.
 
 Abstract
-This research addresses the issue of information overload and complexity in tourist trip planning. "TravelSmart", an expert recommendation system based on Artificial Intelligence agents using the Google Gemini 2.5 Flash model orchestrated in n8n, was developed. The main objective was to optimize efficiency and user experience in creating personalized itineraries, as well as to reduce associated operational costs. The methodology used was experimental, comparing the system's performance against the traditional manual process. The results demonstrated a 96% reduction in planning times, a 99.1% decrease in operational costs, high content validity of the instrument (Aiken's V = 0.85), and positive user satisfaction. It is concluded that the integration of Large Language Models (LLMs) with automated workflows substantially improves operability and profitability in the e-tourism sector.
+This experimental study analyzes the impact of "TravelSmart", a travel planning system assisted by generative artificial intelligence and workflow automation using n8n and Google Gemini 2.5 Flash. Operational efficiency, user satisfaction, and cost reduction were evaluated through a pre-experimental design with 15 participants and 30 controlled executions. Instruments validated by expert judgment (Aiken's V = 0.85) and high reliability (Cronbach's Alpha = 0.92) allowed for the measurement of key variables. Results demonstrate a 95.96% reduction in planning time (from 230.1s to 9.3s), a significant improvement in user satisfaction reaching excellence levels, and a 99.1% reduction in operational costs per generated itinerary. It is concluded that the proposed architecture democratizes access to personalized travel assistants, proving to be a technically viable and economically profitable solution for the tourism sector.
 
-Keywords: Artificial Intelligence, Trip Planning, Recommender Systems, n8n, Google Gemini, Smart Tourism, Cost Reduction.
+Keywords: 
+Generative Artificial Intelligence, Tourism Planning, Workflow Automation, n8n, Google Gemini.
 
 Introducción
 La planificación de viajes se ha transformado radicalmente con la digitalización del turismo: la intermediación electrónica, la expansión de la web social y la ubicuidad móvil han alterado los flujos de información y la toma de decisiones del viajero, generando nuevas oportunidades pero también una marcada sobrecarga informativa (Buhalis & Law, 2008; Werthner & Ricci, 2004; Xiang & Gretzel, 2010). En este ecosistema, la búsqueda, filtrado y curaduría de información turística devienen procesos complejos, donde preferencias, restricciones de tiempo y presupuesto, y señales contextuales deben integrarse en tiempo casi real (Xiang & Fesenmaier, 2020; Xiang, Magnini, & Fesenmaier, 2015).
@@ -15,239 +17,512 @@ Para enfrentar este reto, los sistemas de recomendación en los viajes y turismo
 Cuando la pregunta pasa de “¿qué ver?” a “¿cómo secuenciar lo que quiero ver en el tiempo y en la ruta?”, el núcleo técnico se desplaza hacia la optimización bajo restricciones: el Tourist Trip Design Problem (TTDP) y variantes del problema de orienteering con ventanas temporales y beneficios asignados a POIs capturan la estructura combinatoria del armado de itinerarios (especialmente en road trips) y requieren heurísticas/metaheurísticas para obtener soluciones factibles y valiosas en plazos razonables (Cerna, Hernández-Peñaloza, Gaudiano, & Vargas, 2022; Gavalas, Konstantopoulos, Mastakas, & Pantziou, 2014; Vansteenwegen, Souffriau, & Van Oudheusden, 2011). En paralelo, se han propuesto métodos data-driven que inducen rutas probables a partir de datos de comportamiento (fotos, check-ins) y luego personalizan la secuenciación (Kurashima, Iwata, Irie, & Fujimura, 2013; Yin et al., 2015), así como aplicaciones específicas para ciclismo y turismo regional que ponen de manifiesto la necesidad de verificar horarios, distancias y tiempos de traslado realistas (Souffriau, Vansteenwegen, Vanden Berghe, & Van Oudheusden, 2011).
 La capa de interacción conversacional ha cobrado protagonismo: chatbots y asistentes inteligentes permiten solicitar preferencias en lenguaje natural, explicar alternativas y replanificar sobre la marcha, cubriendo momentos de inspiración, planificación y apoyo in-trip (Calvaresi et al., 2021). Sin embargo, persisten desafíos de confiabilidad (explicabilidad, robustez, privacidad y seguridad) que la literatura reciente en recomendación “fiable” subraya como criterios indispensables cuando las decisiones algorítmicas afectan itinerarios, costos y experiencias de usuarios reales (Zhang, Yao, Sun, & Tay, 2022).
 En este contexto, presentamos TravelSmart, un sistema experto de recomendación de viajes implementado de extremo a extremo. El motor de reglas y la orquestación se realizan en n8n, donde se validan datos en tiempo real desde fuentes externas (OpenTripMap para lugares y geocodificación, Pexels/Pixabay para imágenes, OpenWeather para clima y Amadeus para hoteles). El frontend en Next.js ofrece un cuestionario multi‑paso y una página de resultados con explicaciones, alternativas y tarjetas de hoteles. Nuestra contribución se centra en la trazabilidad y factibilidad de las recomendaciones: cada destino incluye justificaciones basadas en preferencias, presupuesto, clima y disponibilidad, y el sistema aplica fallbacks y manejo de errores para garantizar respuestas operables. Este enfoque supera las limitaciones de soluciones puramente generativas al producir recomendaciones personalizadas y ejecutables que equilibran satisfacción del usuario, diversidad de actividades y restricciones reales de viaje (Cerna et al., 2022).
-
 Objetivos
 Objetivo general
 Desarrollar y evaluar un Sistema de Planificación de Viajes asistido por Agente de IA (TravelSmart) para optimizar la eficiencia operativa en la generación de itinerarios, mejorar la satisfacción del usuario y reducir significativamente los costos asociados al proceso de planificación.
-
 Objetivos específicos
-1. Determinar la reducción del tiempo en el proceso de planificación de itinerarios y selección de servicios turísticos mediante la automatización con n8n y Google Gemini 2.5 Flash en comparación con el método manual tradicional.
-2. Evaluar el nivel de satisfacción y la usabilidad del sistema percibida por los usuarios finales, midiendo dimensiones de claridad, eficiencia y confianza mediante instrumentos estandarizados.
-3. Determinar la reducción de costos operativos comparando el valor monetario del tiempo empleado en el método manual frente al consumo de recursos computacionales del sistema TravelSmart.
-
+Determinar la reducción del tiempo en el proceso de planificación de itinerarios y selección de servicios turísticos mediante la automatización con n8n y Google Gemini 2.5 Flash en comparación con el método manual tradicional.
+Evaluar el nivel de satisfacción y la usabilidad del sistema percibida por los usuarios finales, midiendo dimensiones de claridad, eficiencia y confianza mediante instrumentos estandarizados.
+Determinar la reducción de costos operativos comparando el valor monetario del tiempo empleado en el método manual frente al consumo de recursos computacionales del sistema TravelSmart.
 Materiales y métodos
 Plataforma de Interacción y Resultados (Frontend)
 Se utilizó Next.js (v.15, framework de react) como la plataforma principal de interacción con el usuario. Esta aplicación web cumple dos funciones:
 Presenta el cuestionario multi-paso para recolectar las preferencias del usuario (destino, presupuesto, gustos).
 Actúa como la "plataforma de resultados", renderizando el itinerario final con las recomendaciones, mapas y explicaciones generadas por el backend.
-
 Arquitectura de Backend
-La lógica principal se implementó en NestJS (v.11.1.827, framework de Node.js), que maneja el saneamiento de datos para el registro en PostgreSQL y expone los endpoints HTTP para la comunicación con el frontend, siendo un gateway de dominio que normaliza entradas, aplica validaciones (esquemas JSON), firma solicitudes hacia n8n, expone endpoints REST para lectura/escritura de itinerarios y preferencias, y pública eventos para actualizaciones en la bd.
-Se usaron DTOs (class-validator) para asegurar la integridad de los datos. En conjunto con NestJS, se usó n8n como plataforma de orquestación. n8n se encarga de recibir las solicitudes, ejecutar las llamadas a las APIs externas (OpenTripMap, OpenWeather, Amadeus, Pexels/Pixabay) y gestionar la consulta al modelo Google Gemini 2.5 Flash para la generación del itinerario.
-
+La lógica principal se implementó en n8n, que maneja el saneamiento de datos para el registro en PostgreSQL y expone los endpoints HTTP para la comunicación con el frontend, siendo un gateway de dominio que normaliza entradas, aplica validaciones (esquemas JSON), firma solicitudes hacia n8n, expone endpoints REST para lectura/escritura de itinerarios y preferencias, y pública eventos para actualizaciones en la bd.
+Se usaron DTOs (class-validator) para asegurar la integridad de los datos. Se usó n8n como plataforma de orquestación. n8n se encarga de recibir las solicitudes, ejecutar las llamadas a las APIs externas (OpenTripMap, OpenWeather, Amadeus, Pexels/Pixabay) y gestionar la consulta al modelo Google Gemini 2.5 Flash para la generación del itinerario.
 Base de datos
 Para la persistencia de los datos usamos PostgreSQL en su versión 18,  lanzada el 25 de septiembre de 2025, siendo nuestro esquema relacional para usuarios, preferencias, viajes, itinerarios, fuentes y logs. Índices por usuario_id, fecha, y destino_id asegurando las consultas sub‑segundo. Se almacena la traza completa (inputs del usuario, tool calls, respuestas del modelo, validaciones) para auditabilidad.
-
 Integración y flujo de datos
 Se diseñó un flujo de datos principal en n8n (en su versión 1.120.1) para la generación de itinerarios:
-1. Recepción de la solicitud (webhook) desde NestJS con el perfil del usuario.
-2. Consulta a las APIs externas (OpenTripMap, OpenWeather) para obtener datos de POIs, clima y hoteles.
-3. Consulta al modelo Gemini 2.5 Flash con el contexto completo para generar un borrador de itinerario en JSON.
-4. Validación y optimización del itinerario (se verifican horarios, traslados y presupuesto usando la heurística GRASP).
-5. Envío de la respuesta JSON final a NestJS para ser guardada en PostgreSQL.
-6. NestJS envía el itinerario al frontend (Next.js) para que el usuario lo visualice.
-
+Recepción de la solicitud (webhook) con el perfil del usuario.
+Consulta a las APIs externas (OpenTripMap, OpenWeather) para obtener datos de POIs, clima y hoteles.
+Consulta al modelo Gemini 2.5 Flash con el contexto completo para generar un borrador de itinerario en JSON.
+Validación y optimización del itinerario (se verifican horarios, traslados y presupuesto usando la heurística GRASP).
+Envío de la respuesta JSON final a n8n para ser guardada en PostgreSQL.
+N8n envía el itinerario al frontend (Next.js) para que el usuario lo visualice.
 Interfaz de usuario y entorno de pruebas
-La interfaz de usuario principal es la aplicación de Next.js. Para las pruebas de backend y la depuración de los flujos, se utilizaron herramientas de cliente HTTP como Postman y Thunderclient. Estas permitieron realizar solicitudes directas a los endpoints de NestJS y a los webhooks de n8n para validar los esquemas de respuesta del agente de IA y la correcta integración de las APIs.
-
-Indicadores de Evaluación
+La interfaz de usuario principal es la aplicación de Next.js. Para las pruebas de backend y la depuración de los flujos, se utilizaron herramientas de cliente HTTP como Postman y Thunderclient. Estas permitieron realizar solicitudes directas a los endpoints de n8n para validar los esquemas de respuesta del agente de IA y la correcta integración de las APIs.
+	Indicadores de Evaluación
 Con el objetivo de asegurar la trazabilidad entre los objetivos de investigación y los resultados, se definió un conjunto de indicadores alineados con tres dimensiones clave: eficiencia temporal, satisfacción del usuario y eficiencia económica.
 El mapeo de indicadores con objetivos específicos se detalla a continuación, en la Tabla 1:
-
 Tabla 1. Mapeo de indicadores con objetivos específicos
-| Objetivo Específico | Indicador | Definición | Fórmula | Unidad de medida | Instrumento | Valor esperado |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Determinar la reducción del tiempo en el proceso de planificación de itinerarios y selección de servicios turísticos mediante la automatización con n8n y Google Gemini 2.5 Flash en comparación con el método manual tradicional. | Reducción del Tiempo de Planificación | Mide la diferencia de tiempo entre la planificación manual de un viaje y la planificación asistida por el sistema TravelSmart. | (Tiempo_Manual - Tiempo_Sistema) / Tiempo_Manual * 100 | Porcentaje (%) | Cronómetro digital (función timer del sistema vs. cronómetro manual). | >= 80% de reducción del tiempo. |
-| Evaluar el nivel de satisfacción y la usabilidad del sistema percibida por los usuarios finales, midiendo dimensiones de claridad, eficiencia y confianza mediante instrumentos estandarizados. | Nivel de Satisfacción del Usuario (Escala Likert) | Evalúa la percepción del usuario sobre la claridad, eficiencia y confianza del sistema mediante un cuestionario post-uso. | Promedio de las puntuaciones obtenidas en el cuestionario (Escala 1-5). | Puntos (1 a 5) | Cuestionario de Satisfacción y Usabilidad (9 reactivos en 3 dimensiones). | > 4.0 puntos (Nivel "De acuerdo" o superior). |
-| Determinar la reducción de costos operativos comparando el valor monetario del tiempo empleado en el método manual frente al consumo de recursos computacionales del sistema TravelSmart. | Reducción de Costos Operativos | Diferencia porcentual entre el costo de oportunidad del tiempo humano invertido en la planificación manual y el costo de los recursos tecnológicos utilizados por el sistema. | (Costo_Manual - Costo_Sistema) / Costo_Manual * 100 | Porcentaje (%) | Ficha de análisis de costos unitarios. | > 90% de reducción de costos. |
+Objetivo Específico
+Indicador
+Definición
+Fórmula
+Unidad de medida
+Instrumento
+Valor esperado
+Determinar la reducción del tiempo en el proceso de planificación de itinerarios y selección de servicios turísticos mediante la automatización con n8n y Google Gemini 2.5 Flash en comparación con el método manual tradicional.
+Reducción del Tiempo de Planificación
+Mide la diferencia de tiempo entre la planificación manual de un viaje y la planificación asistida por el sistema TravelSmart.
+$(Tiempo_{Manual} - Tiempo_{Sistema}) / Tiempo_{Manual} * 100$
+Porcentaje (%)
+Cronómetro digital (función timer del sistema vs. cronómetro manual).
+$\ge$ 80% de reducción del tiempo.
+Evaluar el nivel de satisfacción y la usabilidad del sistema percibida por los usuarios finales, midiendo dimensiones de claridad, eficiencia y confianza mediante instrumentos estandarizados.
+Nivel de Satisfacción del Usuario (Escala Likert)
+Evalúa la percepción del usuario sobre la claridad, eficiencia y confianza del sistema mediante un cuestionario post-uso.
+Promedio de las puntuaciones obtenidas en el cuestionario (Escala 1-5).
+Puntos (1 a 5)
+Cuestionario de Satisfacción y Usabilidad (9 reactivos en 3 dimensiones).
+> 4.0 puntos (Nivel "De acuerdo" o superior).
+Determinar la reducción de costos operativos comparando el valor monetario del tiempo empleado en el método manual frente al consumo de recursos computacionales del sistema TravelSmart.
+Reducción de Costos Operativos
+Diferencia porcentual entre el costo de oportunidad del tiempo humano invertido en la planificación manual y el costo de los recursos tecnológicos utilizados por el sistema.
+$(Costo_{Manual} - Costo_{Sistema}) / Costo_{Manual} * 100$
+Porcentaje (%)
+Ficha de análisis de costos unitarios.
+> 90% de reducción de costos.
 
 Instrumentos de medición
 Los instrumentos de medición que se emplearon fueron:
-- Cronómetro digital (Timer): Integrado en el código para medir con precisión de milisegundos el tiempo de procesamiento del sistema (desde el envío del formulario hasta la renderización de resultados). Para el proceso manual, se utilizó un cronómetro estándar.
-- Cuestionarios Ad-Hoc (Escala Likert): Dos instrumentos diseñados específicamente para esta investigación:
-  1. Cuestionario Pre-Uso: Evalúa las expectativas y la dificultad percibida del proceso manual actual.
-  2. Cuestionario Post-Uso: Evalúa la satisfacción, usabilidad y confianza tras utilizar TravelSmart.
-  Ambos constan de 9 reactivos distribuidos en 3 dimensiones, validados por juicio de expertos (V de Aiken > 0.80) y consistencia interna (Alfa de Cronbach).
-- Ficha de Costos: Matriz para calcular el costo de hora-hombre basado en el salario mínimo vital y el costo de consumo de APIs y servidor.
-- Apache JMeter: Utilizado para pruebas de carga y estrés, simulando usuarios concurrentes para verificar la estabilidad del sistema bajo demanda.
-
+Cronómetro digital (Timer): Integrado en el código para medir con precisión de milisegundos el tiempo de procesamiento del sistema (desde el envío del formulario hasta la renderización de resultados). Para el proceso manual, se utilizó un cronómetro estándar.
+Cuestionarios Ad-Hoc (Escala Likert): Dos instrumentos diseñados específicamente para esta investigación:
+Cuestionario Pre-Uso: Evalúa las expectativas y la dificultad percibida del proceso manual actual.
+Cuestionario Post-Uso: Evalúa la satisfacción, usabilidad y confianza tras utilizar TravelSmart.
+Ambos constan de 9 reactivos distribuidos en 3 dimensiones, validados por juicio de expertos (V de Aiken > 0.80) y consistencia interna (Alfa de Cronbach).
+Ficha de Costos: Matriz para calcular el costo de hora-hombre basado en el salario mínimo vital y el costo de consumo de APIs y servidores.
 Proceso experimental
 El proceso experimental definido comprende 5 fases, las cuales fueron:
-- Fase 1 – Línea Base (Pre-Test): Medición de tiempos y aplicación del cuestionario de expectativas a una muestra de usuarios realizando la planificación de un viaje de forma manual (búsqueda en web).
-- Fase 2 – Implementación y Despliegue: Configuración del entorno productivo de TravelSmart, asegurando la conexión estable entre Next.js, n8n y las APIs de terceros.
-- Fase 3 – Ejecución de Pruebas (Post-Test): Los mismos usuarios interactuaron con el sistema TravelSmart para generar itinerarios bajo las mismas condiciones de la Fase 1. Se registraron tiempos automáticos y logs de éxito.
-- Fase 4 – Recolección de Datos: Captura de respuestas del cuestionario de satisfacción post-uso y consolidación de métricas de tiempo y costos.
-- Fase 5 – Análisis y Validación: Procesamiento estadístico de los datos (Prueba T-Student para muestras relacionadas) para comparar los resultados del Pre-Test y Post-Test y validar las hipótesis de mejora.
-
+Fase 1 – Línea Base (Pre-Test): Medición de tiempos y aplicación del cuestionario de expectativas a una muestra de usuarios realizando la planificación de un viaje de forma manual (búsqueda en web).
+Fase 2 – Implementación y Despliegue: Configuración del entorno productivo de TravelSmart, asegurando la conexión estable entre Next.js, n8n y las APIs de terceros.
+Fase 3 – Ejecución de Pruebas (Post-Test): Los mismos usuarios interactuaron con el sistema TravelSmart para generar itinerarios bajo las mismas condiciones de la Fase 1. Se registraron tiempos automáticos y logs de éxito.
+Fase 4 – Recolección de Datos: Captura de respuestas del cuestionario de satisfacción post-uso y consolidación de métricas de tiempo y eficacia desde la base de datos.
+Fase 5 – Análisis y Validación: Procesamiento estadístico de los datos (Prueba T-Student para muestras relacionadas) para comparar los resultados del Pre-Test y Post-Test y validar las hipótesis de mejora.
 Resultados
-
 3.1 Validación y Fiabilidad de los Instrumentos
 Para garantizar la calidad de los datos recolectados, se sometió el instrumento de recolección de datos (Cuestionario de Usabilidad y Satisfacción) a un proceso de validación por juicio de expertos y análisis de fiabilidad estadística.
-
 Validez de contenido (Juicio de Expertos)
 Se contó con la evaluación de 4 jueces expertos en ingeniería de software, quienes calificaron la claridad, coherencia y relevancia de los reactivos.
-
 Tabla 2. Resultados de la Validación por Juicio de Expertos.
-| Reactivo | Juez 1 | Juez 2 | Juez 3 | Juez 4 | V de Aiken |
-|---|---|---|---|---|---|
-| R1 | 4 | 5 | 5 | 4 | 0.8333 |
-| R2 | 5 | 3 | 5 | 5 | 0.8333 |
-| R3 | 4 | 4 | 5 | 5 | 0.8333 |
-| R4 | 5 | 5 | 5 | 5 | 1.0000 |
-| R5 | 5 | 5 | 2 | 5 | 0.7500 |
-| R6 | 4 | 4 | 5 | 4 | 0.7500 |
-| R7 | 5 | 5 | 5 | 5 | 1.0000 |
-| R8 | 3 | 5 | 5 | 5 | 0.8333 |
-| R9 | 4 | 5 | 4 | 5 | 0.8333 |
-| **PROMEDIO GENERAL** | | | | | **0.8519** |
+Reactivo
+Juez 1
+Juez 2
+Juez 3
+Juez 4
+V de Aiken
+R1
+4
+5
+5
+4
+0.8333
+R2
+5
+3
+5
+5
+0.8333
+R3
+4
+4
+5
+5
+0.8333
+R4
+5
+5
+5
+5
+1.0000
+R5
+5
+5
+2
+5
+0.7500
+R6
+4
+4
+5
+4
+0.7500
+R7
+5
+5
+5
+5
+1.0000
+R8
+3
+5
+5
+5
+0.8333
+R9
+4
+5
+4
+5
+0.8333
+PROMEDIO GENERAL
+
+
+
+
+
+
+
+
+0.8519
 
 El coeficiente V de Aiken General obtenido fue de 0.8519, lo cual indica una concordancia "Muy Alta" entre los jueces, validando la pertinencia y claridad de los ítems del instrumento.
-
-Tabla 3. Resultado de la V de Aiken para la validez de contenido.
-| Juez | Puntuación Promedio | V de Aiken Calculada | Veredicto |
-|---|---|---|---|
-| Experto 1 | 4.67 | 0.92 | Válido |
-| Experto 2 | 4.44 | 0.86 | Válido |
-| Experto 3 | 4.56 | 0.89 | Válido |
-| Experto 4 | 4.78 | 0.94 | Válido |
-| **Promedio Global** | **4.61** | **0.90** | **Válido** |
+Tabla 3.  Resultado de la V de Aiken para la validez de contenido.
+Juez
+Puntuación Promedio
+V de Aiken Calculada
+Veredicto
+Experto 1
+4.67
+0.92
+Válido
+Experto 2
+4.44
+0.86
+Válido
+Experto 3
+4.56
+0.89
+Válido
+Experto 4
+4.78
+0.94
+Válido
+Promedio Global
+4.61
+0.90
+Válido
 
 Nota: La V de Aiken > 0.80 indica una alta concordancia entre los jueces respecto a la pertinencia de los ítems del instrumento.
-
 Fiabilidad del instrumento
 Se aplicó una prueba piloto a 15 usuarios y se procesaron los datos mediante el algoritmo desarrollado en Python para obtener los coeficientes de consistencia interna.
-
 Tabla 4. Coeficientes de Fiabilidad del Instrumento.
-| Coeficiente | Valor obtenido | Interpretación |
-|---|---|---|
-| Alfa de Cronbach ($\alpha$) | 0.921 | Excelente |
-| Omega de McDonald ($\omega$) | 0.923 | Excelente |
+Coeficiente
+Valor obtenido
+Interpretación
+Alfa de Cronbach ($\alpha$)
+0.921
+Excelente
+Omega de McDonald ($\omega$)
+0.923
+Excelente
 
 Nota: Valores superiores a 0.90 indican que el instrumento es altamente confiable para su aplicación definitiva.
-
 3.2 Resultados descriptivos de los indicadores
 En esta sección se detallan los niveles obtenidos para la satisfacción del usuario y los tiempos de ejecución, comparando el escenario manual (Pre-test) frente al escenario con el sistema TravelSmart (Post-test).
-
 Análisis descriptivo del Nivel de Satisfacción
 Se categorizó la satisfacción de los 15 encuestados en tres niveles (Bajo, Medio, Alto) según la sumatoria de sus respuestas en la escala Likert.
-
 Tabla 5. Distribución de frecuencias: Nivel de Satisfacción (Pre-Test vs. Post-Test).
-| Nivel de Satisfacción | Escala | Pre-Test (Manual) | | Post-Test (TravelSmart) | |
-|---|---|---|---|---|---|
-| | | f | % | f | % |
-| Bajo (Malo) | [1.0 - 2.3] | 6 | 40.0% | 0 | 0.0% |
-| Medio (Regular) | [2.4 - 3.6] | 9 | 60.0% | 0 | 0.0% |
-| Alto (Bueno/Excelente) | [3.7 - 5.0] | 0 | 0.0% | 15 | 100.0% |
-| **Total** | | **15** | **100%** | **15** | **100%** |
+Nivel de Satisfacción
+Escala
+Pre-Test (Manual)
+Post-Test (TravelSmart)
+
+
+
+
+f
+%
+f
+%
+Bajo (Malo)
+[1.0 - 2.3]
+6
+40.0%
+0
+0.0%
+Medio (Regular)
+[2.4 - 3.6]
+9
+60.0%
+0
+0.0%
+Alto (Bueno/Excelente)
+[3.7 - 5.0]
+0
+0.0%
+15
+100.0%
+Total
+
+
+15
+100%
+15
+100%
 
 Nota: f = Frecuencia absoluta (número de usuarios); % = porcentaje.
-Interpretación: Como se observa en la Tabla 5, en el Pre-test, el 100% de los usuarios se ubicó en los niveles "Bajo" y "Medio", evidenciando que el método manual genera insatisfacción o indiferencia. Por el contrario, en el Post-test, el 100% de los usuarios migró al nivel "Alto", demostrando que el sistema TravelSmart mejora radicalmente la percepción de usabilidad y calidad.
+Interpretación: Como se observa en la Tabla 3, en el Pre-test, el 100% de los usuarios se ubicó en los niveles "Bajo" y "Medio", evidenciando que el método manual genera insatisfacción o indiferencia. Por el contrario, en el Post-test, el 100% de los usuarios migró al nivel "Alto", demostrando que el sistema TravelSmart mejora radicalmente la percepción de usabilidad y calidad.
 
 Análisis descriptivo del Tiempo de Proceso
 Se analizaron 30 ejecuciones para medir la eficiencia temporal.
-
 Tabla 6. Estadísticos descriptivos del Tiempo de Proceso (en Segundos).
-| Estadístico | Pre-Test (Manual) | Post-Test (TravelSmart) |
-|---|---|---|
-| Media (Promedio) | 230.10 s | 9.30 s |
-| Mediana | 227.50 s | 9.00 s |
-| Desviación Estándar | 34.25 s | 1.85 s |
-| Mínimo | 180.00 s | 7.00 s |
-| Máximo | 300.00 s | 14.00 s |
+Estadístico
+Pre-Test (Manual)
+Post-Test (TravelSmart)
+Media (Promedio)
+230.10 s
+9.30 s
+Mediana
+227.50 s
+9.00 s
+Desviación Estándar
+34.25 s
+1.85 s
+Mínimo
+180.00 s
+7.00 s
+Máximo
+300.00 s
+14.00 s
 
 Nota: Datos obtenidos de la medición de tiempos mediante la función timer del sistema.
-
 Para profundizar en el análisis de la eficiencia, se desglosaron los tiempos promedio por tipo de actividad realizada durante la planificación.
+		Tabla 7 Desglose de Tiempos por Actividad (Segundos)
+Actividad
+Tiempo Manual (Pre-Test)
+Tiempo Sistema (Post-Test)
+Reducción (%)
+Búsqueda y Selección de Destinos
+95.50
+3.10
+96.75%
+Verificación de Disponibilidad y Clima
+65.20
+2.50
+96.16%
+Estructuración y Generación del Itinerario
+69.40
+3.70
+94.67%
+Total Promedio
+230.10
+9.30
+95.96%
 
-Tabla 7. Desglose de Tiempos por Actividad (Segundos)
-| Actividad | Tiempo Manual (Pre-Test) | Tiempo Sistema (Post-Test) | Reducción (%) |
-|---|---|---|---|
-| Búsqueda y Selección de Destinos | 95.50 | 3.10 | 96.75% |
-| Verificación de Disponibilidad y Clima | 65.20 | 2.50 | 96.16% |
-| Estructuración y Generación del Itinerario | 69.40 | 3.70 | 94.67% |
-| **Total Promedio** | **230.10** | **9.30** | **95.96%** |
-
-Interpretación: La Tabla 7 evidencia que la mayor ganancia de eficiencia se produce en la fase de búsqueda y selección (96.75%), donde el agente de IA procesa grandes volúmenes de información instantáneamente, tarea que manualmente requiere navegar múltiples sitios web.
-
-Contrastación de Hipótesis
+Elaboración propia a partir del análisis de tiempos del sistema.
+Interpretación: La Tabla 7 evidencia que la mayor ganancia de eficiencia se produce en la fase de búsqueda y selección (96.75%), donde el agente de IA procesa grandes volúmenes de información instantáneamente, tarea que manualmente requiere navegar múltiples sitios web para consolidar opciones. Asimismo, la verificación de disponibilidad y clima muestra una reducción crítica (96.16%), eliminando la necesidad de validaciones manuales cruzadas.
+3.3 Contrastación de Hipótesis
 Para verificar si las mejoras son estadísticamente significativas, se procedió primero a evaluar la normalidad de los datos.
-
 Prueba de Normalidad
 Se utilizó la prueba de Shapiro-Wilk procesando los datos recolectados de las 30 mediciones de tiempo y los promedios de satisfacción de los 15 encuestados.
+Tabla 7. Prueba de Normalidad de Shapiro-Wilk.
 
-Tabla 8. Prueba de Normalidad de Shapiro-Wilk.
-| Variable | Grupo | Estadístico (W) | Sig. (p-valor) | Distribución |
-|---|---|---|---|---|
-| Satisfacción | Pre-Test | 0.941 | 0.397 | Normal |
-| | Post-Test | 0.928 | 0.258 | Normal |
-| Tiempo | Pre-Test | 0.946 | 0.132 | Normal |
-| | Post-Test | 0.924 | 0.033* | Aprox. Normal |
+Variable
+Grupo
+Estadístico (W)
+Sig. (p-valor)
+Distribución
+Satisfacción
+Pre-Test
+0.941
+0.397
+Normal
+Post-Test
+0.928
+0.258
+Normal
+Tiempo
+Pre-Test
+0.946
+0.132
+Normal
+Post-Test
+0.924
+0.033*
+Aprox. Normal
+
 
 Si p-valor > 0.05, se acepta la hipótesis nula de normalidad.
 Se observa que en la mayoría de los grupos el p-valor es mayor a 0.05, aceptando la hipótesis de normalidad. Aunque el grupo de Tiempo Post-Test muestra una ligera desviación (p=0.033), dado que el tamaño de muestra es n=30, se procede a utilizar la prueba paramétrica T de Student para muestras relacionadas amparándose en el Teorema del Límite Central.
-
 Prueba de Hipótesis General: Nivel de Satisfacción
 H0: El promedio de satisfacción con el sistema TravelSmart es igual o menor al método manual (Upost <= Upre).
 H1: El promedio de satisfacción con el sistema TravelSmart es mayor al método manual (Upost >= Upre).
-
-Tabla 9. Prueba T de Student para muestras emparejadas (Satisfacción).
-| Comparación | Diferencia de Medias | t | gl | Sig. (bilateral) | Decisión |
-|---|---|---|---|---|---|
-| Post - Pre | 2.29 | 14.52 | 14 | 0.000 | Rechazar H0 |
+Tabla 8. Prueba T de Student para muestras emparejadas (Satisfacción).
+Comparación
+Diferencia de Medias
+t
+gl
+Sig. (bilateral)
+Decisión
+Post - Pre
+2.29
+14.52
+14
+0.000
+Rechazar H0
 
 Interpretación: Dado que el p-valor (0.000) es menor al nivel de significancia 0.05, se rechaza la hipótesis nula. Se concluye con un 95% de confianza que el sistema mejora significativamente el nivel de satisfacción del usuario.
-
 Prueba de Hipótesis Específica: Tiempo de Proceso
 H0: El tiempo promedio con TravelSmart es igual o mayor al método manual.
 H1: El tiempo promedio con TravelSmart es menor al método manual.
-
-Tabla 10. Prueba T de Student para muestras emparejadas (Tiempos).
-| Comparación | Diferencia de Medias | t | gl | Sig. (bilateral) | Decisión |
-|---|---|---|---|---|---|
-| Pre - Post | 220.80 | 35.12 | 29 | 0.000 | Rechazar H0 |
+Tabla 9. Prueba T de Student para muestras emparejadas (Tiempos).
+Comparación
+Diferencia de Medias
+t
+gl
+Sig. (bilateral)
+Decisión
+Pre - Post
+220.80
+35.12
+29
+0.000
+Rechazar H0
 
 Interpretación: La diferencia de medias es abrumadora (220.8 segundos de ahorro). Al ser la significancia 0.000 < 0.05, se acepta la hipótesis alterna: el sistema reduce significativamente el tiempo de planificación.
-
-Análisis del Tercer Indicador: Costos
+3.4 Análisis del Tercer Indicador: Costos
 Se realizó un análisis de costos unitarios comparando el costo de oportunidad del tiempo humano frente al consumo de recursos computacionales (API Gemini + n8n).
+Tabla 10 Comparativa de Costos Operativos por Itinerario Generado
 
-Tabla 11. Comparativa de Costos Operativos por Itinerario Generado
-| Indicador | Método Manual (Pre-Test) | Método Automático (TravelSmart) | Variación |
-|---|---|---|---|
-| Tiempo Promedio | 230.1 seg (3.83 min) | 9.3 seg (0.15 min) | -95.9% |
-| Costo Recurso Humano | S/. 0.96 | S/. 0.00 | -100% |
-| (Ref: S/. 15.00/hora) | | | |
-| Costo Tecnológico | S/. 0.00 | S/. 0.008 | +100% |
-| (Ref: Tokens Gemini + Server) | | | |
-| **COSTO TOTAL** | **S/. 0.96** | **S/. 0.008** | **-99.1%** |
+Indicador
+Método Manual (Pre-Test)
+Método Automático (TravelSmart)
+Variación
+Tiempo Promedio
+230.1 seg (3.83 min)
+9.3 seg (0.15 min)
+-95.9%
+Costo Recurso Humano
+(Ref: S/. 15.00/hora)
+S/. 0.96
+S/. 0.00
+-100%
 
+Costo Tecnológico
+(Ref: Tokens Gemini + Server)
+S/. 0.00
+S/. 0.008
++100%
+
+COSTO TOTAL
+S/. 0.96
+S/. 0.008
+-99.1%
+
+El cálculo asume un salario base de practicante/junior para el método manual y el costo por 1k tokens de Gemini Flash.
+Figura 2 Reducción de Costos Operativos (S/.) [Gráfico de barras: Una barra alta de 0.96 vs una barra casi invisible de 0.008]
+
+Se demuestra que el sistema permite un ahorro del 99.1% por cada transacción. Esto implica que la implementación del sistema recupera su inversión inicial rápidamente debido al alto volumen de consultas que puede procesar a un costo marginal cercano a cero.
+
+3.5. Resultados de las pruebas de rendimiento de software
+
+Para evaluar la robustez y la capacidad de respuesta del sistema TravelSmart, se realizaron pruebas de carga y estrés utilizando la herramienta Apache JMeter. El objetivo fue medir el comportamiento del backend (n8n + Gemini) bajo condiciones de concurrencia simulada.
+Se configuró un escenario de prueba ("Thread Group") simulando 20 usuarios virtuales simultáneos realizando peticiones al sistema en 5 ciclos de iteración, con un periodo de subida (ramp-up) de 10 segundos. Esto generó un total de 100 muestras (peticiones) para el análisis.
+Figura 3 Resumen de reporte de pruebas de carga en JMeter
+
+Captura de pantalla del software Apache JMeter evidenciando 0.00% de errores en 100 peticiones.
+
+Tabla 11
+
+Métrica
+Resultado obtenido
+Interpretación
+Muestras (Samples)
+100
+Total de peticiones procesadas exitosamente.
+Promedio (Average)
+389 ms
+Tiempo medio de respuesta del servidor (0.39 seg).
+Mínimo
+301 ms
+La respuesta más rápida registrada.
+Máximo
+3182 ms
+La respuesta más lenta registrada (pico de carga).
+Rendimiento (Throughput)
+2.3/sec
+El sistema procesa 2.3 transacciones por segundo.
+Porcentaje de Error
+0.00%
+Estabilidad total sin fallos de conexión.
+
+
+
+Fuente: Elaboración propia basada en el reporte de JMeter.
+Interpretación: Como se observa en la Tabla 9, el sistema demostró una alta estabilidad técnica. A pesar de la carga concurrente de 20 usuarios, el porcentaje de error se mantuvo en 0.00%, lo que garantiza que la arquitectura en n8n es capaz de gestionar colas de solicitudes sin colapsar.
+El tiempo promedio de respuesta del servidor fue de 389 milisegundos, con picos máximos de 3.1 segundos. Estos valores validan que la latencia de la API es mínima, contribuyendo a la fluidez general del sistema reportada en la sección de tiempos de proceso (4.2.2).
+Figura 4 Gráfico de Tiempos de Respuesta (Response Time Graph)
+
+Se observa que la mayoría de respuestas se mantienen estables por debajo de los 500 ms, con picos aislados propios de la variabilidad de la red.
 Discusión
-Los hallazgos de esta investigación corroboran la hipótesis de que la automatización inteligente reduce significativamente la carga operativa en la planificación de viajes. La reducción del 96% en el tiempo de procesamiento es consistente con estudios previos que destacan la velocidad de los sistemas basados en IA frente a la navegación web manual (Xiang et al., 2015).
-Asimismo, el análisis de costos revela un ahorro del 99.1%, validando que la inversión en tokens de IA es marginal comparada con el costo de oportunidad del tiempo humano. Esto sugiere que la implementación de agentes de IA no solo es técnicamente viable, sino altamente rentable para agencias de viajes o usuarios finales.
-La validación del instrumento (V de Aiken = 0.85) respalda la calidad de las métricas empleadas, y los altos valores de confiabilidad obtenidos en el análisis final confirman la solidez de los resultados de satisfacción.
-La alta tasa de éxito y los tiempos de respuesta sub-10 segundos demuestran que la arquitectura propuesta (Next.js + NestJS + n8n) es viable para entornos de producción, superando las limitaciones de latencia que a menudo afectan a los sistemas que integran múltiples servicios de terceros.
+Los resultados obtenidos en esta investigación permiten analizar de manera integral la validez, confiabilidad y desempeño operativo del sistema "TravelSmart", confirmando las hipótesis planteadas sobre la mejora en eficiencia y reducción de costos.
+
+Validez y Confiabilidad del Instrumento
+La validación por juicio de expertos, mediante el coeficiente V de Aiken, evidenció un alto nivel de validez de contenido del instrumento. El valor general de 0.8519 supera significativamente el umbral mínimo recomendado de 0.75 (Aiken, 1985; Merino-Soto, 2018), confirmando que los expertos coinciden en la pertinencia, claridad y coherencia de los ítems diseñados. Este resultado es consistente con estudios recientes en validación de instrumentos tecnológicos, donde valores superiores a 0.80 son considerados indicadores de excelente validez (Roebianto et al., 2023).
+En cuanto a la confiabilidad interna, el Alfa de Cronbach (0.921) y el Omega de McDonald (0.923) indican una consistencia interna robusta, superando el valor mínimo de 0.70 (Nunnally & Bernstein, 1994). Esto valida que el instrumento mide de manera homogénea la satisfacción y usabilidad, alineándose con estándares psicométricos rigurosos (Hayes & Coutts, 2020).
+
+Eficiencia Operativa y Reducción de Tiempo
+La automatización optimizó drásticamente los tiempos operativos. Al comparar el pretest manual (230.1s) con el postest (9.3s), se evidencia una reducción del 95.96%. Estos hallazgos confirman que el uso de LLMs como Google Gemini excede la capacidad de procesamiento humano en tareas de búsqueda y síntesis, validando empíricamente lo sugerido por Xiang et al. (2015) respecto a la velocidad de la IA. La arquitectura con n8n eliminó los cuellos de botella de la navegación manual, permitiendo generar itinerarios complejos en segundos.
+
+Impacto Económico y Viabilidad
+El análisis de costos revela un ahorro del 99.1% por transacción, reduciendo el costo de S/. 0.96 (manual) a S/. 0.008 (automático). Este resultado es consistente con reportes de la industria que destacan la rentabilidad de la automatización (Ivanov et al., 2022). Aunque el modelo de referencia menciona ahorros del 57.5% a nivel organizacional, nuestro enfoque por coste unitario demuestra que la escalabilidad del software permite diluir los costos fijos, haciendo que la solución sea viable incluso para microempresas o uso directo por el consumidor final. La alta tasa de éxito (0% de errores en pruebas de carga) y la baja latencia refuerzan la viabilidad técnica para un despliegue productivo.
 
 Conclusiones
-1. Se logró desarrollar e implementar exitosamente "TravelSmart", un sistema que integra capacidades de IA Generativa (Gemini) con datos en tiempo real, ofreciendo itinerarios factibles y personalizados.
-2. La evaluación experimental demostró una reducción del 96% en el tiempo de planificación, validando la eficiencia operativa del sistema frente a los métodos manuales.
-3. El instrumento de medición fue validado por expertos con un coeficiente V de Aiken de 0.85, asegurando la pertinencia de la evaluación de satisfacción, la cual alcanzó niveles de excelencia en el Post-Test.
-4. Se determinó una reducción de costos operativos del 99.1%, demostrando que la automatización mediante IA representa una ventaja competitiva significativa en términos de rentabilidad y eficiencia de recursos.
+Se logró implementar exitosamente el sistema web TravelSmart, utilizando una arquitectura de microservicios orquestada en n8n  y el modelo generativo Google Gemini 2.5 Flash. Las pruebas funcionales demostraron que la integración de APIs externas (OpenTripMap y OpenWeather) permite enriquecer los itinerarios en tiempo real, validando la viabilidad técnica de la solución propuesta.
+Se determinó que el sistema mejora significativamente el nivel de satisfacción de los usuarios. Los resultados evidenciaron un incremento en la valoración promedio de 2.44 (nivel bajo/medio) en el método manual a 4.73 (nivel alto) con el uso del aplicativo. La prueba T de Student para muestras relacionadas confirmó esta mejora con una significancia estadística de p < 0.05.
+Se demostró una optimización drástica en la eficiencia del proceso de planificación turística. El tiempo promedio de creación de un itinerario se redujo de 230.10 segundos (método manual) a solo 9.30 segundos (con TravelSmart), lo que representa una reducción del 95.9% en los tiempos de espera del usuario.
+El análisis del tercer indicador reveló una reducción del 99.1% en los costos operativos por transacción. Al comparar el costo del recurso humano necesario para la planificación manual (S/. 0.96 por itinerario) frente al costo de consumo de tokens y servidor del sistema (S/. 0.008), se confirma que la automatización mediante agentes de IA es una estrategia altamente rentable y escalable.
+
+Recomendaciones
+Se recomienda integrar un módulo transaccional (pasarela de pagos y conexión con APIs de reserva como Amadeus o Booking) dentro del flujo de n8n. Esto permitiría cerrar el ciclo comercial, facilitando que el usuario no solo planifique su viaje, sino que también pueda adquirir los servicios sugeridos (hoteles y tours) directamente desde la plataforma.
+Para futuras versiones, se sugiere implementar un sistema de aprendizaje continuo (Machine Learning) que utilice el historial de interacciones almacenado en PostgreSQL. De esta forma, el agente de IA podría identificar patrones de preferencia del usuario a largo plazo y ofrecer recomendaciones hiper-personalizadas sin necesidad de prompts detallados en cada sesión.
+Considerando que los turistas requieren acceso a la información durante su desplazamiento (in-trip), se recomienda desarrollar una versión Progressive Web App (PWA) o una aplicación móvil nativa. Esto facilitaría el acceso a los itinerarios en zonas con conectividad limitada y permitiría el uso de geolocalización en tiempo real para sugerencias contextuales.
+
+
+
+
+
+
+
+
 
 Referencias
-Borràs, J., Moreno, A., & Valls, A. (2014). Intelligent tourism recommender systems: A survey. Expert Systems with Applications, 41(16), 7370–7389. https://doi.org/10.1016/j.eswa.2014.06.007 
-Buhalis, D., & Law, R. (2008). Progress in information technology and tourism management: 20 years on and 10 years after the Internet—The state of eTourism research. Tourism Management, 29(4), 609–623. https://doi.org/10.1016/j.tourman.2008.01.005 
-Calvaresi, D., Ibrahim, A., Calbimonte, J.-P., Schegg, R., Fragnière, E., & Schumacher, M. (2021). The evolution of chatbots in tourism: A systematic literature review. In Information and Communication Technologies in Tourism 2021 (pp. 3–16). Springer. https://doi.org/10.1007/978-3-030-65785-7_1 
+Aiken, L. R. (1980). Content validity and reliability of single items or questionnaires. Educational and Psychological Measurement, 40(4), 955-959.
+Aiken, L. R. (1985). Three coefficients for analyzing the reliability and validity of ratings. Educational and Psychological Measurement, 45(1), 131-142.
+Borràs, J., Moreno, A., & Valls, A. (2014). Intelligent tourism recommender systems: A survey. Expert Systems with Applications, 41(16), 7370–7389.
+Buhalis, D., & Law, R. (2008). Progress in information technology and tourism management: 20 years on and 10 years after the Internet—The state of eTourism research. Tourism Management, 29(4), 609–623.
+Calvaresi, D., et al. (2021). The evolution of chatbots in tourism: A systematic literature review. In Information and Communication Technologies in Tourism 2021 (pp. 3–16). Springer.
 Cerna, J. Y., Hernández-Peñaloza, G., Gaudiano, P., & Vargas, G. (2022). A systematic literature review for the Tourist Trip Design Problem. Journal of Industrial Information Integration, 26, 100253.
-Chaudhari, K., & Thakkar, A. (2019). A comprehensive survey on travel recommender systems. Archives of Computational Methods in Engineering. https://doi.org/10.1007/s11831-019-09363-7
-Gavalas, D., Konstantopoulos, C., Mastakas, K., & Pantziou, G. E. (2014). A survey on algorithmic approaches for solving tourist trip design problems. Journal of Heuristics, 20(3), 291–328. https://doi.org/10.1007/s10732-014-9242-5 
-Ricci, F. (2022). Recommender systems in tourism. In Z. Xiang, M. Fuchs, U. Gretzel, & W. Höpken (Eds.), Handbook of e-Tourism. Springer. https://doi.org/10.1007/978-3-030-48652-5_26 
-Souffriau, W., Vansteenwegen, P., Vanden Berghe, G., & Van Oudheusden, D. (2011). The planning of cycle trips in the province of East Flanders. Omega, 39(2), 209–213. https://doi.org/10.1016/j.omega.2010.05.001 
-Vansteenwegen, P., Souffriau, W., & Van Oudheusden, D. (2011). The orienteering problem: A survey. European Journal of Operational Research, 209(1), 1–10. https://doi.org/10.1016/j.ejor.2010.03.045 
-Werthner, H., & Ricci, F. (2004). Electronic commerce and tourism. Communications of the ACM, 47(12), 101–105. https://doi.org/10.1145/1035134.1035141 
-Xiang, Z., & Fesenmaier, D. R. (2020). Travel information search. In Z. Xiang, M. Fuchs, U. Gretzel, & W. Höpken (Eds.), Handbook of e-Tourism. Springer. https://doi.org/10.1007/978-3-030-05324-6_55-1 
-Xiang, Z., & Gretzel, U. (2010). Role of social media in online travel information search. Tourism Management, 31(2), 179–188. https://doi.org/10.1016/j.tourman.2009.02.016 
-Xiang, Z., Magnini, V. P., & Fesenmaier, D. R. (2015). Information technology and consumer behavior in travel and tourism: Insights from travel planning using the Internet. Journal of Retailing and Consumer Services, 22, 244–249. https://doi.org/10.1016/j.jretconser.2014.08.005 
-Yin, H., et al. (2015). Topic-based context-aware travel recommendation method exploiting geotagged photos and travel histories. Neurocomputing, 168, 539–555. https://doi.org/10.1016/j.neucom.2015.05.095 
-Zanker, M., & Ricci, F. (2014). Recommending, contextualizing, and personalizing POIs. Information Technology & Tourism, 14(2), 105–107.*
-Kurashima, T., Iwata, T., Irie, G., & Fujimura, K. (2013). Travel route recommendation using geotagged photos. Knowledge and Information Systems, 37(1), 37–60. https://doi.org/10.1007/s10115-012-0580-z 
+Chaudhari, K., & Thakkar, A. (2019). A comprehensive survey on travel recommender systems. Archives of Computational Methods in Engineering.
+Cronbach, L. J. (1951). Coefficient alpha and the internal structure of tests. Psychometrika, 16(3), 297-334.
+Gavalas, D., Konstantopoulos, C., Mastakas, K., & Pantziou, G. E. (2014). A survey on algorithmic approaches for solving tourist trip design problems. Journal of Heuristics, 20(3), 291–328.
+Hayes, A. F., & Coutts, J. J. (2020). Use Omega Rather than Cronbach's Alpha for Estimating Reliability. Communication Methods and Measures, 14(1), 1-24.
+Ivanov, S., Webster, C., & Berezina, K. (2022). Adoption of robots, artificial intelligence and service automation by travel, tourism and hospitality companies – A cost-benefit analysis. Emerald Publishing Limited.
+McDonald, R. P. (1999). Test theory: A unified treatment. Lawrence Erlbaum Associates.
+Merino-Soto, C. (2018). Confidence interval for difference between coefficients of content validity (Aiken's V): A SPSS syntax. Anales de Psicología, 34(3), 587-590.
+Nunnally, J. C., & Bernstein, I. H. (1994). Psychometric theory (3rd ed.). McGraw-Hill.
+Ricci, F. (2022). Recommender systems in tourism. In Handbook of e-Tourism. Springer.
+Roebianto, A., Savitri, S. I., Aulia, I., Suciyana, A., & Mubarokah, L. (2023). Content validity: Definition and procedure of content validation. TPM, 30(1), 5-18.
+Souffriau, W., Vansteenwegen, P., Vanden Berghe, G., & Van Oudheusden, D. (2011). The planning of cycle trips in the province of East Flanders. Omega, 39(2), 209–213.
+Vansteenwegen, P., Souffriau, W., & Van Oudheusden, D. (2011). The orienteering problem: A survey. European Journal of Operational Research, 209(1), 1–10.
+Werthner, H., & Ricci, F. (2004). Electronic commerce and tourism. Communications of the ACM, 47(12), 101–105.
+Xiang, Z., & Fesenmaier, D. R. (2020). Travel information search. In Handbook of e-Tourism. Springer.
+Xiang, Z., & Gretzel, U. (2010). Role of social media in online travel information search. Tourism Management, 31(2), 179–188.
+Xiang, Z., Magnini, V. P., & Fesenmaier, D. R. (2015). Information technology and consumer behavior in travel and tourism. Journal of Retailing and Consumer Services, 22, 244–249.
+Yin, H., et al. (2015). Topic-based context-aware travel recommendation method exploiting geotagged photos and travel histories. Neurocomputing, 168, 539–555.
+Zanker, M., & Ricci, F. (2014). Recommending, contextualizing, and personalizing POIs. Information Technology & Tourism, 14(2), 105–107.
 Zhang, S., Yao, L., Sun, A., & Tay, Y. (2022). A comprehensive survey on trustworthy recommender systems. arXiv preprint arXiv:2209.10117.
+
+ANEXOS
+A. Instrumento de Recolección de Datos (Cuestionario)
+CUESTIONARIO DE SATISFACCIÓN Y USABILIDAD - TRAVELSMART
+Instrucciones: Evalúe su experiencia con el sistema utilizando la escala: 1 (Totalmente en desacuerdo) a 5 (Totalmente de acuerdo).
+
+DIMENSIÓN 1: Claridad e Intuitividad
+R1. La interfaz del sistema es clara y fácil de entender.
+R2. Fue sencillo encontrar la información que necesitaba.
+R3. Los pasos para generar el itinerario fueron intuitivos.
+
+DIMENSIÓN 2: Eficiencia
+R4. El sistema generó el itinerario en un tiempo razonable.
+R5. El sistema me ayudó a planificar mi viaje más rápido que hacerlo manualmente.
+R6. La información proporcionada fue precisa y útil.
+
+DIMENSIÓN 3: Fiabilidad y Confianza
+R7. Siento confianza en las recomendaciones dadas por el sistema.
+R8. El sistema funcionó sin errores durante mi interacción.
+R9. Volvería a usar este sistema para planificar futuros viajes.

@@ -20,9 +20,13 @@ TRUJILLO–PERÚ
 
 Sistema de Guía Turística Virtual con IA Generativa y Automatización: Arquitectura Escalable con n8n y OpenAI GPT-4
 Resumen
+El presente estudio analiza el impacto de un sistema de guía turística virtual basado en inteligencia artificial generativa y automatización de flujos de trabajo mediante una arquitectura escalable que integra n8n, OpenAI GPT-4, Supabase, Streamlit, ElevenLabs y Stripe. Se implementó un diseño cuantitativo experimental con 25 usuarios finales, evaluando eficiencia operativa, usabilidad y rendimiento técnico mediante indicadores como reducción de tiempo en procesos manuales, nivel de satisfacción del usuario (SUS), reducción de costos operativos (ROI), y métricas de rendimiento del sistema. La validación del instrumento mediante V de Aiken alcanzó 0.8889, mientras que la confiabilidad presentó valores de Alfa de Cronbach de 88.75% y Omega de McDonald de 0.89. Los resultados evidencian una reducción temporal del 98% en la generación de itinerarios personalizados, disminuyendo de 2,650.15 a 45.30 segundos. El sistema demostró capacidad para soportar 50 usuarios simultáneos con una tasa de éxito del 99.38% y tiempo promedio de respuesta de 144 ms. Se observó una reducción de costos operativos del 57.50% con un ROI de 144.56% a 12 meses. La tasa de completitud de tareas aumentó de 60% a 85%. Se concluye que la arquitectura propuesta es técnicamente viable, operativamente eficiente y económicamente rentable, representando una solución escalable para la democratización del turismo inteligente mediante automatización de servicios basados en IA generativa.
 Palabras Clave: 
+Inteligencia artificial generativa, automatización de flujos de trabajo, guía turística virtual, n8n, OpenAI GPT-4.
 Abstract
+This study analyzes the impact of a virtual tourist guide system based on generative artificial intelligence and workflow automation through a scalable architecture integrating n8n, OpenAI GPT-4, Supabase, Streamlit, ElevenLabs, and Stripe. An experimental quantitative design was implemented with 25 end users, evaluating operational efficiency, usability, and technical performance through indicators such as reduction in manual process time, user satisfaction level (SUS), reduction in operating costs (ROI), and system performance metrics. Instrument validation through Aiken's V reached 0.8889, while reliability showed Cronbach's Alpha values of 88.75% and McDonald's Omega of 0.89. Results demonstrate a 98% time reduction in personalized itinerary generation, decreasing from 2,650.15 to 45.30 seconds. The system demonstrated capacity to support 50 simultaneous users with a 99.38% success rate and average response time of 144 ms. A 57.50% reduction in operating costs was observed with an ROI of 144.56% at 12 months. Task completion rate increased from 60% to 85%. It is concluded that the proposed architecture is technically viable, operationally efficient, and economically profitable, representing a scalable solution for the democratization of intelligent tourism through automation of services based on generative AI.
 Keywords: 
+Generative artificial intelligence, workflow automation, virtual tourist guide, n8n, OpenAI GPT-4.
 Introducción
 A través de los últimos años, la industria turística global ha experimentado una transformación digital de una forma acelerada, representando aproximadamente USD 2.95 billones en 2024 en el mercado de IA aplicada al turismo, con proyecciones de alcanzar USD 13.38 billones para 2030, con una tasa de crecimiento anual compuesta (CAGR) del 28.7% (Abdella et al., 2024). Este crecimiento exponencial refleja la creciente demanda de soluciones tecnológicas que personalicen y optimicen la experiencia turística. Se observa que una de las variante más prometedoras de estas innovaciones vienen a ser los sistemas de guía turística virtual basados en inteligencia artificial generativa, las cuales poseen capacidades superiores para ofrecer recomendaciones contextualizadas en tiempo real, resaltando la gran importancia de la automatización inteligente en la gestión de servicios turísticos (Shrestha et al., 2024; Premananthan et al., 2024). Cabe resaltar que, los métodos tradicionales de asistencia turística aún se encuentran basados en guías con humanos o contenido estático, que representan unos métodos de menor eficiencia y escalabilidad en comparación con las arquitecturas automatizadas emergentes (Núñez-Pérez et al., 2024).
 Nuevas investigaciones demostraron que los sistemas de recomendación turística basados en aprendizaje automático y procesamiento de lenguaje natural son capaces de personalizar itinerarios con alta precisión, alcanzando exactitudes del 77.3% en contextos de recomendación en tiempo real (Yoon et al., 2023). Además, algunos estudios del 2022 mostraron el uso exitoso de técnicas de deep learning combinadas con internet de las cosas para mejorar las recomendaciones de atracciones turísticas en ciudades inteligentes, optimizando la experiencia del usuario mediante análisis de datos contextuales como clima, ubicación y preferencias personales (Cepeda-Pacheco & Domingo, 2022). Asimismo, investigaciones recientes han demostrado la efectividad de chatbots y asistentes virtuales basados en IA, demostrando una mejora del 25% en la satisfacción general del cliente en la industria de viajes (Camilleri & Troise, 2023). En este contexto, estudios sobre IA conversacional en turismo han identificado que la integración de modelos de lenguaje grandes como ChatGPT genera beneficios significativos en la personalización de servicios turísticos, aunque también presentan desafíos relacionados con la precisión de información y gestión de expectativas del usuario (Carvalho & Ivanov, 2024; Pongsakornrungsilp et al., 2025). En especial, ciertas aplicaciones que utilizan modelos avanzados de GPT han venido demostrando últimamente capacidades superiores en la clasificación de reseñas de clientes y un análisis de sentimientos destacable, esto ha superado a otros modelos como BERT que han sido tradicionales en las tareas de procesamiento de lenguaje natural que han sido aplicadas en el sector turístico (Roumeliotis et al., 2024).
@@ -30,246 +34,180 @@ Sin embargo, en la actualidad varias investigaciones han venido identificando br
 Aunque la inteligencia artificial ha demostrado capacidades excepcionales con algoritmos que generan recomendaciones turísticas personalizadas y procesan lenguaje natural para asistencia virtual, existe mucho por recorrer para que estos sistemas funcionen de manera integrada, automatizada y escalable en entornos de producción reales. Este abismo de automatización se debe a que las arquitecturas tradicionales requieren integración manual de múltiples servicios, los flujos de trabajo son complejos y difíciles de mantener, y es complicado coordinar la comunicación entre componentes heterogéneos como el frontend, backend, bases de datos y APIs externas (Chen, 2024). Es por ello que, como no existen arquitecturas estandarizadas para orquestar sistemas de guía turística virtual que integren IA generativa, recomendaciones contextuales, audio-guías inteligentes y monetización automatizada, es difícil que las empresas turísticas adopten estas soluciones a escala, lo cual impide la democratización del turismo inteligente y, por tanto, la mejora de la experiencia del viajero moderno (Sarkar et al., 2023).
 Este estudio describe un reto real en la implementación práctica de sistemas de guía turística virtual, el cual es el desarrollo de una arquitectura escalable y automatizada que integre múltiples servicios de inteligencia artificial como OpenAI GPT-4 para audio-guías generativas, Google Maps para datos de puntos de interés, ElevenLabs para síntesis de voz, todo ello, mediante una plataforma de orquestación de flujos de trabajo como n8n, conectada a una base de datos robusta la cual es Supabase y un sistema de pagos conocido como Stripe, se coordina a través de una interfaz web moderna la cual es Streamlit. De esta forma, se busca mostrar una integración eficaz de servicios heterogéneos, reduciendo los tiempos de desarrollo de meses a semanas, y facilitando escalar el sistema con el uso de automatizaciones, aspectos clave para vincular investigación teórica con aplicaciones comerciales actuales. Asimismo, el trabajo contribuye a crear evidencia empírica que impulse la adopción de tecnologías de automatización inteligente en el sector turístico a través de  evaluar la eficiencia operativa, la precisión de las recomendaciones contextuales y la viabilidad técnica de la arquitectura propuesta.
 La presente investigación tiene como objetivos 1) analizar el impacto de un sistema de guía turística virtual basado en inteligencia artificial generativa y automatización de flujos de trabajo mediante una arquitectura basada en n8n y 2) evaluar en este sentido, su eficiencia operativa, precisión en las recomendaciones y viabilidad técnica en distintos contextos. Para lograr este objetivo, se plantean los siguientes objetivos específicos:
-Diseñar e implementar un sistema escalable,  que integre servicios de IA generativa de texto y audio, API’s de geolocalización, procesamiento de pagos y orquestación centralizada con n8n.
-Analizar la eficacia del sistema de recomendaciones contextuales y audioguías inteligentes empleando indicadores como precisión, velocidad de respuesta y nivel de satisfacción de los usuarios, estableciendo una comparación con los sistemas convencionales de asistencia turística.
-Cuantificar las ventajas operativas de la automatización de workflows en términos de tiempos de desarrollo, escalabilidad del sistema, reducción de errores manuales, y costo efectividad de la integración de múltiples servicios de terceros.
+1.	Diseñar e implementar un sistema escalable,  que integre servicios de IA generativa de texto y audio, API’s de geolocalización, procesamiento de pagos y orquestación centralizada con n8n.
+2.	Analizar la eficacia del sistema de recomendaciones contextuales y audioguías inteligentes empleando indicadores como precisión, velocidad de respuesta y nivel de satisfacción de los usuarios, estableciendo una comparación con los sistemas convencionales de asistencia turística.
+3.	Cuantificar las ventajas operativas de la automatización de workflows en términos de tiempos de desarrollo, escalabilidad del sistema, reducción de errores manuales, y costo efectividad de la integración de múltiples servicios de terceros.
 El resto del artículo se estructurará de la siguiente manera, con una metodología que describe el diseño e implementación de la arquitectura del sistema, incluyendo la configuración de n8n para orquestación de flujos de trabajo, la integración de servicios de IA y APIs externas, el desarrollo del frontend con Streamlit, y la configuración de la base de datos Supabase. En los resultados se presentan las métricas de desempeño del sistema, incluyendo tiempos de respuesta, precisión de recomendaciones, tasas de error, y análisis de satisfacción del usuario. La discusión analiza las implicaciones prácticas de la arquitectura propuesta, comparándola con enfoques tradicionales y evaluando su viabilidad para escalamiento comercial. Finalmente, las conclusiones exponen los hallazgos clave, destacan las contribuciones del estudio al campo del turismo inteligente, y proponen direcciones para futuras investigaciones en automatización de sistemas turísticos basados en IA.
 Métodos y Materiales
 La investigación se desarrolló bajo un enfoque cuantitativo y experimental, mediante la implementación y evaluación de un Sistema de Guía Turística Virtual con IA Generativa y Automatización, utilizando una arquitectura escalable basada en n8n, OpenAI GPT-4, Supabase, Streamlit, ElevenLabs y Stripe. El propósito fue analizar el impacto operativo, la usabilidad y la eficiencia técnica del sistema en comparación con métodos tradicionales de asistencia turística.
 El prototipo se construyó integrando los siguientes componentes:
-n8n: plataforma de orquestación de flujos automatizados.
-OpenAI GPT-4: generación de texto y recomendaciones contextuales.
-Supabase: gestión de base de datos PostgreSQL y autenticación.
-Streamlit: desarrollo del frontend web interactivo.
+●	n8n: plataforma de orquestación de flujos automatizados.
+●	OpenAI GPT-4: generación de texto y recomendaciones contextuales.
+●	Supabase: gestión de base de datos PostgreSQL y autenticación.
+●	Streamlit: desarrollo del frontend web interactivo.
 ElevenLabs API: conversión texto-a-voz para audioguías.
-Stripe API: procesamiento de pagos automatizado.
+●	Stripe API: procesamiento de pagos automatizado.
 Las pruebas se realizaron en un entorno controlado con usuarios finales (n=25), simulando escenarios reales de búsqueda y planificación de viajes turísticos.
 Con el objetivo de asegurar la trazabilidad entre los objetivos de investigación y los resultados, se definió un catálogo de indicadores alineado con tres dimensiones clave: eficiencia operativa, usabilidad del sistema y rendimiento técnico.
 El mapeo de indicadores con objetivos específicos se detalla a continuación, en la Tabla 1:
 Tabla 1. Mapeo de indicadores con objetivos específicos
-Objetivo Específico
-Indicador
-Definición
-Fórmula
-Unidad de medida
-Instrumento
-Valor esperado
-Diseñar e implementar un sistema escalable que integre servicios de IA generativa de texto y audio, APIs de geolocalización, procesamiento de pagos y orquestación centralizada con n8n.
-Reducción del Tiempo en Procesos Manuales
-Evalúa la eficiencia lograda al automatizar flujos de trabajo antes ejecutados manualmente.
-(TiempoManual−TiempoAutomatizado)/TiempoManual×100
-Porcentaje (%)
-Cronómetro digital, logs de ejecución en n8n y Supabase
->=70% de reducción del tiempo operacional. Una reducción mayor indica mayor eficiencia y escalabilidad del sistema
-Analizar la eficacia del sistema de recomendaciones contextuales y audioguías inteligentes empleando indicadores como precisión, velocidad de respuesta y nivel de satisfacción de los usuarios.
-Nivel de Satisfacción de los Usuarios (System Usability Scale – SUS adaptada)
-Evalúa la usabilidad y experiencia del usuario final en el uso del sistema de guía turística virtual. Incluye 9 reactivos distribuidos en: claridad e intuitividad de la interfaz, eficiencia y rendimiento, y fiabilidad y confianza
-Puntaje promedio SUS = (∑ Puntajes × 2.5) → Escala 0–100
-Puntos (0–100)
-Encuesta tipo Likert (1–5) aplicada a usuarios finales (n=25)
->68 puntos indica buena usabilidad y aceptación del sistema por los usuarios.
-Cuantificar las ventajas operativas de la automatización de workflows en términos de tiempos de desarrollo, escalabilidad, reducción de errores manuales y costo-efectividad.
-Reducción de Costos Operativos por Automatización (Return on Investment - ROI)
-Cuantifica el ahorro económico obtenido por la automatización de procesos turísticos, considerando la reducción de horas-hombre, disminución de errores manuales y menor uso de herramientas manuales, con el objetivo de evaluar la costo-efectividad de la implementación.
-Ahorro Mensual=(Horas ahorradas×Costo hora empleado)+Reduccioˊn herramientas manuales 
-ROI (%)=((Beneficios−Costos)/Costos) x 100
-Soles / mes
+Objetivo Específico	Indicador	Definición	Fórmula	Unidad de medida	Instrumento	Valor esperado
+Diseñar e implementar un sistema escalable que integre servicios de IA generativa de texto y audio, APIs de geolocalización, procesamiento de pagos y orquestación centralizada con n8n.	Reducción del Tiempo en Procesos Manuales	Evalúa la eficiencia lograda al automatizar flujos de trabajo antes ejecutados manualmente.	(TiempoManual−TiempoAutomatizado)/TiempoManual×100	Porcentaje (%)	Cronómetro digital, logs de ejecución en n8n y Supabase	>=70% de reducción del tiempo operacional. Una reducción mayor indica mayor eficiencia y escalabilidad del sistema
+Analizar la eficacia del sistema de recomendaciones contextuales y audioguías inteligentes empleando indicadores como precisión, velocidad de respuesta y nivel de satisfacción de los usuarios.	Nivel de Satisfacción de los Usuarios (System Usability Scale – SUS adaptada)	Evalúa la usabilidad y experiencia del usuario final en el uso del sistema de guía turística virtual. Incluye 9 reactivos distribuidos en: claridad e intuitividad de la interfaz, eficiencia y rendimiento, y fiabilidad y confianza	Puntaje promedio SUS = (∑ Puntajes × 2.5) → Escala 0–100	Puntos (0–100)	Encuesta tipo Likert (1–5) aplicada a usuarios finales (n=25)	>68 puntos indica buena usabilidad y aceptación del sistema por los usuarios.
+Cuantificar las ventajas operativas de la automatización de workflows en términos de tiempos de desarrollo, escalabilidad, reducción de errores manuales y costo-efectividad.	Reducción de Costos Operativos por Automatización (Return on Investment - ROI)	Cuantifica el ahorro económico obtenido por la automatización de procesos turísticos, considerando la reducción de horas-hombre, disminución de errores manuales y menor uso de herramientas manuales, con el objetivo de evaluar la costo-efectividad de la implementación.	Ahorro Mensual=(Horas ahorradas×Costo hora empleado)+Reduccioˊn herramientas manuales 
+ROI (%)=((Beneficios−Costos)/Costos) x 100	Soles / mes
 
-%(ROI)
-Registros contables, reportes de ejecución, y estimaciones de horas-hom
-bre
-- Ahorro mensual ≥ 1 500 soles
+%(ROI)	Registros contables, reportes de ejecución, y estimaciones de horas-hom
+bre	- Ahorro mensual ≥ 1 500 soles
 
 - ROI > 200 %. Un valor superior refleja una implementación costo-efectiva.
-
 Los instrumentos de medición empleados fueron:
-Cronómetro digital: utilizado para medir el tiempo antes y después de la automatización de workflows.
-Encuesta de usabilidad (SUS modificada): conformada por 9 reactivos distribuidos en tres dimensiones: Eficiencia percibida (fluidez y rapidez del sistema), facilidad de uso (claridad de interfaz y navegación) y satisfacción general (agrado y disposición de uso futuro).
-Logs de ejecución en n8n y Supabase: para registrar métricas de throughput, latencia, y éxito de automatizaciones.
-Simulador de carga (Apache JMeter): empleado para calcular indicadores de rendimiento (APDEX y latencia promedio).
-Formulario digital postuso (CSAT): para capturar la satisfacción general del usuario con las audioguías generativas.
+●	Cronómetro digital: utilizado para medir el tiempo antes y después de la automatización de workflows.
+●	Encuesta de usabilidad (SUS modificada): conformada por 9 reactivos distribuidos en tres dimensiones: Eficiencia percibida (fluidez y rapidez del sistema), facilidad de uso (claridad de interfaz y navegación) y satisfacción general (agrado y disposición de uso futuro).
+●	Logs de ejecución en n8n y Supabase: para registrar métricas de throughput, latencia, y éxito de automatizaciones.
+●	Simulador de carga (Apache JMeter): empleado para calcular indicadores de rendimiento (APDEX y latencia promedio).
+●	Formulario digital postuso (CSAT): para capturar la satisfacción general del usuario con las audioguías generativas.
 El proceso experimental definido comprende 5 fases, las cuales fueron:
-Fase 1 – Línea Base:
+1.	Fase 1 – Línea Base:
  Medición de tiempos de procesos manuales y nivel de satisfacción con herramientas tradicionales.
-Fase 2 – Implementación del Sistema:
+2.	Fase 2 – Implementación del Sistema:
  Desarrollo e integración de la arquitectura automatizada basada en n8n, GPT-4, Supabase y Streamlit.
-Fase 3 – Ejecución de Pruebas:
+3.	Fase 3 – Ejecución de Pruebas:
  Los usuarios ejecutaron tareas turísticas (búsqueda, generación de itinerarios, audioguías y pagos) bajo condiciones controladas.
-Fase 4 – Recolección de Datos:
+4.	Fase 4 – Recolección de Datos:
  Captura de métricas de rendimiento, tiempos y encuestas de usabilidad.
-Fase 5 – Análisis y Validación:
+5.	Fase 5 – Análisis y Validación:
  Se aplicó estadística descriptiva para evaluar la eficiencia y satisfacción, comparando resultados antes y después de la automatización.
 Todo ello comprende los indicadores cuantitativos los cuales fueron tiempo, throughput y APDEX, en cuanto a los indicadores cualitativos fueron SUS y CSAT permitió medir de manera integral la eficiencia operativa, usabilidad percibida y viabilidad técnica del sistema de guía turística virtual, aportando evidencia empírica sobre el impacto positivo de la automatización inteligente en la optimización de servicios turísticos basados en IA generativa.
 Resultados
+El sistema de Guía Turística Virtual desarrollado se compone de varios módulos principales interconectados mediante la arquitectura de automatización propuesta. La Figura 1 presenta la interfaz principal del sistema, donde se visualizan las ciudades destacadas más reservadas por la comunidad de usuarios.
+Figura 1. Interfaz principal del sistema.
+ 
+La Figura 2 muestra el módulo explorar ciudades, que implementa un sistema de búsqueda y filtrado avanzado. Los usuarios pueden buscar destinos específicos mediante un campo de texto libre, aplicar filtros por país, idioma y moneda mediante menús desplegables, y ajustar el rango de precios mediante un control deslizante interactivo. El sistema permite ordenar los resultados alfabéticamente o por otros criterios relevantes, y ofrece dos modos de visualización: tarjetas o tabla.
+Figura 2. Módulo de explorar ciudades.
+ 
+El módulo puntos de interés presentado en la Figura 3, lista las atracciones turísticas disponibles en el destino seleccionado. Cada punto de interés muestra información estructurada, calificación promedio basada en reseñas de usuarios, duración estimada de la visita, precio de entrada, ubicación específica dentro de la ciudad, y una breve descripción. 
+Figura 3. Módulo de puntos de interés.
+ 
+La Figura 4 presenta el generador de reportes, herramienta administrativa que permite crear informes personalizados en formato PDF. 
+Figura 4. Módulo generador de reportes.
+ 
 Validación del Instrumento
-Validez de Contenido mediante Coeficiente V de aiken
+●	Validez de Contenido mediante Coeficiente V de aiken
 La validación del instrumento de usabilidad se realizó mediante juicio de expertos, contando con la participación de tres especialistas citados en artículos de investigación. La Tabla 1 presenta los valores asignados por cada juez a los nueve reactivos del cuestionario, junto con el coeficiente V de Aiken calculado para cada ítem.
 Tabla 2. Resultados de la Validación por Juicio de Expertos
-Reactivo
-Juez 1
-Juez 2
-Juez 3
-V de Aiken por reactivo
-R1
-5
-5
-4
-0.9167
-R2
-4
-5
-5
-0.9167
-R3
-5
-4
-4
-0.8333
-R4
-4
-5
-4
-0.8333
-R5
-5
-4
-5
-0.9167
-R6
-4
-5
-4
-0.8333
-R7
-5
-5
-5
-1
-R8
-5
-4
-5
-0.9167
-R9
-4
-5
-4
-0.8333
-V de Aiken General
-0.8889
+Reactivo	Juez 1	Juez 2	Juez 3	V de Aiken por reactivo
+R1	5	5	4	0.9167
+R2	4	5	5	0.9167
+R3	5	4	4	0.8333
+R4	4	5	4	0.8333
+R5	5	4	5	0.9167
+R6	4	5	4	0.8333
+R7	5	5	5	1
+R8	5	4	5	0.9167
+R9	4	5	4	0.8333
+V de Aiken General	0.8889
 
 
 
-Los valores del coeficiente V de Aiken oscilaron entre 0.8333 y 1.0000, con un valor general de 0.8889, se evidencia en la Figura 1, lo que indica un alto nivel de acuerdo entre los expertos respecto a la pertinencia, claridad y coherencia de los ítems. Según Aiken (1985), valores superiores a 0.75 son considerados aceptables para garantizar la validez del contenido del instrumento. Los resultados obtenidos superan ampliamente este umbral, confirmando que el cuestionario es apropiado para medir la usabilidad del sistema de guía turística virtual propuesto.
-Figura 1. Análisis de Concordancia de Jueces V de Aiken.
-
-Confiabilidad del Instrumento
-Coeficiente de Alfa de Cronbach
+Los valores del coeficiente V de Aiken oscilaron entre 0.8333 y 1.0000, con un valor general de 0.8889, se evidencia en la Figura 5, lo que indica un alto nivel de acuerdo entre los expertos respecto a la pertinencia, claridad y coherencia de los ítems. Según Aiken (1985), valores superiores a 0.75 son considerados aceptables para garantizar la validez del contenido del instrumento. Los resultados obtenidos superan ampliamente este umbral, confirmando que el cuestionario es apropiado para medir la usabilidad del sistema de guía turística virtual propuesto.
+Figura 5. Análisis de Concordancia de Jueces V de Aiken.
+ 
+●	Confiabilidad del Instrumento
+○	Coeficiente de Alfa de Cronbach
 Para evaluar la consistencia interna del instrumento, se calculó el coeficiente alfa de Cronbach tanto para la variable total como para cada una de sus dimensiones. La Tabla 3 presenta los valores obtenidos mediante este análisis estadístico, aplicado a los datos recolectados de 15 usuarios que interactuaron con el sistema.
 		Tabla 3. Resultados de la prueba de confiabilidad 
-Variable / Dimensión evaluada
-Ítems
-Alfa de Cronbach
-Variable dependiente: Usabilidad del sistema
-1 - 9
-(n = 9)
-88.75%
-Dimensión 1: Claridad e intuitividad de la interfaz
-1 - 3
-(n = 9)
-84.12%
-Dimensión 2: Eficiencia y rendimiento
-4 - 6
-(n = 9)
-73.81%
-Dimensión 3: Fiabilidad y confianza
-7 - 9
-(n = 9)
-79.19%
+Variable / Dimensión evaluada	Ítems	Alfa de Cronbach
+Variable dependiente: Usabilidad del sistema	1 - 9
+(n = 9)	88.75%
+Dimensión 1: Claridad e intuitividad de la interfaz	1 - 3
+(n = 9)	84.12%
+Dimensión 2: Eficiencia y rendimiento	4 - 6
+(n = 9)	73.81%
+Dimensión 3: Fiabilidad y confianza	7 - 9
+(n = 9)	79.19%
 
 
 Los resultados indican que el instrumento posee una alta consistencia interna. El alfa de Cronbach para la variable total alcanzó un valor de 88.75%, mientras que los valores para las dimensiones individuales oscilaron entre 73.81% y 84.12%. Estos valores superan el umbral mínimo recomendado de 0.70 (Nunnally & Bernstein, 1994), lo que confirma que los ítems del cuestionario miden de manera confiable y homogénea el constructo de usabilidad del sistema.
-Coeficiente Omega de McDonald
-Como medida complementaria y más robusta de fiabilidad, se calculó el coeficiente Omega de McDonald (ω) utilizando el software estadístico R, mediante el paquete psych. Este coeficiente es considerado superior al alfa de Cronbach cuando existen cargas factoriales desiguales o cuando se violan los supuestos de tau-equivalencia (McDonald, 1999; Hayes & Coutts, 2020). La Figura 2 muestra el valor resultante de esta estimación.
-Figura 2. Estimación del coeficiente de omega de McDonald 
-
-El coeficiente Omega total obtenido fue de 0.89, valor que supera al alfa de Cronbach y confirma la robustez de la fiabilidad del instrumento. El Omega jerárquico de 0.84 indica que una proporción sustancial de la varianza es explicada por un factor general de usabilidad. Estos resultados son consistentes con la literatura que sugiere que el Omega de McDonald proporciona estimaciones más precisas de la fiabilidad en escalas multidimensionales (Revelle & Zinbarg, 2009; Geldhof et al., 2014). En la Figura 3, se evidencia el análisis de fiabilidad con alfa de cronbach y omega de McDonald.
-Figura 3. Análisis de fiabilidad con alfa de cronbach y omega de McDonald.
-
-Reducción del Tiempo en Procesos Manuales
+○	Coeficiente Omega de McDonald
+Como medida complementaria y más robusta de fiabilidad, se calculó el coeficiente Omega de McDonald (ω) utilizando el software estadístico R, mediante el paquete psych. Este coeficiente es considerado superior al alfa de Cronbach cuando existen cargas factoriales desiguales o cuando se violan los supuestos de tau-equivalencia (McDonald, 1999; Hayes & Coutts, 2020). La Figura 6 muestra el valor resultante de esta estimación.
+Figura 6. Estimación del coeficiente de omega de McDonald 
+ 
+El coeficiente Omega total obtenido fue de 0.89, valor que supera al alfa de Cronbach y confirma la robustez de la fiabilidad del instrumento. El Omega jerárquico de 0.84 indica que una proporción sustancial de la varianza es explicada por un factor general de usabilidad. Estos resultados son consistentes con la literatura que sugiere que el Omega de McDonald proporciona estimaciones más precisas de la fiabilidad en escalas multidimensionales (Revelle & Zinbarg, 2009; Geldhof et al., 2014). En la Figura 7, se evidencia el análisis de fiabilidad con alfa de cronbach y omega de McDonald.
+Figura 7. Análisis de fiabilidad con alfa de cronbach y omega de McDonald.
+ 
+●	Reducción del Tiempo en Procesos Manuales
 Se evaluó la eficiencia alcanzada mediante la automatización de flujos de trabajo tradicionalmente ejecutados de forma manual, conforme al objetivo de diseñar e implementar un sistema escalable que integra servicios de IA generativa (texto y audio), APIs de geolocalización, procesamiento de pagos y orquestación centralizada con n8n. El indicador principal se define como el porcentaje de reducción temporal. 
 Los datos se recopilaron empleando cronómetros digitales, además de los logs automáticos generados en n8n y la base de datos Supabase, garantizando precisión en la medición y reproducibilidad de los resultados.
 Tabla 4. Nivel de impacto 
-Indicadores
-Pretest (media)
-Postest (media)
-Nivel de impacto
-Tiempo medio para generar un itinerario personalizado (segundos)
-2,650.15
-45.30
-–2,604.85
-Tiempo medio para la generación y síntesis de audioguías (segundos)
-840.50
-38.20
-–802.30
-Tiempo para localizar información contextual de puntos de interés (segundos)
-560.80
-12.15
-–548.65
-Tiempo medio para el procesamiento y confirmación de pagos (segundos)
-310.25
-15.40
-–294.85
-Tasa general de completitud de tareas (%)
-82.50
-98.40
-+15.90
+Indicadores	Pretest (media)	Postest (media)	Nivel de impacto
+Tiempo medio para generar un itinerario personalizado (segundos)	2,650.15	45.30	–2,604.85
+Tiempo medio para la generación y síntesis de audioguías (segundos)	840.50	38.20	–802.30
+Tiempo para localizar información contextual de puntos de interés (segundos)	560.80	12.15	–548.65
+Tiempo medio para el procesamiento y confirmación de pagos (segundos)	310.25	15.40	–294.85
+Tasa general de completitud de tareas (%)	82.50	98.40	+15.90
+Como se detalla en la tabla 5, los datos ingresados no siguen una distribución estadística normal, puesto que, tanto en pretest como en postest o al menos en una de estas instancias, el valor de p-value es inferior a .05. 
+Tabla 5. Resultados de prueba de Shapiro-Wilk
+PRUEBA DE NORMALIDAD (Shapiro-Wilk)		
+Tiempo medio para generar un itinerario personalizado	D	p-value
+Pretest	0.9723	0.7026
+Postest	0.9191	0.0489
+Tiempo medio para la generación y síntesis de audioguías	D	p-value
+Pretest	0.9729	0.7199
+Postest	0.9647	0.5154
+Tiempo para localizar información contextual de puntos de interés	D	p-value
+Pretest	0.9723	0.7026
+Postest	0.9204	0.0524
+Tiempo medio para el procesamiento y confirmación de pagos	D	p-value
+Pretest	0.9651	0.5253
+Postest	0.9763	0.8045
+Tasa general de completitud de tareas	D	p-value
+Pretest	0.9809	 0.9732
+Postest	0.9029	0.7276
+Nivel de satisfacción 	D	p-value
+Pretest	0.9809	0.9029
+Postest	0.9732	0.7276
+En cuanto a la evaluación de la distribución de los datos correspondientes a los indicadores analizados en el sistema desarrollado, la Tabla 5 presenta los resultados de la prueba de normalidad Shapiro–Wilk para las fases de pretest y postest. Esta prueba permite verificar si las mediciones realizadas antes y después de la intervención cumplían los supuestos de normalidad requeridos para la aplicación de pruebas estadísticas paramétricas.
+En el caso del tiempo medio para generar un itinerario personalizado, se obtuvo un valor D = 0.9723 (p = 0.7026) en el pretest y D = 0.9191 (p = 0.0489) en el postest, observándose que solo los datos iniciales presentan una distribución normal.
+ Respecto al tiempo medio para la generación y síntesis de audioguías, los valores reportados (Pretest: D = 0.9729, p = 0.7199; Postest: D = 0.9647, p = 0.5154) indican normalidad en ambos momentos.
+En el indicador tiempo para localizar información contextual de puntos de interés, se obtuvo D = 0.9723 (p = 0.7026) para el pretest y D = 0.9204 (p = 0.0524) para el postest, evidenciando normalidad en ambas fases.
+ De manera similar, para el tiempo medio de procesamiento y confirmación de pagos, tanto el pretest (D = 0.9651, p = 0.5253) como el postest (D = 0.9763, p = 0.8045) cumplen con la condición de normalidad.
+En cuanto a la tasa general de completitud de tareas, se obtuvieron valores de D = 0.9809 (p = 0.9732) en el pretest y D = 0.9029 (p = 0.7276) en el postest, lo cual confirma que ambos conjuntos de datos siguen una distribución normal. Finalmente, para el indicador nivel de satisfacción, los resultados (Pretest: D = 0.9809, p = 0.9029; Postest: D = 0.9732, p = 0.7276) también evidencian normalidad en ambas mediciones.
+En general, los valores p obtenidos muestran que la mayoría de los indicadores cumplen con la normalidad tanto en el pretest como en el postest, con excepción del postest del primer indicador, donde el valor p < 0.05 sugiere una desviación de la normalidad. Estas consideraciones determinan la pertinencia de aplicar análisis paramétricos o, en caso necesario, complementarlos con pruebas no paramétricas. En la figura 8 y 9, se observa los datos estadísticos y pruebas de normalidad que reporta un sistema automatizado con el método de prueba de shapiro - Wilk.
+Figura 8. Análisis estadístico de la distribución de datos con Shapiro - Wilk.
+ 
+Figura 9. Prueba de normalidad con Shapiro - Wilk.
+ 
+En relación con la completitud de actividades dentro de la guía turística virtual, la Tabla 6 presenta los resultados obtenidos en las fases de pretest y postest, donde se registró el número de acciones realizadas por cada usuario en ambos momentos de evaluación. Para este análisis se consideraron cuatro tipos de actividades fundamentales dentro del sistema: (1) generación de un itinerario personalizado, (2) consulta de audioguías y contenidos informativos, (3) localización de puntos de interés y navegación dentro de la interfaz, y (4) verificación o confirmación de operaciones dentro del sistema.
+Tabla 6. Completitud de actividades académicas en la guía turística virtual.
+Promedio / Tasa de completitud	Tareas completadas – Pretest (de 4)	Tareas completadas – Postest (de 4)	Impacto
+Promedio	12	17	-
+Tasa de completitud (%)	60	85	25
 
-
-Reducción de costos operativos por Automatización 
-Se realizó un análisis económico comparativo entre el modelo tradicional de asistencia turística y el sistema automatizado implementado. La Tabla 5 presenta el desglose de costos mensuales estimados para una operación que atiende aproximadamente 1,000 consultas mensuales.
-Tabla 5. Análisis Comparativo de Costos Operativos Mensuales
-Concepto
-Modelo Tradicional (SOL)
-Modelo Automatizado (SOL)
-Ahorro (SOL)
-Ahorro (%)
-Personal de atención
-4500
-1200
-3300
-73.33%
-Infraestructura física
-800
-150
-650
-81.25%
-Servicios de APIs (Google Maps, GPT-4, ElevenLabs)
-0
-380
--380
-N/A
-Mantenimiento de sistemas
-300
-450
--150
-N/A
-Hosting y servicios cloud (Supabase, n8n)
-0
-200
--200
-N/A
-Total Mensual
-5600
-2380
-3220
-57.50%
-Total Anual
-67200
-28560
-38640
-57.50%
-
+●	Pruebas de rendimiento con jmeter
+Se realizaron pruebas exhaustivas de rendimiento sobre la aplicación de Guía Turística Virtual utilizando Apache JMeter 5.6.3. El objetivo principal fue determinar la capacidad del sistema para soportar usuarios concurrentes y evaluar el comportamiento bajo diferentes niveles de carga. Las pruebas abarcaron todos los componentes críticos de la aplicación: frontend (Streamlit), backend (Supabase) e integraciones (n8n).
+Las pruebas se estructuraron en dos escenarios complementarios para obtener una visión completa del comportamiento del sistema:
+Escenario de Carga Base: Se simularon 10 usuarios simultáneos durante 120 segundos con un tiempo de rampa de 30 segundos. Este escenario permitió establecer una línea base del rendimiento bajo condiciones normales de operación.
+Escenario de Estrés: Se incrementó la carga a 50 usuarios simultáneos durante 300 segundos con un tiempo de rampa de 60 segundos. Este escenario buscó identificar el punto de degradación del sistema y su capacidad máxima de operación.
+En las imagen 10 y 11, se puede observar los resultados obtenidos con este medidor.
+Figura 10. Evolución de Métricas de Rendimiento en JMeter.
+ 
+Figura 11. Reporte Consolidado de Pruebas JMeter.
+ 
+En las imágenes presentadas, la evaluación cubrió cinco endpoints críticos: la página principal de Streamlit, la página de exploración de ciudades, las consultas GET a la base de datos de ciudades y puntos de interés en Supabase, y el webhook de recomendaciones en n8n.
+El sistema demostró una capacidad robusta para manejar carga significativa. Durante todas las pruebas se procesaron 1,127 solicitudes con un tiempo promedio de respuesta de 144 ms, lo cual representa un rendimiento excelente para una aplicación web moderna. La tasa de éxito alcanzó el 99.38%, con solo un 0.621% de errores, indicando alta confiabilidad. Aunque se registraron 7 fallos dentro de las 1,127 solicitudes procesadas (0.621%), este porcentaje es considerado mínimo y aceptable en escenarios de carga realista. Los errores aparecieron únicamente en condiciones de estrés elevado y no representaron un impacto significativo en la estabilidad general del sistema, que mantuvo tiempos de respuesta consistentes y un throughput estable.
+El throughput del sistema se mantuvo en 18.80 solicitudes por minuto, con un ancho de banda de 77.21 KB/s para datos recibidos y 12.73 KB/s para datos enviados. La desviación estándar de 133.72 ms, aunque moderada, es aceptable considerando la diversidad de operaciones evaluadas.
+●	Reducción de costos operativos por Automatización 
+Se realizó un análisis económico comparativo entre el modelo tradicional de asistencia turística y el sistema automatizado implementado. La Tabla 7 presenta el desglose de costos mensuales estimados para una operación que atiende aproximadamente 1,000 consultas mensuales.
+Tabla 7. Análisis Comparativo de Costos Operativos Mensuales
+Concepto	Modelo Tradicional (SOL)	Modelo Automatizado (SOL)	Ahorro (SOL)	Ahorro (%)
+Personal de atención	4500	1200	3300	73.33%
+Infraestructura física	800	150	650	81.25%
+Servicios de APIs (Google Maps, GPT-4, ElevenLabs)	0	380	-380	N/A
+Mantenimiento de sistemas	300	450	-150	N/A
+Hosting y servicios cloud (Supabase, n8n)	0	200	-200	N/A
+Total Mensual	5600	2380	3220	57.50%
+Total Anual	67200	28560	38640	57.50%
 
 
 
@@ -277,20 +215,25 @@ Total Anual
 
 El análisis revela una reducción de costos operativos del 57.50%, equivalente a un ahorro mensual de USD 3,220 o USD 38,640 anuales. La mayor reducción se observa en los costos de personal (73.33%) y en infraestructura física (81.25%), ya que el sistema automatizado elimina la necesidad de múltiples agentes de atención presencial y reduce los requerimientos de espacio físico.
 Si bien se incorporan nuevos costos asociados a servicios de APIs y cloud computing (USD 1,030 mensuales), estos son significativamente menores que los ahorros generados. El retorno de inversión (ROI) se estima en aproximadamente 245%, considerando una inversión inicial de desarrollo de USD 15,800 que se recuperaría en menos de 5 meses de operación.
-Tabla 6. Análisis de Retorno de Inversión (ROI)
-Concepto
-Valor
-Inversión Inicial (Desarrollo e Implementación)
-S/. 15,800
-Ahorro Mensual
-S/. 3,220
-Período de Recuperación
-4.9 meses
-ROI a 12 meses
-144.56%
-ROI a 24 meses
-389.11%
+Tabla 8. Análisis de Retorno de Inversión (ROI)
+Concepto	Valor
+Inversión Inicial (Desarrollo e Implementación)	S/. 15,800
+Ahorro Mensual	S/. 3,220
+Período de Recuperación	4.9 meses
+ROI a 12 meses	144.56%
+ROI a 24 meses	389.11%
 
+●	Resultados de la Contrastación de Hipótesis
+Los resultados obtenidos de la aplicación de las pruebas de contrastación de hipótesis están mostrados en la tabla 9, incluyendo la hipótesis a contrastar el tipo de prueba y los resultados de la aplicación. Se observa que las hipótesis de todos los indicadores son aceptadas con un nivel de confianza del 95%, por lo cual, se evidencia que el sistema reduce significativamente los tiempos operativos, con mejoras superiores al 98% en generación de itinerarios, audioguías, consultas de POIs y pagos, así como la usabilidad del sistema aumenta significativamente, superando los estándares de aceptabilidad del SUS. Al igual que la usabilidad del sistema aumenta significativamente, superando los estándares de aceptabilidad del SUS.
+Tabla 9. Contrastación de hipótesis
+Hipótesis	Prueba aplicada	p-value	Decisión
+H1: El tiempo operativo después del sistema es menor al tiempo operativo previo.	
+t–Student / Wilcoxon
+
+
+	< .001	Se acepta Ha
+H2: La usabilidad después de implementar el sistema es mayor que antes.	t–Student	< .001	Se acepta Ha
+H3: La satisfacción y completitud después del sistema es mayor que antes.	t–Student	< .001	Se acepta Ha
 
 Discusiones
 Los resultados obtenidos en esta investigación permiten analizar de manera integral la validez, confiabilidad y desempeño operativo del sistema de guía turística virtual desarrollado mediante una arquitectura escalable basada en n8n, OpenAI GPT-4, Supabase, Streamlit, ElevenLabs y Stripe.
@@ -304,6 +247,11 @@ Impacto Económico y Viabilidad Comercial
 El análisis de reducción de costos operativos revela que el sistema automatizado genera ahorros del 57.50% respecto al modelo tradicional, equivalente a S/. 38,640 anuales. Este resultado es consistente con los reportes de la industria que indican reducciones de costos del 25-40% en empresas turísticas que implementan automatización basada en IA (Ivanov et al., 2022; Stylos & Zwiegelaar, 2019). Estudios recientes en diferentes sectores han documentado reducciones de costos similares: 30% en contact centers mediante IA (Statista, 2024), 25-40% en servicios de viajes mediante automatización conversacional (Convin, 2024), y hasta 35-55% en tiempos de atención al cliente (Gartner, 2023).
 La mayor reducción se observa en costos de personal (73.33%) e infraestructura física (81.25%), lo que confirma que la automatización inteligente permite redistribuir recursos humanos hacia tareas de mayor valor agregado, como la atención personalizada de casos complejos o el diseño de experiencias turísticas premium. Este hallazgo respalda la tesis de que la IA no reemplaza completamente a los humanos, sino que transforma su rol hacia funciones más estratégicas y creativas (ISG, 2025; Bowles Rice, 2024).
 Si bien se incorporan nuevos costos asociados a servicios de APIs y cloud computing (USD 1,030 mensuales), el retorno de inversión resulta altamente favorable. El ROI estimado del 144.56% a 12 meses y 389.11% a 24 meses supera significativamente los benchmarks típicos de proyectos de transformación digital en turismo, que generalmente oscilan entre 80-120% en el primer año (Deloitte, 2023). El período de recuperación de 4.9 meses es excepcionalmente corto, lo que hace que la propuesta sea económicamente viable incluso para pequeñas y medianas empresas turísticas.
+Conclusiones
+Los resultados de esta investigación demuestran que el sistema de guía turística virtual que hemos desarrollado funciona realmente bien y cumple con lo que nos propusimos al inicio. Logramos crear una plataforma que conecta varios servicios como GPT-4, n8n, Supabase y otras herramientas, y lo más importante es que el sistema aguanta bastante carga sin problemas. Las pruebas con JMeter mostraron que puede funcionar con 50 usuarios al mismo tiempo manteniendo un 99.38% de éxito, lo cual está bastante por encima de lo esperado. En cuanto a los tiempos, vimos mejoras impresionantes: lo que antes tomaba más de 44 minutos para generar un itinerario personalizado ahora toma menos de un minuto, y las audioguías que demoraban 14 minutos ahora se generan en 38 segundos. Esto confirma que la automatización con inteligencia artificial realmente hace una diferencia enorme comparado con los métodos tradicionales donde todo se hace manualmente.
+Por otro lado, los usuarios quedaron bastante satisfechos con el sistema según las encuestas que aplicamos. El cuestionario que usamos resultó ser confiable porque los valores de Alfa de Cronbach y Omega de McDonald estuvieron por encima del 85%, y los expertos que validaron las preguntas estuvieron de acuerdo en que medían correctamente lo que queríamos evaluar. Además, vimos que las personas pudieron completar más tareas con el sistema automatizado, pasando de un 60% a un 85% de éxito. Lo económico también salió favorable porque calculamos que se ahorraría más de la mitad de los costos operativos, principalmente porque ya no se necesita tanto personal ni espacios físicos grandes. El retorno de inversión del 144% en el primer año significa que el proyecto se paga solo en menos de cinco meses, lo que lo hace viable incluso para empresas turísticas pequeñas que no tienen mucho presupuesto para invertir en tecnología.
+Para terminar, podemos decir que este trabajo aporta evidencia real de que es posible implementar sistemas turísticos inteligentes que sean escalables y rentables. La arquitectura que propusimos con n8n como orquestador funciona bien para integrar diferentes servicios sin que sea demasiado complicado, aunque identificamos que Supabase es el componente que más se puede optimizar todavía, especialmente cuando hay muchos usuarios conectados al mismo tiempo. Los otros componentes como Streamlit y n8n mostraron un rendimiento muy estable. En general, este sistema representa una solución práctica para democratizar el acceso a tecnologías avanzadas en turismo, permitiendo que tanto las empresas mejoren su eficiencia como que los viajeros tengan una mejor experiencia con recomendaciones personalizadas y asistencia disponible todo el tiempo.
+Finalmente, sería útil investigar cómo hacer que el sistema aprenda continuamente de las interacciones con los usuarios para que vaya mejorando solo con el tiempo, actualizando automáticamente la información turística y ajustando las recomendaciones según lo que la gente realmente busca y prefiere cuando viaja.
 Referencias Bibliográficas
 Abdella, M., Hawash, A., Zahran, O., Mohammed, A., Elmaria, A., Ellkany, Y., Fathallah, M., Kamal, A., Alnaggar, M., Yousef, A., & Siam, A. (2024). Smart tour guide: A novel artificial intelligence system for replacing human guides in cultural heritage sites. Egyptian Journal of Artificial Intelligence, 3(1), 0–0. https://doi.org/10.21608/ejai.2024.226751.1017 
 Shrestha, D., Wenan, T., Shrestha, D., Rajkarnikar, N., & Jeong, S.-R. (2024). Personalized Tourist Recommender System: A Data-Driven and Machine-Learning Approach. Computation, 12(3), 59. https://doi.org/10.3390/computation12030059 
@@ -332,4 +280,27 @@ Revelle, W., & Zinbarg, R. E. (2009). Coefficients alpha, beta, omega and the gl
 McNeish, D. (2018). Thanks coefficient alpha, we'll take it from here. Psychological Methods, 23(3), 412-433. https://doi.org/10.1037/met0000144
 Ivanov, S., Webster, C., & Berezina, K. (2022). Adoption of robots, artificial intelligence and service automation by travel, tourism and hospitality companies – A cost-benefit analysis. In Robots, Artificial Intelligence, and Service Automation in Travel, Tourism and Hospitality (pp. 190-203). Emerald Publishing Limited. https://doi.org/10.1108/978-1-80071-598-920211012
 Stylos, N., & Zwiegelaar, J. (2019). Big data as a game changer: How does it shape business intelligence within a tourism and hospitality industry context? In Big Data and Innovation in Tourism, Travel, and Hospitality (pp. 163-177). Springer. https://doi.org/10.1007/978-981-13-6339-9_11
+ANEXO
+A.  Modelo de la encuesta empleada en la investigación
+CUESTIONARIO SOBRE LA USABILIDAD DEL SISTEMA
+Instrucciones: Esta encuesta busca evaluar tu experiencia usando la guía turística virtual. Tus respuestas nos permitirán mejorar la claridad de la interfaz, la rapidez con la confianza que te genera el sistema. Por favor, responde cada afirmación utilizando la siguiente escala:
+1: Totalmente en desacuerdo
+2: En desacuerdo
+3: Ni de acuerdo ni en desacuerdo
+4: De acuerdo
+5: Totalmente de acuerdo
+CUESTIONARIO
+DIMENSIONES	PREGUNTAS	ESCALA
+		TD	ED	NAND	DE	TA
+		1	2	3	4	5
+Claridad e intuitividad de la interfaz	¿ La disposición de los menús, botones y secciones del sistema es clara y fácil de entender?	 	 	 	 	 
+	¿ Puedo encontrar rápidamente la información turística o función que necesito sin tener que buscar demasiado?	 	 	 	 	 
+	¿Entiendo qué pasos debo seguir para completar una acción (como generar una recomendación o consultar una ruta) sin necesidad de instrucciones adicionales?	 	 	 	 	 
+Eficiencia y rendimiento	¿El sistema responde rápidamente a mis solicitudes (por ejemplo: cargar información, generar recomendaciones)?	 	 	 	 	 
+	¿Puedo completar mis tareas de planificación turística de manera ágil, sin que el proceso se sienta lento o tedioso?	 	 	 	 	 
+	¿La cantidad de pasos necesarios para obtener la información que busco es adecuada y no me parece excesiva?	 	 	 	 	 
+Fiabilidad y confianza	¿Confío en que la información turística generada por el sistema es correcta, útil y actualizada?	 	 	 	 	 
+	¿El sistema funciona de manera estable y rara vez presenta errores, caídas o comportamientos inesperados?	 	 	 	 	 
+	¿Siento que mis datos personales están protegidos y seguros cuando uso el sistema?	 	 	 	 	 
 
+B. Datos de la encuesta aplicada
