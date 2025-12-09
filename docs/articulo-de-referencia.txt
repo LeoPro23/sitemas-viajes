@@ -100,7 +100,6 @@ Fase 4 – Recolección de Datos:
 Fase 5 – Análisis y Validación:
  Se aplicó estadística descriptiva para evaluar la eficiencia y satisfacción, comparando resultados antes y después de la automatización.
 Todo ello comprende los indicadores cuantitativos los cuales fueron tiempo, throughput y APDEX, en cuanto a los indicadores cualitativos fueron SUS y CSAT permitió medir de manera integral la eficiencia operativa, usabilidad percibida y viabilidad técnica del sistema de guía turística virtual, aportando evidencia empírica sobre el impacto positivo de la automatización inteligente en la optimización de servicios turísticos basados en IA generativa.
-
 Resultados
 Validación del Instrumento
 Validez de Contenido mediante Coeficiente V de aiken
@@ -160,7 +159,10 @@ V de Aiken General
 0.8889
 
 
-Los valores del coeficiente V de Aiken oscilaron entre 0.8333 y 1.0000, con un valor general de 0.8889, lo que indica un alto nivel de acuerdo entre los expertos respecto a la pertinencia, claridad y coherencia de los ítems. Según Aiken (1985), valores superiores a 0.75 son considerados aceptables para garantizar la validez del contenido del instrumento. Los resultados obtenidos superan ampliamente este umbral, confirmando que el cuestionario es apropiado para medir la usabilidad del sistema de guía turística virtual propuesto.
+
+Los valores del coeficiente V de Aiken oscilaron entre 0.8333 y 1.0000, con un valor general de 0.8889, se evidencia en la Figura 1, lo que indica un alto nivel de acuerdo entre los expertos respecto a la pertinencia, claridad y coherencia de los ítems. Según Aiken (1985), valores superiores a 0.75 son considerados aceptables para garantizar la validez del contenido del instrumento. Los resultados obtenidos superan ampliamente este umbral, confirmando que el cuestionario es apropiado para medir la usabilidad del sistema de guía turística virtual propuesto.
+Figura 1. Análisis de Concordancia de Jueces V de Aiken.
+
 Confiabilidad del Instrumento
 Coeficiente de Alfa de Cronbach
 Para evaluar la consistencia interna del instrumento, se calculó el coeficiente alfa de Cronbach tanto para la variable total como para cada una de sus dimensiones. La Tabla 3 presenta los valores obtenidos mediante este análisis estadístico, aplicado a los datos recolectados de 15 usuarios que interactuaron con el sistema.
@@ -188,10 +190,12 @@ Dimensión 3: Fiabilidad y confianza
 
 Los resultados indican que el instrumento posee una alta consistencia interna. El alfa de Cronbach para la variable total alcanzó un valor de 88.75%, mientras que los valores para las dimensiones individuales oscilaron entre 73.81% y 84.12%. Estos valores superan el umbral mínimo recomendado de 0.70 (Nunnally & Bernstein, 1994), lo que confirma que los ítems del cuestionario miden de manera confiable y homogénea el constructo de usabilidad del sistema.
 Coeficiente Omega de McDonald
-Como medida complementaria y más robusta de fiabilidad, se calculó el coeficiente Omega de McDonald (ω) utilizando el software estadístico R, mediante el paquete psych. Este coeficiente es considerado superior al alfa de Cronbach cuando existen cargas factoriales desiguales o cuando se violan los supuestos de tau-equivalencia (McDonald, 1999; Hayes & Coutts, 2020). La Figura 1 muestra el valor resultante de esta estimación.
-Figura 1. Estimación del coeficiente de omega de McDonald 
+Como medida complementaria y más robusta de fiabilidad, se calculó el coeficiente Omega de McDonald (ω) utilizando el software estadístico R, mediante el paquete psych. Este coeficiente es considerado superior al alfa de Cronbach cuando existen cargas factoriales desiguales o cuando se violan los supuestos de tau-equivalencia (McDonald, 1999; Hayes & Coutts, 2020). La Figura 2 muestra el valor resultante de esta estimación.
+Figura 2. Estimación del coeficiente de omega de McDonald 
 
-El coeficiente Omega total obtenido fue de 0.89, valor que supera al alfa de Cronbach y confirma la robustez de la fiabilidad del instrumento. El Omega jerárquico de 0.84 indica que una proporción sustancial de la varianza es explicada por un factor general de usabilidad. Estos resultados son consistentes con la literatura que sugiere que el Omega de McDonald proporciona estimaciones más precisas de la fiabilidad en escalas multidimensionales (Revelle & Zinbarg, 2009; Geldhof et al., 2014).
+El coeficiente Omega total obtenido fue de 0.89, valor que supera al alfa de Cronbach y confirma la robustez de la fiabilidad del instrumento. El Omega jerárquico de 0.84 indica que una proporción sustancial de la varianza es explicada por un factor general de usabilidad. Estos resultados son consistentes con la literatura que sugiere que el Omega de McDonald proporciona estimaciones más precisas de la fiabilidad en escalas multidimensionales (Revelle & Zinbarg, 2009; Geldhof et al., 2014). En la Figura 3, se evidencia el análisis de fiabilidad con alfa de cronbach y omega de McDonald.
+Figura 3. Análisis de fiabilidad con alfa de cronbach y omega de McDonald.
+
 Reducción del Tiempo en Procesos Manuales
 Se evaluó la eficiencia alcanzada mediante la automatización de flujos de trabajo tradicionalmente ejecutados de forma manual, conforme al objetivo de diseñar e implementar un sistema escalable que integra servicios de IA generativa (texto y audio), APIs de geolocalización, procesamiento de pagos y orquestación centralizada con n8n. El indicador principal se define como el porcentaje de reducción temporal. 
 Los datos se recopilaron empleando cronómetros digitales, además de los logs automáticos generados en n8n y la base de datos Supabase, garantizando precisión en la medición y reproducibilidad de los resultados.
@@ -267,6 +271,10 @@ Total Anual
 57.50%
 
 
+
+
+
+
 El análisis revela una reducción de costos operativos del 57.50%, equivalente a un ahorro mensual de USD 3,220 o USD 38,640 anuales. La mayor reducción se observa en los costos de personal (73.33%) y en infraestructura física (81.25%), ya que el sistema automatizado elimina la necesidad de múltiples agentes de atención presencial y reduce los requerimientos de espacio físico.
 Si bien se incorporan nuevos costos asociados a servicios de APIs y cloud computing (USD 1,030 mensuales), estos son significativamente menores que los ahorros generados. El retorno de inversión (ROI) se estima en aproximadamente 245%, considerando una inversión inicial de desarrollo de USD 15,800 que se recuperaría en menos de 5 meses de operación.
 Tabla 6. Análisis de Retorno de Inversión (ROI)
@@ -312,63 +320,16 @@ Carvalho I, Ivanov S (2024), "ChatGPT for tourism: applications, benefits and ri
 Roumeliotis, K. I., Tselikas, N. D., & Nasiopoulos, D. K. (2024). Leveraging large language models in tourism: A comparative study of the latest GPT Omni models and BERT NLP for customer review classification and sentiment analysis. Information (Basel), 15(12), 792. https://doi.org/10.3390/info15120792 
 Xu, H., Law, R., Lovett, J., Luo, J. M., & Liu, L. (2024). Tourist acceptance of ChatGPT in travel services: the mediating role of parasocial interaction. Journal of Travel & Tourism Marketing, 41(7), 955–972. https://doi.org/10.1080/10548408.2024.2364336 
 Prasanna, A., Pushparaj, P., & Kushwaha, B. P. (2025). Conversational AI in Tourism: A systematic literature review using TCM and ADO framework. Journal of Hospitality and Tourism Management, 64(101310), 101310. https://doi.org/10.1016/j.jhtm.2025.101310 
-–RESULTADOS REFERENCIAS
-Coeficiente V de Aiken
 Aiken, L. R. (1980). Content validity and reliability of single items or questionnaires. Educational and Psychological Measurement, 40(4), 955-959. https://doi.org/10.1177/001316448004000419
 Aiken, L. R. (1985). Three coefficients for analyzing the reliability and validity of ratings. Educational and Psychological Measurement, 45(1), 131-142. https://doi.org/10.1177/0013164485451012
 Merino-Soto, C. (2018). Confidence interval for difference between coefficients of content validity (Aiken's V): A SPSS syntax. Anales de Psicología/Annals of Psychology, 34(3), 587-590. https://doi.org/10.6018/analesps.34.3.283481
-Roebianto, A., Savitri, S. I., Aulia, I., Suciyana, A., & Mubarokah, L. (2023). Content validity: Definition and procedure of content validation in psychological research. TPM - Testing, Psychometrics, Methodology in Applied Psychology, 30(1), 5-18. https://doi.org/10.4473/TPM30.1.1
-Retnawati, H. (2016). Proving content validity of self-regulated learning scale (The comparison of Aiken index and expanded Gregory index). REID (Research and Evaluation in Education), 2(2), 155-164. https://doi.org/10.21831/reid.v2i2.11029
-Coeficiente Alfa de Cronbach
 Cronbach, L. J. (1951). Coefficient alpha and the internal structure of tests. Psychometrika, 16(3), 297-334. https://doi.org/10.1007/BF02310555
-Nunnally, J. C. (1978). Psychometric theory (2nd ed.). McGraw-Hill.
-Nunnally, J. C., & Bernstein, I. H. (1994). Psychometric theory (3rd ed.). McGraw-Hill.
 Cortina, J. M. (1993). What is coefficient alpha? An examination of theory and applications. Journal of Applied Psychology, 78(1), 98-104. https://doi.org/10.1037/0021-9010.78.1.98
 Tavakol, M., & Dennick, R. (2011). Making sense of Cronbach's alpha. International Journal of Medical Education, 2, 53-55. https://doi.org/10.5116/ijme.4dfb.8dfd
-Lance, C. E., Butts, M. M., & Michels, L. C. (2006). The sources of four commonly reported cutoff criteria: What did they really say? Organizational Research Methods, 9(2), 202-220. https://doi.org/10.1177/1094428105284919
-Coeficiente Omega de McDonald
 McDonald, R. P. (1999). Test theory: A unified treatment. Lawrence Erlbaum Associates.
 Hayes, A. F., & Coutts, J. J. (2020). Use Omega Rather than Cronbach's Alpha for Estimating Reliability. But… Communication Methods and Measures, 14(1), 1-24. https://doi.org/10.1080/19312458.2020.1718629
 Revelle, W., & Zinbarg, R. E. (2009). Coefficients alpha, beta, omega and the glb: Comments on Sijtsma. Psychometrika, 74(1), 145-154. https://doi.org/10.1007/s11336-008-9102-z
 McNeish, D. (2018). Thanks coefficient alpha, we'll take it from here. Psychological Methods, 23(3), 412-433. https://doi.org/10.1037/met0000144
-Geldhof, G. J., Preacher, K. J., & Zyphur, M. J. (2014). Reliability estimation in a multilevel confirmatory factor analysis framework. Psychological Methods, 19(1), 72-91. https://doi.org/10.1037/a0032138
-Dunn, T. J., Baguley, T., & Brunsden, V. (2014). From alpha to omega: A practical solution to the pervasive problem of internal consistency estimation. British Journal of Psychology, 105(3), 399-412. https://doi.org/10.1111/bjop.12046
-Hancock, G. R., & An, J. (2020). A closed-form alternative for estimating ω reliability under unidimensionality. Measurement: Interdisciplinary Research and Perspectives, 18(1), 1-14. https://doi.org/10.1080/15366367.2019.1656049
-Kalkbrenner, M. T. (2024). Choosing between Cronbach's coefficient alpha, McDonald's coefficient omega, and coefficient H: Confidence intervals and the advantages and drawbacks of interpretive guidelines. Measurement and Evaluation in Counseling and Development, 57(1), 2-20. https://doi.org/10.1080/07481756.2024.2319076
-Referencias para Usabilidad (SUS)
-Bangor, A., Kortum, P. T., & Miller, J. T. (2008). An empirical evaluation of the System Usability Scale. International Journal of Human-Computer Interaction, 24(6), 574-594. https://doi.org/10.1080/10447310802205776
-Bangor, A., Kortum, P., & Miller, J. (2009). Determining what individual SUS scores mean: Adding an adjective rating scale. Journal of Usability Studies, 4(3), 114-123.
-Peres, S. C., Pham, T., & Phillips, R. (2013). Validation of the System Usability Scale (SUS): SUS in the wild. Proceedings of the Human Factors and Ergonomics Society Annual Meeting, 57(1), 192-196. https://doi.org/10.1177/1541931213571043
-Brooke, J. (1996). SUS: A "quick and dirty" usability scale. In P. W. Jordan, B. Thomas, B. A. Weerdmeester, & I. L. McClelland (Eds.), Usability evaluation in industry (pp. 189-194). Taylor & Francis.
-Referencias sobre Automatización y Eficiencia en Turismo
-Sistemas de IA en Turismo
-Yoon, J., & Choi, C. (2023). Real-time context-aware recommendation system for tourism. Sensors, 23(7), 3679. https://doi.org/10.3390/s23073679
-Shrestha, D., Wenan, T., Shrestha, D., Rajkarnikar, N., & Jeong, S.-R. (2024). Personalized tourist recommender system: A data-driven and machine-learning approach. Computation, 12(3), 59. https://doi.org/10.3390/computation12030059
-Chen, W. (2024). The data mining and high-performance network model of tourism electronic word of mouth for analysis of factors influencing tourists' purchasing behavior. Scientific Reports, 14, 30237. https://doi.org/10.1038/s41598-024-75794-3
-Kongpeng, S., & Hanskunatai, A. (2024). Tourist destination recommendation system based on machine learning. In Proceedings of the 2024 9th International Conference on Big Data and Computing (ICBDC 2024) (pp. 62-67). ACM. https://doi.org/10.1145/3695220.3695229
-Núñez-Pérez, N., Lara-Alvarez, C., & Barrera-Animas, A. Y. (2024). Machine learning applied to tourism: A systematic review. WIREs Data Mining and Knowledge Discovery, 14(4), e1549. https://doi.org/10.1002/widm.1549
-García-Madurga, M.-Á., & Grilló-Méndez, A.-J. (2023). Artificial intelligence in the tourism industry: An overview of reviews. Administrative Sciences, 13(8), 172. https://doi.org/10.3390/admsci13080172
-IA Conversacional y Chatbots en Turismo
-Camilleri, M. A., & Troise, C. (2023). Chatbot recommender systems in tourism: A systematic review and a benefit-cost analysis. In Proceedings of the 8th International Conference on Machine Learning Technologies (ICMLT 2023) (pp. 38-43). ACM. https://doi.org/10.1145/3589883.3589891
-Xu, H., Law, R., Lovett, J., Luo, J. M., & Liu, L. (2024). Tourist acceptance of ChatGPT in travel services: The mediating role of parasocial interaction. Journal of Travel & Tourism Marketing, 41(7), 955-972. https://doi.org/10.1080/10548408.2024.2364336
-Carvalho, I., & Ivanov, S. (2024). ChatGPT for tourism: Applications, benefits and risks. Tourism Review, 79(2), 290-303. https://doi.org/10.1108/TR-02-2023-0088
-Prasanna, A., Pushparaj, P., & Kushwaha, B. P. (2025). Conversational AI in tourism: A systematic literature review using TCM and ADO framework. Journal of Hospitality and Tourism Management, 64, 101310. https://doi.org/10.1016/j.jhtm.2025.101310
-Reducción de Costos Operativos mediante IA
 Ivanov, S., Webster, C., & Berezina, K. (2022). Adoption of robots, artificial intelligence and service automation by travel, tourism and hospitality companies – A cost-benefit analysis. In Robots, Artificial Intelligence, and Service Automation in Travel, Tourism and Hospitality (pp. 190-203). Emerald Publishing Limited. https://doi.org/10.1108/978-1-80071-598-920211012
 Stylos, N., & Zwiegelaar, J. (2019). Big data as a game changer: How does it shape business intelligence within a tourism and hospitality industry context? In Big Data and Innovation in Tourism, Travel, and Hospitality (pp. 163-177). Springer. https://doi.org/10.1007/978-981-13-6339-9_11
-Informes de la Industria (2023-2025)
-Gartner. (2023). Forecast Analysis: Conversational AI, Worldwide. Gartner Research. Recuperado de https://www.gartner.com/en/documents/4567899
-Deloitte. (2023). Digital transformation in travel and hospitality: ROI benchmarks and best practices. Deloitte Insights. Recuperado de https://www2.deloitte.com/global/en/insights/industry/travel-hospitality.html
-Statista. (2024). Cost reduction through artificial intelligence (AI) in contact centers worldwide in 2023. Statista Research Department. Recuperado de https://www.statista.com/statistics/ai-cost-reduction-contact-centers/
-Convin. (2024). Automation in travel and hospitality: Key metrics and ROI analysis. Convin Industry Reports. Recuperado de https://www.convin.ai/blog/automation-travel-hospitality
-ISG (Information Services Group). (2025). AI in customer service: Implementation costs and operational benefits. ISG Provider Lens Report. Recuperado de https://isg-one.com/research/ai-customer-service
-Bowles Rice. (2024). The economic impact of AI automation in service industries. Bowles Rice Legal Insights. Recuperado de https://www.bowlesrice.com/insights/ai-automation-service-industries
-Referencias sobre Arquitecturas de Automatización
-Zawacki-Richter, O., Marín, V. I., Bond, M., & Gouverneur, F. (2019). Systematic review of research on artificial intelligence applications in higher education – where are the educators? International Journal of Educational Technology in Higher Education, 16, 39. https://doi.org/10.1186/s41239-019-0171-0
-Sarkar, J. L., Majumder, A., Panigrahi, C. R., Pati, B., & Bhatia, S. (2023). Tourism recommendation system: A survey and future research directions. Multimedia Tools and Applications, 82, 8983-9027. https://doi.org/10.1007/s11042-022-12167-w
-Premananthan, P., Le, H., Nguyen, M.-H. T., Fahim, M., & Duong, T. Q. (2024). Machine learning applications in smart tourism: Overview, research challenges, and the road ahead. EAI Endorsed Transactions on Tourism, Technology and Intelligence, 1(1), e1. https://doi.org/10.4108/eettti.6339
-Referencias Metodológicas Adicionales
-DeVellis, R. F. (2016). Scale development: Theory and applications (4th ed.). Sage Publications.
-Cohen, L., Manion, L., & Morrison, K. (2017). Research methods in education (8th ed.). Routledge.
-Field, A. (2013). Discovering statistics using IBM SPSS Statistics (4th ed.). Sage Publications.
-Hernández, R., Fernández, C., & Baptista, P. (2014). Metodología de la investigación (6ta ed.). McGraw-Hill.
+
