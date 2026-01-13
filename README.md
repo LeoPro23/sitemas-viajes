@@ -8,18 +8,40 @@ Este proyecto implementa el frontend del sistema descrito en `doc.doc`. Incluye:
 
 Requisitos
 - Node.js 18.x
+- Postgres 12+ (opcional; requerido para /api/history, /api/trip-budget, /api/booking, /api/payments)
+
+Configuracion
+1. Crea un archivo `.env` (gitignored) y completa las variables indicadas abajo.
+2. Si usas n8n, importa `workflows/main-workflow.json`, crea el webhook y ajusta credenciales.
+3. Si usas Postgres, crea la base/usuario; las tablas se crean al primer request.
 
 Instalación
 ```bash
 npm install
+```
+
+Ejecucion (dev)
+```bash
 npm run dev
 ```
 Abrir `http://localhost:3000`.
+
+Produccion
+```bash
+npm run build
+npm run start
+```
 
 Variables de entorno
 - `N8N_WEBHOOK_URL` (servidor) o `NEXT_PUBLIC_N8N_WEBHOOK_URL` (cliente) apuntando al Webhook en n8n.
 - `RECOMMEND_USE_WEBHOOK`: `true` para usar n8n; `false` (por defecto) para usar la lógica local.
 - Claves opcionales de APIs (si se usan desde n8n): Amadeus, Unsplash, OpenWeather, etc.
+- `DATABASE_HOST`, `DATABASE_PORT`, `DATABASE_NAME`, `DATABASE_USERNAME`, `DATABASE_PASSWORD`, `DATABASE_SSL` (persistencia Postgres).
+- `DATABASE_SSL=true|1` habilita SSL.
+- `AMADEUS_API_KEY`/`AMADEUS_API_SECRET` o `AMADEUS_CLIENT_ID`/`AMADEUS_CLIENT_SECRET` (hoteles).
+- `UNSPLASH_ACCESS_KEY`, `PEXELS_API_KEY`, `PIXABAY_API_KEY` (imagenes).
+- `OPENTRIPMAP_API_KEY` (POIs/hoteles); sin key usa Wikipedia y datos sinteticos.
+- `OPENWEATHER_API_KEY`, `BOOKING_API_KEY` solo si los usas en n8n.
 
 Estructura relevante
 - `src/app/questionnaire/page.tsx`: formulario de preferencias.
